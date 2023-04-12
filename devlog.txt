@@ -1,0 +1,80 @@
+frontend steps:
+
+    SETUP ========================
+    - npx create-react-app my-app --template @chakra-ui/typescript
+    - gut down to index react-app-env in src. Remove import errors in index and gut App to just div returning hi
+    - npm i react-router-dom
+    - Create router.tsx/Root.tsx in src & config
+        - Create components/Root.tsx
+            import { Outlet } from "react-router-dom"
+
+            export const Root = () => {
+                return (
+                    <>
+                        <Outlet />
+                    </>
+                )
+            }
+        - Creaate base pages - home, users, projects, notfound
+        - Create Router.tsx
+            import { createBrowserRouter } from "react-router-dom";
+            import { Root } from "./components/Root";
+            import { Home } from "./routes/Home";
+            import { Users } from "./routes/Users";
+
+
+            export const router = createBrowserRouter([{
+                path: "/",
+                element: <Root />,
+                children: [
+                    {
+                        path: "",
+                        element: <Home />,
+                    },
+                    {
+                        path: "users",
+                        element: <Users />,
+                    },
+                ]
+            }]);
+            etc.
+    - Configure index.tsx to import RouterProvider instead of App, set router to the newly
+        created router and place between ChakraProvider, below ColorModeScript
+    - Create NotFound page with useLocation's location.pathname to display to the user what
+        page wasn't found.
+    
+    HEADER ========================
+    - npm i react-icons --save
+    - create header as desired and separate into component then import to Root
+        - https://chakra-ui.com/docs/components/menu
+    - create theme.ts in src
+        -import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
+
+        const config = {
+            initialColorMode: "light",
+            useSystemColorMode: false,
+        };
+
+        const theme = extendTheme({ config });
+
+        export default theme;
+        
+        - pass to index.tsx ChakraProvider (<ChakraProvider theme={theme}>)
+        - set ColorModeScript initialColorMode to {theme.config.initialColorMode}
+    - create toggle dark mode button
+        -   ...
+            const { toggleColorMode } = useColorMode();
+            const LightDarkIcon = useColorModeValue(< FaMoon />, <FaSun />)
+            ...
+            <HStack>
+                <IconButton
+                    onClick={toggleColorMode}
+                    size={"sm"}
+                    icon={LightDarkIcon}
+                    aria-label={"Toggle Dark Mode"}
+                />
+            </HStack>
+
+
+
+    

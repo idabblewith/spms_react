@@ -1,0 +1,62 @@
+
+NAVIGATION BAR & FOOTER
+- Staff Dropdown and Profile dropdown both have SPMS Profile & Divisional Profile
+	- Suggest: Only having in Profile
+- Profile says "Welcome, {name}" with a chevron.
+	- Suggest: Change to a profile Image (potentially with name) and chevron. This would save space
+- Suggest having live search for search projects on nav bar
+	- with a debouncer for 2 seconds
+	- that displays list below search bar of matching items with more than 3 characters
+	- in this way, users will get a dropdown of projects and access things faster
+- Year in footer is hardcoded
+	- Suggest adding a javascript datetime identifier to the footer; it will automatically adjust based on server time.
+- Django version shouldn't be in footer
+	- Suggest removing as this is only helpful to the maintainer, and should
+	be apparent in the code.
+
+
+MAIN PAGE
+- Remove duplicate functionalities
+	- browse projects
+	- create project
+	- download published BCS annual reports
+- Format current ARAR Report buttons into one dropdown with links as before
+- Move the Current Annual Report Dropdown into the Scince Project Management Sysetm Block (It currently takes up a lot of space but barely serves a function). This will make use of some of the space.
+
+
+- Changes MADE:
+	- Moved API and User Manual to Profile Dropdown to conserve space and as they do not have secondary items.
+	(Old way commented out)
+	- Rearranged Documentation to be above DBCA account, so last item is logout in Profile
+	- Removed View Profile (for own profile) from staff.
+	(Old way commented out)
+	- Moved the Profile dropdown to the right as it seemed oddly placed before/ searchbar was on the right
+	(Just need to rearrange if changing back)
+	- Added to footer: a dynamic year based on javascript
+	- Removed Django version from footer
+	- Removed other coding related stuff from footer as not relevant to enduser:
+		("Passed" circleci: https://circleci.com/gh/dbca-wa/sdis)
+		("coverage": https://coveralls.io/github/dbca-wa/sdis?branch=master)
+		("docs": https://sdis.readthedocs.io/) - Already linked in profile
+	
+
+
+TODO:
+	DESIGN
+	- Fix footer
+	- Add the tickbar to the My Tasks Accordian title if there are no tasks
+	- Fix hover color being so bright you can't see text for nav buttons
+	- Add Color to Current Annual Report Dropdown/Icon on Left
+	- Add Color to Accordian Dropdowns so it is obviously clickable and 
+	stands out from the contents / or similar
+	- Seek clarification if we have a DBCA favicon or if Pythia one is okay
+	RESPONSIVE
+	- Add this text when larger screen to the SPMS description:
+	"Hello, {first_name}! Welcome to SPMS, DBCA's portal for project 	documentation, approval and reporting."
+	- Fix Button texxt overflowing on small size
+	- Fix Current Annual Report Dropdown going behind Title on smaller screens
+	- Fix Header to make responsive on resize (search bar etc. overflowing)
+	FUNCTION
+	- Implement Search functionality
+	- Make Head dynamic in router (changed in index.html for now)
+	- Add links to buttons & Add routers pages

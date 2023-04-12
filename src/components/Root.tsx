@@ -1,0 +1,45 @@
+import { Box, Image } from "@chakra-ui/react"
+import { Outlet } from "react-router-dom"
+import OldHeader from "./OldHeader";
+import { Footer } from "./Footer";
+
+import myImage from "../media/80mile.jpg";
+import { PageWrapper } from "./PageWrapper";
+
+
+export const Root = () => {
+    return (
+        <>
+            <Box
+                minH={"100vh"}
+            >
+                <Box
+                    minH={"100vh"}
+
+                >
+                    <PageWrapper>
+                        {/* Navbar */}
+                        <OldHeader />
+                        {/* Content */}
+                        <Outlet />
+                        <Image
+                            src={myImage}
+                            width={"100%"}
+                            height={"100%"}
+                            objectFit={"cover"}
+                            position="absolute"
+                            zIndex={-1}
+                            top={0}
+                            left={0}
+                        />
+                    </PageWrapper>
+                    <Footer />
+
+                </Box>
+
+            </Box>
+
+
+        </>
+    )
+}
