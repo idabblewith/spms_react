@@ -13,26 +13,20 @@ export const ProjectSearchBar = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [searchResults, setSearchResults] = useState<ISearchResults[]>([]);
 
+    const testResultObject = [
+        { id: 1, name: "Biodiversity" },
+        { id: 2, name: "Diomes" },
+        { id: 3, name: "Potatoes" },
+        { id: 4, name: "Ice Cream" },
+        { id: 5, name: "Ecoinformatics" },
+        { id: 6, name: "Chocolate" },
+    ]
+
     const handleSearch =
         // debounce(
         (value: string) => {
             if (value.length >= 3) {
-                // TODO: Replace with actual search function
-                const results = [
-                    { id: 1, name: "Search result 1" },
-                    { id: 2, name: "Search result 2" },
-                    { id: 3, name: "Search result 3" },
-                    { id: 4, name: "Search result 4" },
-                    { id: 5, name: "Search result 5" },
-                    { id: 6, name: "Search result 6" },
-                    { id: 7, name: "Search result 7" },
-                    { id: 8, name: "Search result 8" },
-                    { id: 9, name: "Search result 9" },
-                    { id: 10, name: "Search result 10" },
-                ];
-                setSearchResults(results);
-            } else {
-                setSearchResults([]);
+
             }
         }
     // , 1500);
@@ -41,6 +35,9 @@ export const ProjectSearchBar = () => {
         const { value } = event.target;
         setSearchTerm(value);
         handleSearch(value);
+        console.log(
+            searchResults
+        )
     };
 
 
@@ -54,7 +51,9 @@ export const ProjectSearchBar = () => {
                 <Input
                     bg="white" placeholder="Search Projects..."
                     rounded={6} type="text"
-                    value={searchTerm} onChange={handleChange} />
+                    value={searchTerm}
+                    onChange={handleChange}
+                />
             </InputGroup>
             {searchResults.length > 0 && (
                 <Menu>

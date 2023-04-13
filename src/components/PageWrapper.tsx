@@ -7,10 +7,15 @@ interface IPageWrapperProps {
 export const PageWrapper: React.FC<IPageWrapperProps> = ({ children }) => {
     return (
         <Box
-            mx={6}
-        // mb={6}
-        // minH={"100%"}
-        // minW={"100%"}
+            mx={
+                {
+                    base: 4,
+                    sm: 6,
+                    md: "10%",
+                    lg: "15%",
+                }
+            }
+            pb={20}
         >
             {children}
         </Box>

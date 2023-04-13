@@ -5,9 +5,12 @@ import { Footer } from "./Footer";
 
 import myImage from "../media/80mile.jpg";
 import { PageWrapper } from "./PageWrapper";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 
 export const Root = () => {
+    useDocumentTitle();
+
     return (
         <>
             <Box
@@ -21,7 +24,19 @@ export const Root = () => {
                         {/* Navbar */}
                         <OldHeader />
                         {/* Content */}
-                        <Outlet />
+                        <Box
+                            // overflowY="auto"
+                            mt={6}
+                            minH={"500px"}
+                            bgColor={"white"}
+                            rounded={6}
+                            py={10}
+
+                        ><Box mx={10}>
+                                <Outlet />
+
+                            </Box></Box>
+
                         <Image
                             src={myImage}
                             width={"100%"}

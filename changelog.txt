@@ -41,22 +41,49 @@ MAIN PAGE
 	
 
 
-TODO:
+TODO D2:
 	DESIGN
-	- Fix footer
-	- Add the tickbar to the My Tasks Accordian title if there are no tasks
-	- Fix hover color being so bright you can't see text for nav buttons
-	- Add Color to Current Annual Report Dropdown/Icon on Left
-	- Add Color to Accordian Dropdowns so it is obviously clickable and 
+	- DONE Fix footer
+	- DONE Add the tickbar/exclamation to the My Tasks Accordian title if there are no tasks/are tasks
+	- DONE Fix hover color being so bright you can't see text for nav buttons
+		- DONE FIXED Although this is fixed for directly hovering on the button, when a menu item is selected, the issue persists.
+		- DONE FIXED & created a separate component for navbar menus (NavMenu)
+	- DONE Add Color to Current Annual Report Dropdown/Icon on Left
+		- DONE Issue with MenuList being too bright, you cant see text
+	- DONE (When open, default is open for first accordian - tasks) Add Color to Accordian Dropdowns so it is obviously clickable and 
 	stands out from the contents / or similar
-	- Seek clarification if we have a DBCA favicon or if Pythia one is okay
+	- MOVED Seek clarification if we have a DBCA favicon or if Pythia one is okay
+
+
+	FUNCTION
+	- MOVED (AFTER DJANGO PROJECTS MODEL CREATED) Implement Search functionality (Header)
+	- DONE Make Head dynamic in router (changed in index.html for now)
+	- DONE Add links to buttons & Add routers pages
+		- ALSO ADDED open ARAR REPORT in new tab
+
 	RESPONSIVE
-	- Add this text when larger screen to the SPMS description:
+	- Fix 
+	- Add this text when larger screen to the SPMS description/Remove on smaller screen:
 	"Hello, {first_name}! Welcome to SPMS, DBCA's portal for project 	documentation, approval and reporting."
 	- Fix Button texxt overflowing on small size
 	- Fix Current Annual Report Dropdown going behind Title on smaller screens
 	- Fix Header to make responsive on resize (search bar etc. overflowing)
-	FUNCTION
-	- Implement Search functionality
-	- Make Head dynamic in router (changed in index.html for now)
-	- Add links to buttons & Add routers pages
+
+
+TODO D3:
+	**CREATING PROJECT MODEL AND GIVE BASE DATA ON BACKEND**	
+
+	- Implement Search functionality for Projects (Header)
+	- Consolidate NavMenu by attempting to remove _hover and _active and placing functionality into bgStyle and fontColorStyle terns
+	- Create a Root link variable to the documentation to be used by both the navbar and footer
+	- Alternatively create the documentation within the website (Preferred SEEK PERMISSION)
+	- Make only authorised users/maintainers have access to /api (reject back to home if try to access) and have the button not visible 	if not one such user
+	
+
+
+On Ben's return:
+	- Seek clarification if we have a DBCA favicon or if Pythia one is okay
+	- Seek clarification on whether NavMenus should open on hover or should be clicked going forward (currently clicked)
+	- Seek permission to create site-based documentation
+
+	

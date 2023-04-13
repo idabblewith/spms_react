@@ -12,11 +12,33 @@ import { BsCodeSlash } from "react-icons/bs";
 import { CgPlayListAdd, CgBrowse } from "react-icons/cg";
 import { ToggleDarkMode } from "./subcomponents/ToggleDarkMode";
 import { ProjectSearchBar } from "./subcomponents/ProjectSearchBar";
+import { NavMenu } from "./subcomponents/NavMenu";
+import { useNavigate } from "react-router-dom";
+
+
+import theme from "../theme";
 
 const OldHeader = () => {
     const dividerColor = useColorModeValue("gray.400", "whiteAlpha.700");
 
     const first_name = "Ben"
+
+    const navigate = useNavigate();
+
+    const arar_publications = [
+        {
+            fileUrl: "https://scienceprojects.dbca.wa.gov.au/static/files/arar-2017-2018.pdf",
+            years: "2017-2018"
+        },
+        {
+            fileUrl: "https://scienceprojects.dbca.wa.gov.au/static/files/arar-2016-2017.pdf",
+            years: "2016-2017"
+        },
+        {
+            fileUrl: "https://scienceprojects.dbca.wa.gov.au/static/files/arar-2015-2016.pdf",
+            years: "2015-2016"
+        },
+    ]
 
 
     return (
@@ -39,37 +61,25 @@ const OldHeader = () => {
                         color={"whiteAlpha.700"}
                         size={"md"}
                         variant={"unstyled"}
+                        onClick={() => {
+                            navigate('/')
+                        }}
                     >
                         <Text fontSize={18}>SPMS</Text>
                     </Button>
 
                     {/* Projects */}
-                    <Menu>
-                        <MenuButton
-                            as={Button}
-                            size={"sm"}
-                            px={2}
-                            py={5}
-                            variant={"ghost"}
-                            color={"whiteAlpha.700"}
-                        >
-                            <Flex>
-                                <Text>
-                                    Projects
-                                </Text>
-                                <Center ml={1.5}>
-                                    <GoTriangleDown size={"12px"}
-                                    />
-                                </Center>
-                            </Flex>
-                        </MenuButton>
-
-                        <MenuList>
+                    <NavMenu menuName="Projects" children={
+                        <>
                             <MenuGroup
                                 title="Create or Browse" fontSize={"12px"}
                                 color={"gray.500"} textAlign={"center"}
                             >
-                                <MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        navigate('/projects')
+                                    }}
+                                >
                                     {<CgBrowse />}
                                     <Text ml={2}
                                     >
@@ -77,6 +87,9 @@ const OldHeader = () => {
                                     </Text>
                                 </MenuItem>
                                 <MenuItem
+                                    onClick={() => {
+                                        navigate('/projects/new')
+                                    }}
                                 >
                                     {<CgPlayListAdd />}
                                     <Text ml={2}>
@@ -84,36 +97,22 @@ const OldHeader = () => {
                                     </Text>
                                 </MenuItem>
                             </MenuGroup>
-                        </MenuList>
-                    </Menu>
+                        </>
+                    } />
 
                     {/* Reports */}
-                    <Menu>
-                        <MenuButton
-                            as={Button}
-                            size={"sm"}
-                            variant={"ghost"}
-                            color={"whiteAlpha.700"}
-                        >
-                            <Flex>
-                                <Text>
-                                    Reports
-                                </Text>
-                                <Center ml={1.5} >
-                                    <GoTriangleDown size={"12px"}
-                                    />
-
-                                </Center>
-                            </Flex>
-                        </MenuButton>
-
-                        <MenuList>
+                    <NavMenu menuName="Reports" children={
+                        <>
                             <MenuGroup
                                 title="Annual Research Activity Report" fontSize={"12px"}
                                 color={"gray.500"} textAlign={"center"}
                             >
 
-                                <MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        navigate('/reports/dashboard')
+                                    }}
+                                >
                                     {<CgViewList />}
                                     <Text ml={2}
                                     >
@@ -121,6 +120,9 @@ const OldHeader = () => {
                                     </Text>
                                 </MenuItem>
                                 <MenuItem
+                                    onClick={() => {
+                                        navigate('/reports/current')
+                                    }}
                                 >
                                     {<AiFillPrinter />}
                                     <Text ml={2}>
@@ -137,35 +139,38 @@ const OldHeader = () => {
                                 title="Published" fontSize={"12px"}
                                 color={"gray.500"} textAlign={"center"}
                             >
-                                <MenuItem>
-                                    {<ImBook />}
-                                    <Text ml={2}>
-                                        ARAR 2017-2018
-                                    </Text>
-                                </MenuItem>
+                                {
+                                    arar_publications.map(publication => {
+                                        return (
+                                            <MenuItem
+                                                onClick={() => {
+                                                    window.open(publication.fileUrl, "_blank");
+                                                }}
+                                            >
+                                                {<ImBook />}
+                                                <Text ml={2}>
+                                                    ARAR {publication.years}
+                                                </Text>
+                                            </MenuItem>
+                                        )
+                                    })
+                                }
+
                             </MenuGroup>
-                        </MenuList>
-                    </Menu>
+                        </>
+                    } />
 
                     {/* Staff */}
-                    <Menu>
-                        <MenuButton
-                            as={Button}
-                            size={"sm"}
-                            variant={"ghost"}
-                            color={"whiteAlpha.700"}
-                            rightIcon={<GoTriangleDown size={"12px"}
-                            />
-                            }
-                        >
-                            Staff
-                        </MenuButton>
-
-                        <MenuList>
+                    <NavMenu menuName="Staff" children={
+                        <>
                             <MenuGroup
                                 title="Users" fontSize={"12px"} color={"gray.500"} textAlign={"center"}
                             >
-                                <MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        navigate('/users')
+                                    }}
+                                >
                                     {<ImUsers />}
                                     <Text ml={2}
                                     >
@@ -179,7 +184,11 @@ const OldHeader = () => {
                                     View SPMS Profile
                                 </Text>
                             </MenuItem> */}
-                                <MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        navigate('users/add')
+                                    }}
+                                >
                                     {<FaUserPlus />}
                                     <Text ml={2}>
                                         Register External Colleague
@@ -203,8 +212,8 @@ const OldHeader = () => {
 
                             </MenuGroup>
 
-                        </MenuList>
-                    </Menu>
+                        </>
+                    } />
 
                     {/* API */}
                     {/* <Button
@@ -228,26 +237,103 @@ const OldHeader = () => {
 
                 </HStack>
 
-                {/* Profile & Search */}
                 <HStack
                     px={3}
                 >
                     {/* <ToggleDarkMode /> */}
+
+                    {/* Project Search */}
                     <ProjectSearchBar />
-                    <Menu>
+
+                    {/* Profile */}
+                    <NavMenu menuName={`Welcome, ${first_name}`} children={
+                        <>
+                            <MenuGroup
+                                title="Documentation" fontSize={"12px"}
+                                color={"gray.500"} textAlign={"center"}
+                            >
+                                <MenuItem
+                                    onClick={() => {
+                                        window.open("https://sdis.readthedocs.io", "_blank");
+                                    }}
+                                >
+                                    {<SiReadthedocs />}
+                                    <Text ml={2}>
+                                        User Manual
+                                    </Text>
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        navigate('/api')
+                                    }}
+                                >
+                                    {<BsCodeSlash />}
+                                    <Text ml={2}>
+                                        API
+                                    </Text>
+                                </MenuItem>
+
+                            </MenuGroup>
+                            <MenuGroup
+                                title="DBCA Account" fontSize={"12px"}
+                                color={"gray.500"} textAlign={"center"}
+                            >
+                                <MenuItem
+                                    onClick={() => {
+                                        navigate('/users/me')
+                                    }}
+                                >
+                                    {<FaUserCircle />}
+                                    <Text ml={2}>
+                                        My SPMS Profile
+                                    </Text>
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        window.open('https://sww.dpaw.wa.gov.au/', "_blank")
+                                    }}
+                                >
+                                    {<FaUserCircle />}
+                                    <Text ml={2}>
+                                        My Divisional Profile
+                                    </Text>
+                                </MenuItem>
+                                <MenuItem>
+                                    {<FiLogOut />}
+                                    <Text ml={2}>
+                                        Logout
+                                    </Text>
+                                </MenuItem>
+
+                            </MenuGroup>
+                        </>
+                    } />
+                    {/* <Menu>
                         <MenuButton
                             as={Button}
                             size={"sm"}
+                            px={2}
+                            py={5}
+                            _hover={{ bg: "whiteAlpha.900", color: "black" }}
                             variant={"ghost"}
-                            color={"whiteAlpha.900"}
-                            rightIcon={<GoTriangleDown size={"12px"}
-                            />
-                            }
+                            color={"whiteAlpha.700"}
                         >
-                            Welcome, {first_name}
+                            <Flex>
+                                <Text>
+                                    Welcome, {first_name}
+                                </Text>
+                                <Center ml={1.5} >
+                                    <GoTriangleDown size={"12px"}
+                                    />
+
+                                </Center>
+                            </Flex>
                         </MenuButton>
 
-                        <MenuList>
+
+                        <MenuList
+                            _hover={{ bg: "whiteAlpha.900", color: "black" }}
+                        >
                             <MenuGroup
                                 title="Documentation" fontSize={"12px"}
                                 color={"gray.500"} textAlign={"center"}
@@ -291,7 +377,7 @@ const OldHeader = () => {
 
                             </MenuGroup>
                         </MenuList>
-                    </Menu>
+                    </Menu> */}
                 </HStack>
 
             </HStack>

@@ -75,6 +75,11 @@ frontend steps:
                 />
             </HStack>
 
+	- Day 2:
+		- Installed axios and tanstackquery js-cookie
+			- npm i @tanstack/reactquery axios js-cookie
+			- npm i --save-dev @types/js-cookie
+
 
 
     

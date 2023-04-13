@@ -4,6 +4,7 @@ import * as ReactDOM from "react-dom/client"
 import { RouterProvider } from "react-router-dom"
 import { router } from "./router"
 import theme from "./theme"
+import { useDocumentTitle } from "./hooks/useDocumentTitle"
 
 const container = document.getElementById("root")
 if (!container) throw new Error('Failed to find the root element');
