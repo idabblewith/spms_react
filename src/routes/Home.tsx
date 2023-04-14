@@ -12,20 +12,20 @@ import {
     Grid,
     DarkMode,
     LightMode,
-    theme,
 } from "@chakra-ui/react"
 import { GoTriangleDown } from "react-icons/go";
 import { FcPrint, FcBullish, FcRatings, FcOk, FcHighPriority } from "react-icons/fc";
 import { NavMenu } from "../components/subcomponents/NavMenu";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
+import theme from "../theme";
 
 export const Home = () => {
 
     const hasTasks = false;
     const hasProjects = false;
     const hasPartnerships = false;
-    const first_name = "Ben"
+    const test_first_name = "Ben"
 
     // const [shouldConcat, setShouldConcat] = useState(false);
     // const [welcomeUser, setWelcomeUser] = useState("");
@@ -36,25 +36,37 @@ export const Home = () => {
     //         setShouldConcat(true)
     //     }
     //     else {
-    //         setWelcomeUser(`Hello, ${first_name}! Welcome to SPMS, DBCA's portal for project documentation, approval and reporting.`)
+    //         setWelcomeUser(`Hello, ${test_first_name}! Welcome to SPMS, DBCA's portal for project documentation, approval and reporting.`)
     //         setShouldConcat(false);
     //     }
     // }, [window.innerWidth])
 
     const [shouldConcat, setShouldConcat] = useState(false);
     const [welcomeUser, setWelcomeUser] = useState("");
+    const [spmsText, setSpmsText] = useState("Science Project Management System");
+    const [annualReportText, setAnnualReportText] = useState("Annual Report");
 
     const handleResize = useCallback(() => {
-        if (window.innerWidth < parseFloat(theme.breakpoints.lg) * 16) {
+        // 1150 = the breakpoint at which issues occur with text overlaying
+        if (window.innerWidth < 1150) {
             setWelcomeUser("");
             setShouldConcat(true);
+            setSpmsText("SPMS");
+            setAnnualReportText("Report");
         } else {
             setWelcomeUser(
-                `Hello, ${first_name}! Welcome to SPMS, DBCA's portal for project documentation, approval and reporting.`
+                `Hello, ${test_first_name}! Welcome to SPMS, DBCA's portal for project documentation, approval and reporting.`
             );
             setShouldConcat(false);
+            setAnnualReportText("Annual Report");
+            if (window.innerWidth < 1350) {
+                setSpmsText("Science Project <br/> Management System");
+            }
+            else {
+                setSpmsText("Science Project Management System");
+            }
         }
-    }, [theme.breakpoints.lg, first_name]);
+    }, [theme.breakpoints.lg, test_first_name]);
 
     useEffect(() => {
         handleResize(); // call the handleResize function once after mounting
@@ -80,7 +92,7 @@ export const Home = () => {
                 >
                     {/* Annual Report Menu */}
                     <NavMenu
-                        menuName={"Annual Report"}
+                        menuName={annualReportText}
                         leftIcon={<FcRatings />}
                         fColor={"white"}
                         hoverColor={"green.500"}
@@ -105,12 +117,9 @@ export const Home = () => {
                         } />
                 </Flex>
                 <Heading>
-                    SCIENCE PROJECT
+                    {/* This is okay as users cannot change spmsText value / it is hardcoded */}
+                    <div dangerouslySetInnerHTML={{ __html: spmsText }} />
                 </Heading>
-                <Heading>
-                    MANAGEMENT SYSTEM
-                </Heading>
-
                 <br />
                 <Text
                     fontSize={"19px"}
@@ -218,17 +227,13 @@ export const Home = () => {
 
 
             <Grid
-                mt={6}
-                templateColumns={
-
-                    {
-                        base: "repeat(1, 1fr)",
-                        md: "repeat(2, 1fr)",
-                        lg: "repeat(3, 1fr)",
-
-                    }
-
-                }
+                mt={10}
+                templateColumns={{
+                    base: "repeat(1, 1fr)",
+                    md: "repeat(2, 1fr)",
+                    lg: "repeat(2, 1fr)",
+                    xl: "repeat(3, 1fr)",
+                }}
                 gap={10}
             >
                 <Button
@@ -255,6 +260,8 @@ export const Home = () => {
                 <Button
                     colorScheme="red"
                     as={"a"} href="https://scienceprojects.dbca.wa.gov.au/arar_dashboard"
+                    gridColumn={{ base: "1 / -1", xl: "auto" }}
+
                 >
                     {
                         shouldConcat ?

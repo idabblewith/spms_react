@@ -13,7 +13,6 @@ const root = ReactDOM.createRoot(container)
 root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <RouterProvider router={router} />
     </ChakraProvider>

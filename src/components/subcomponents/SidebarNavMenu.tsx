@@ -6,7 +6,7 @@ import { FiLogOut } from "react-icons/fi"
 import { GoTriangleDown } from "react-icons/go"
 import { SiReadthedocs } from "react-icons/si"
 
-interface INavMenuProps extends TextProps {
+interface ISidebarNavMenuProps extends TextProps {
     menuName?: string;
     // leftIcon?: React.ReactNode;
     cScheme?: string;
@@ -17,8 +17,8 @@ interface INavMenuProps extends TextProps {
     noChevron?: boolean;
 }
 
-export const NavMenu = (
-    { menuName, cScheme, leftIcon, fColor, hoverColor, children, noChevron, textAlign }: INavMenuProps) => {
+export const SidebarNavMenu = (
+    { menuName, cScheme, leftIcon, fColor, hoverColor, children, noChevron, textAlign }: ISidebarNavMenuProps) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -52,7 +52,7 @@ export const NavMenu = (
 
     return (
         // Box required to prevent popper console.log on click
-        <Box>
+        <Box >
             <Menu
                 onOpen={handleMenuOpen}
                 onClose={handleMenuClose}
@@ -79,7 +79,8 @@ export const NavMenu = (
                     }
 
                     as={Button}
-                    size={"sm"}
+                    size={"lg"}
+                    w={"100%"}
                     px={2}
                     py={5}
 
@@ -88,19 +89,37 @@ export const NavMenu = (
 
 
                 >
-                    <Flex >
+                    <Flex
+                        justifyContent={"space-between"}
+                    >
                         {leftIcon ?
                             <Box
                                 display={"flex"}
+                                justifyContent={"space-between"}
+                                w={"100%"}
                             >
-                                <Center mr={menuName ? 1.5 : 0}>
-                                    {leftIcon}
+                                <Center
+                                    mr={menuName ? 1.5 : 0}
+                                // ml={3}
+                                // width={"100%"}
+                                // bg={"red"}
+                                >
+                                    <Box
+
+                                        justifyContent={"end"}
+                                        boxSize={5}
+                                    >
+                                        {leftIcon}
+                                    </Box>
                                 </Center>
 
                                 <Center mr={menuName ? 1.5 : 0}>
                                     <Text>
                                         {menuName}
                                     </Text>
+                                </Center>
+                                <Center>
+
                                 </Center>
 
                             </Box>
@@ -132,7 +151,9 @@ export const NavMenu = (
 
                 </MenuButton>
 
-                <MenuList>
+                <MenuList
+                    w={"100%"}
+                >
                     {children}
                 </MenuList>
             </Menu >

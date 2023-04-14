@@ -15,6 +15,7 @@ export const Root = () => {
         <>
             <Box
                 minH={"100vh"}
+                minW={"420px"}
             >
                 <Box
                     minH={"100vh"}

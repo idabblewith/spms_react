@@ -38,7 +38,15 @@ MAIN PAGE
 		("Passed" circleci: https://circleci.com/gh/dbca-wa/sdis)
 		("coverage": https://coveralls.io/github/dbca-wa/sdis?branch=master)
 		("docs": https://sdis.readthedocs.io/) - Already linked in profile
+	- Changed color and highlight functionality of navbar items
+	- Made design of popouts for navbar menus more modern/pretty
+	- Removed buttons with duplicate functions on the main page under the headings Project, Reports, Data, Sites
+		- Consolidated into 3 buttons with different colors for faster recognition
+		- Moved Annual Report section to a MenuButton and located it in the SPMS description box which takes up a lot of space 
+		(so now it serves more of a purpose, and page is succinct)
+	- Fixed problem with words in buttons jumping over/overflowing the button itself with responsive design practices.
 	
+		
 
 
 TODO D2:
@@ -60,30 +68,255 @@ TODO D2:
 	- DONE Make Head dynamic in router (changed in index.html for now)
 	- DONE Add links to buttons & Add routers pages
 		- ALSO ADDED open ARAR REPORT in new tab
-
-	RESPONSIVE
-	- Fix 
-	- Add this text when larger screen to the SPMS description/Remove on smaller screen:
-	"Hello, {first_name}! Welcome to SPMS, DBCA's portal for project 	documentation, approval and reporting."
-	- Fix Button texxt overflowing on small size
-	- Fix Current Annual Report Dropdown going behind Title on smaller screens
-	- Fix Header to make responsive on resize (search bar etc. overflowing)
+	- DONE Fix Button text overflowing on small size
 
 
 TODO D3:
+
+	- DONE Fixed key error in OldHeader (mapped reports without key)
+	- DONE Add this text when larger screen to the SPMS description/Remove on smaller screen:
+		"Hello, {first_name}! Welcome to SPMS, DBCA's portal for project 	documentation, 		approval and reporting."
+	- DONE Moved commented out components of duplicate functions in OldHeader to the bottom.
+	- DONE Fix Current Annual Report Dropdown going behind Title on smaller screens
+		- Text changes based on size
+		- Also change SPMS Header to change based on window size
+	- DONE Fix Nav to make responsive on resize (search bar etc. overflowing)
+	- DONE Fix the button layout for dcat, ssr, proj pend, by making the last button take up 
+	  2 spaces, depending on the size of the window.
+	- DONE Created a Navitar component with props that adjusts based on the window size and 
+	user's first name. It adds an elipsis (made with a string) at the end of the name, if it is 
+	longer than 10 characters and the windowsize is certain size. This is removed when there is 	enough space. The entire component disappears to the drawer when at a certain size.
+	- DONE Create SidebarNavMenu Component and recreate the Navbar in the Chakra Drawer
+	- DONE Componetise the MenuContents to avoid code repitition on ternary conditional
+	- DONE Set minWidth to 420px for entire page, so users do not make it smaller and cause issues.
+	- DONE Improve look of Drawer/Hamburger Btn
+
+
+	- Plan ETL script:
+
+		poetry add pandas		
+
+		BACKEND
+		DONE (E) SCRIPT PULLS DATA FROM THE FILE BUT WITH ERRORS, SEE BELOW 
+		- E: Create a Python script to extract each table from the sdis.dump to separate .csv file
+		
+			- (SOLVED) pg_restore: error: could not execute query: ERROR:  extension "postgis" is not 			available
+			- pg_restore: error: could not execute query: ERROR:  extension "postgis" is not available
+DETAIL:  Could not open extension control file "C:/Program Files/PostgreSQL/15/share/extension/postgis.control": No such file or directory.
+HINT:  The extension must first be installed on the system where PostgreSQL is running.
+Command was: CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+
+
+pg_restore: error: could not execute query: ERROR:  extension "postgis" does not exist
+Command was: COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
+
+
+pg_restore: error: could not execute query: ERROR:  type "public.geometry" does not exist
+LINE 11:     mpoly public.geometry(MultiPolygon,4326),
+                   ^
+Command was: CREATE TABLE public.pythia_area (
+    id integer NOT NULL,
+    creator_id integer NOT NULL,
+    modifier_id integer NOT NULL,
+    created timestamp with time zone NOT NULL,
+    modified timestamp with time zone NOT NULL,
+    area_type smallint NOT NULL,
+    name character varying(320),
+    source_id integer,
+    northern_extent double precision,
+    mpoly public.geometry(MultiPolygon,4326),
+    CONSTRAINT pythia_area_area_type_check CHECK ((area_type >= 0)),
+    CONSTRAINT pythia_area_source_id_check CHECK ((source_id >= 0))
+);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: ALTER TABLE public.pythia_area OWNER TO sdis;
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: ALTER SEQUENCE public.pythia_area_id_seq OWNED BY public.pythia_area.id;
+
+
+pg_restore: error: could not execute query: ERROR:  type "public.geometry" does not exist
+LINE 7:     mpoly public.geometry(MultiPolygon,4326)
+                  ^
+Command was: CREATE TABLE public.pythia_district (
+    id integer NOT NULL,
+    name character varying(200),
+    code character varying(3),
+    northern_extent double precision,
+    region_id integer NOT NULL,
+    mpoly public.geometry(MultiPolygon,4326)
+);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: ALTER TABLE public.pythia_district OWNER TO sdis;
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: ALTER SEQUENCE public.pythia_district_id_seq OWNED BY public.pythia_district.id;
+
+
+pg_restore: error: could not execute query: ERROR:  type "public.geometry" does not exist
+LINE 3:     mpoly public.geometry(MultiPolygon,4326),
+                  ^
+Command was: CREATE TABLE public.pythia_region (
+    id integer NOT NULL,
+    mpoly public.geometry(MultiPolygon,4326),
+    name character varying(64),
+    northern_extent double precision
+);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_region" does not exist
+Command was: ALTER TABLE public.pythia_region OWNER TO sdis;
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_region" does not exist
+Command was: ALTER SEQUENCE public.pythia_region_id_seq OWNED BY public.pythia_region.id;
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: ALTER TABLE ONLY public.pythia_area ALTER COLUMN id SET DEFAULT nextval('public.pythia_area_id_seq'::regclass);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: ALTER TABLE ONLY public.pythia_district ALTER COLUMN id SET DEFAULT nextval('public.pythia_district_id_seq'::regclass);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_region" does not exist
+Command was: ALTER TABLE ONLY public.pythia_region ALTER COLUMN id SET DEFAULT nextval('public.pythia_region_id_seq'::regclass);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: COPY public.pythia_area (id, creator_id, modifier_id, created, modified, area_type, name, source_id, northern_extent, mpoly) FROM stdin;
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: COPY public.pythia_district (id, name, code, northern_extent, region_id, mpoly) FROM stdin;       
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_region" does not exist
+Command was: COPY public.pythia_region (id, mpoly, name, northern_extent) FROM stdin;
+pg_restore: error: could not execute query: ERROR:  relation "public.spatial_ref_sys" does not exist
+Command was: COPY public.spatial_ref_sys (srid, auth_name, auth_srid, srtext, proj4text) FROM stdin;
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: ALTER TABLE ONLY public.pythia_area
+    ADD CONSTRAINT pythia_area_pkey PRIMARY KEY (id);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: ALTER TABLE ONLY public.pythia_district
+    ADD CONSTRAINT pythia_district_pkey PRIMARY KEY (id);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_region" does not exist
+Command was: ALTER TABLE ONLY public.pythia_region
+    ADD CONSTRAINT pythia_region_pkey PRIMARY KEY (id);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: CREATE INDEX pythia_area_creator_id ON public.pythia_area USING btree (creator_id);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: CREATE INDEX pythia_area_modifier_id ON public.pythia_area USING btree (modifier_id);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: CREATE INDEX pythia_area_mpoly_id ON public.pythia_area USING gist (mpoly);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: CREATE INDEX pythia_district_mpoly_id ON public.pythia_district USING gist (mpoly);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: CREATE INDEX pythia_district_region_id ON public.pythia_district USING btree (region_id);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_region" does not exist
+Command was: CREATE INDEX pythia_region_mpoly_id ON public.pythia_region USING gist (mpoly);
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: ALTER TABLE ONLY public.projects_project_areas
+    ADD CONSTRAINT area_id_refs_id_fb5760e7 FOREIGN KEY (area_id) REFERENCES public.pythia_area(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: ALTER TABLE ONLY public.pythia_area
+    ADD CONSTRAINT creator_id_refs_id_890ceb6f FOREIGN KEY (creator_id) REFERENCES public.pythia_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: ALTER TABLE ONLY public.pythia_workcenter
+    ADD CONSTRAINT district_id_refs_id_08927ff9 FOREIGN KEY (district_id) REFERENCES public.pythia_district(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_area" does not exist
+Command was: ALTER TABLE ONLY public.pythia_area
+    ADD CONSTRAINT modifier_id_refs_id_890ceb6f FOREIGN KEY (modifier_id) REFERENCES public.pythia_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+pg_restore: error: could not execute query: ERROR:  relation "public.pythia_district" does not exist
+Command was: ALTER TABLE ONLY public.pythia_district
+    ADD CONSTRAINT region_id_refs_id_d201d09b FOREIGN KEY (region_id) REFERENCES public.pythia_region(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+pg_restore: warning: errors ignored on restore: 32
+
+
+ON django content_type / documents / django_cache / django_site / django_select2_keymap / django_session / documents_projectclosure / auth_group / guarian_goupobjectpermission / projects_corefunctionproject / projects_project_web_resources / projects_studentproject / projects_scienceproject / pythia_program / projects_projectmembership / pythia_division / pythia_webresourcedomain / pythia_webresource / pythia_user_user_permissions / pythia_urlprefix / pythia_user_groups / reversion_revision / south_migrationhistory / reversion_version /  & tables:
+
+	C:\Users\JP\Documents\GitHub\spms\extract_data.py:58: UserWarning: pandas only supports SQLAlchemy 	connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects 	are not tested. Please consider using SQLAlchemy.
+  	df = pd.read_sql(f"SELECT * FROM {table_name}", conn)
+
+ON shutting down:
+	pg_ctl: PID file "C:/Users/JP~1/AppData/Local/Temp/tmpengil9yb/postmaster.pid" does not exist
+	Is server running?
+	(spms-py3.11) 
+
+
+
+		- T: Create a Python script/function to load that data and convert it to the format required per 			table
+			- convert_projects(csv_file)
+			- convert_users(csv_file)
+			- convert_reports(csv_file)
+			- convert etc..
+			- Make each convert output a new csv file
+		- L: Crate a Python script to use the data in the outputted csv file and						 load it into a target database
+	
+
+Wk2
+
+Day 1 TODO:
+
 	**CREATING PROJECT MODEL AND GIVE BASE DATA ON BACKEND**	
 
 	- Implement Search functionality for Projects (Header)
-	- Consolidate NavMenu by attempting to remove _hover and _active and placing functionality into bgStyle and fontColorStyle terns
-	- Create a Root link variable to the documentation to be used by both the navbar and footer
-	- Alternatively create the documentation within the website (Preferred SEEK PERMISSION)
 	- Make only authorised users/maintainers have access to /api (reject back to home if try to access) and have the button not visible 	if not one such user
-	
 
 
-On Ben's return:
-	- Seek clarification if we have a DBCA favicon or if Pythia one is okay
-	- Seek clarification on whether NavMenus should open on hover or should be clicked going forward (currently clicked)
-	- Seek permission to create site-based documentation
+Day 2 TODO:
+
+
+
+BACKLOG:
+	DESIGN
+		- (After backend set up) Have the Navitar component show the user's picture if they have one
+
+	OPTOMISATION / CLEAN UP / MISC
+		- have a global size checker / handleresize at the root which passes down the window size
+		to prevent multiple checks
+		- Consolidate NavMenu by attempting to remove _hover and _active and placing functionality into 		bgStyle and fontColorStyle terns
+		- Create a Root link variable to the documentation to be used by both the navbar and footer
+		- Alternatively create the documentation within the website (Preferred SEEK PERMISSION)
+		- Move handleResize to a hook (in header and Home)
+		- Reorganize code of Hamburger/OldHeader to be a single Box based on shouldShowHamburger
+			- justfyContent alternates between "space-between" and "end"
+
+
+	BENS RETURN
+		- Seek clarification if we have a DBCA favicon or if Pythia one is okay
+		- Seek clarification on whether NavMenus should open on hover or should be clicked going forward 		(currently clicked)
+		- Seek permission to create site-based documentation
+
+		
 
 	
