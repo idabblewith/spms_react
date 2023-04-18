@@ -28,6 +28,7 @@ import { SiReadthedocs } from "react-icons/si";
 import { BsCodeSlash } from "react-icons/bs";
 import { Navitar } from "./subcomponents/Navitar";
 import { SidebarNavMenu } from "./subcomponents/SidebarNavMenu";
+import { testUserData } from "../api";
 
 const ProjectMenuContents = () => {
     const navigate = useNavigate();
@@ -308,7 +309,7 @@ const OldHeader = () => {
                                                             pr={1.5}
                                                         >
                                                             <Navitar
-                                                                userData={test_user_data}
+                                                                userData={testUserData[4]}
                                                                 windowSize={windowSizeValue}
                                                             />
                                                         </Box>
@@ -453,7 +454,7 @@ const OldHeader = () => {
                                             </MenuGroup>
                                         </>
                                     } /> */}
-                                    <Navitar shouldShowName userData={test_user_data} windowSize={windowSizeValue} />
+                                    <Navitar shouldShowName userData={testUserData[4]} windowSize={windowSizeValue} />
                                 </HStack>
                             </Box>
                     }

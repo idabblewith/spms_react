@@ -5,17 +5,8 @@ import { FiLogOut } from "react-icons/fi";
 import { SiReadthedocs } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import { GoTriangleDown } from "react-icons/go"
+import { INavitar } from "../../types";
 
-interface IUserData {
-    first_name: string;
-    username: string;
-}
-
-interface INavitar {
-    shouldShowName?: boolean;
-    userData: IUserData;
-    windowSize: number;
-}
 
 export const Navitar = ({ shouldShowName = false, userData, windowSize }: INavitar) => {
 
@@ -36,16 +27,18 @@ export const Navitar = ({ shouldShowName = false, userData, windowSize }: INavit
                                 mx={3}
                             >
                                 {
-                                    userData.first_name.length < 12 ?
-                                        userData.first_name :
-                                        windowSize >= 1150 ? userData.first_name :
-                                            `${userData.first_name.substring(0, 9)}...`
+                                    userData.firstName.length < 12 ?
+                                        userData.firstName :
+                                        windowSize >= 1150 ? userData.firstName :
+                                            `${userData.firstName.substring(0, 9)}...`
                                 }
 
                             </Text>
                             : null
                         }
-                        <Avatar size="sm" name={userData?.username} >
+                        <Avatar size="sm" name={userData?.username}
+                            src={userData?.imageLink ? userData.imageLink : ""}
+                        >
                             {/* <AvatarBadge boxSize={3} borderColor="transparent">
                                 <Center boxSize={3}>
                                     <GoTriangleDown />

@@ -1,6 +1,6 @@
 import { Grid, Flex, Checkbox, Center, Image, Box, Button, Text, Menu, MenuButton, MenuList, BoxProps, MenuItem, useBreakpointValue, useDisclosure, useToast } from "@chakra-ui/react";
 import { MdMoreVert } from "react-icons/md";
-import { ISimpleFilteredUsers } from "../../types";
+import { IUserData } from "../../types";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -22,7 +22,7 @@ const BoxContainer: React.FC<BoxContainerProps> = ({ children, ...props }) => {
 };
 
 
-export const AdminSliceSingle = ({ pk, username, email, fullName, program, workCenter, imageLink }: ISimpleFilteredUsers) => {
+export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, program, workCenter, imageLink }: IUserData) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const navigate = useNavigate();
