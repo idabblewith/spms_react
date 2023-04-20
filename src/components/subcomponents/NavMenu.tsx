@@ -1,4 +1,4 @@
-import { Flex, Menu, MenuButton, Text, TextProps, Button, Center, MenuList, MenuGroup, MenuItem, useMenu, Box } from "@chakra-ui/react"
+import { Flex, Menu, MenuButton, Text, TextProps, Button, Center, MenuList, MenuGroup, MenuItem, useMenu, Box, PopoverContent, PopoverTrigger, PopoverArrow, PopoverBody, PopoverCloseButton, Popover } from "@chakra-ui/react"
 import { useState } from "react"
 import { BsCodeSlash } from "react-icons/bs"
 import { FaUserCircle } from "react-icons/fa"
@@ -24,75 +24,53 @@ export const NavMenu = (
 
     const handleMouseEnter = () => {
         setIsHovered(true);
+        setIsOpen(true);
     };
 
     const handleMouseLeave = () => {
         setIsHovered(false);
-    };
-
-    const handleMenuOpen = () => {
-        setIsOpen(true);
-    };
-
-    const handleMenuClose = () => {
         setIsOpen(false);
     };
 
-    const bgStyle = isHovered || isOpen
+    const bgStyle = isHovered
         ? cScheme
             ? { bg: `${cScheme}.500` }
             : {}
         : cScheme ? `${cScheme}.500` : "transparent";
 
-    const fontColorStyle = isHovered || isOpen
+    const fontColorStyle = isHovered
         ? fColor
             ? { color: fColor }
             : "white"
         : fColor ? fColor : "whiteAlpha.700";
 
     return (
-        // Box required to prevent popper console.log on click
-        <Box>
-            <Menu
-                onOpen={handleMenuOpen}
-                onClose={handleMenuClose}
-            >
+        <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <Menu isOpen={isOpen}>
                 <MenuButton
                     colorScheme={cScheme}
-
                     bg={bgStyle}
-
                     color={fontColorStyle}
-
-                    _hover={
-                        {
-                            bg: hoverColor ? hoverColor : "white",
-                            color: fColor ? fColor : "black"
-                        }
-                    }
-                    _active={
-                        {
-                            bg: hoverColor ? hoverColor : "white",
-                            color: fColor ? fColor : "black"
-
-                        }
-                    }
-
+                    _hover={{
+                        bg: hoverColor ? hoverColor : "white",
+                        color: fColor ? fColor : "black"
+                    }}
+                    _active={{
+                        bg: hoverColor ? hoverColor : "white",
+                        color: fColor ? fColor : "black"
+                    }}
                     as={Button}
                     size={"sm"}
                     px={2}
                     py={5}
-
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
-
-
+                    outline="none"
+                    _focus={{ boxShadow: 'none' }}
                 >
-                    <Flex >
+                    <Flex>
                         {leftIcon ?
-                            <Box
-                                display={"flex"}
-                            >
+                            <Box display={"flex"}>
                                 <Center mr={menuName ? 1.5 : 0}>
                                     {leftIcon}
                                 </Center>
@@ -107,14 +85,11 @@ export const NavMenu = (
 
                             :
                             textAlign ?
-                                <Text
-                                // textAlign={textAlign}
-                                >
+                                <Text>
                                     {menuName}
                                 </Text>
                                 :
-                                <Text
-                                >
+                                <Text>
                                     {menuName}
                                 </Text>
                         }
@@ -122,9 +97,8 @@ export const NavMenu = (
                         {
                             noChevron ?
                                 null :
-                                <Center ml={1.5} >
-                                    <GoTriangleDown size={"12px"}
-                                    />
+                                <Center ml={1.5}>
+                                    <GoTriangleDown size={"12px"} />
                                 </Center>
 
                         }
@@ -132,12 +106,12 @@ export const NavMenu = (
 
                 </MenuButton>
 
-                <MenuList>
+                <MenuList onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+                    mt={"-7.5px"}
+                >
                     {children}
                 </MenuList>
-            </Menu >
+            </Menu>
         </Box>
-
-
-    )
+    );
 }

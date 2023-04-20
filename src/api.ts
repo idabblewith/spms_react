@@ -19,6 +19,51 @@ import { ISearchTerm } from "./types";
 //     }
 // }
 
+export const testProjectData = [
+    {
+        pk: 1,
+        type: "External Project",
+        title: "Taxonomic review and floristic studies of the benthic marine algae of north-western Australian and floristic surveys of Western Australian marine benthic algae",
+        tagline: "Uncovering the hidden flora of the undersea world.",
+        image: "https://scienceprojects.dbca.wa.gov.au/media/projects/2009-9/Ulva_stenophylloides_sdis_1.jpg",
+        keywords: ["Turtle", "3D model", "education", "communication", "flatbacks education"],
+        status: "updating",
+        active: true,
+        start_date: null,
+        end_date: null,
+        effective_from: new Date("2014-06-05"),
+        effective_to: null,
+        date_created: new Date("2014-06-05T10:28:55.348Z"),
+        last_modified: new Date("2021-06-18T04:16:15.192Z"),
+        creator_id: 5,
+        modifier_id: 5,
+        business_area_id: 2,
+    },
+    {
+        pk: 2,
+        type: "External Project",
+        title: "Exploring the benefits of state-of-the-art 3D imaging techniques to create 3D digital and physical specimens of live flatback turtles for science, conservation and education.",
+        tagline: "Creating 3D digital and physical specimens of live flatback turtles for science, conservation and education.",
+        image: "https://scienceprojects.dbca.wa.gov.au/media/projects/2017-37/P1000797_crop.jpg",
+        keywords: ["Turtle", "3D model", "education", "communication", "flatbacks education"],
+        status: "completed",
+        active: false,
+        start_date: 2017 - 11 - 17,
+        end_date: 2017 - 11 - 25,
+        effective_from: new Date("2017-08-01"),
+        effective_to: null,
+        date_created: new Date("2017-08-01T05:22:48.932Z"),
+        last_modified: new Date("2021-06-15T03:06:39.640Z"),
+        creator_id: 5,
+        modifier_id: 5,
+        business_area_id: 2,
+    },
+
+]
+
+
+// id, effective_from, effective_to, creator_id, modifier_id, created, modified, polymorphic_ctype_id, name, description, leader_id, association, active
+
 
 export const testUserData = [
     {
@@ -69,7 +114,7 @@ export const testUserData = [
         fullName: "Jarid Prince",
         program: null,
         workCenter: null,
-        imageLink: "https://m.media-amazon.com/images/I/51zLZbEVSTL._AC_UF894,1000_QL80_.jpg",
+        imageLink: undefined,
     },
 ]
 

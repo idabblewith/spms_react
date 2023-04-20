@@ -192,11 +192,6 @@ const OldHeader = () => {
     const { isOpen: drawerIsOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure()
     const drawerBtnRef = React.useRef<HTMLButtonElement>(null);
 
-    const test_user_data = {
-        username: "Ben",
-        first_name: "Benjamintheman123",
-    }
-
     const handleResize = () => {
         if (window.innerWidth < parseFloat(theme.breakpoints.lg)) {
             setShouldShowHamburger(true);
@@ -390,7 +385,7 @@ const OldHeader = () => {
                                 >
                                     {/* Project Search */}
                                     <ProjectSearchBar />
-
+                                    {/* <ToggleDarkMode /> */}
                                     {/* Profile */}
                                     {/* <NavMenu menuName={`Welcome, ${test_first_name}`} children={
                                         <>
