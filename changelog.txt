@@ -1,3 +1,11 @@
+- Create Abstract Project Model on Common
+- Make Project MigrationProject inherit from Project
+- try migrate
+- Make CloneProject App
+- Follow instructions
+- Make Tasks accept either CloneProject or MigrationProjet (later expands to CKAN and AKS as well)
+- Make CloneProject, CloneGuide, ClonePlan, Video Scripts/links/thumbnails, only appear if user is 'jptokyo'
+
 
 NAVIGATION BAR & FOOTER
 - Staff Dropdown and Profile dropdown both have SPMS Profile & Divisional Profile
@@ -75,7 +83,7 @@ TODO D3:
 
 	- DONE Fixed key error in OldHeader (mapped reports without key)
 	- DONE Add this text when larger screen to the SPMS description/Remove on smaller screen:
-		"Hello, {first_name}! Welcome to SPMS, DBCA's portal for project 	documentation, 		approval and reporting."
+		"Hello, {first_name}! Welcome to SPMS, DBCA's portal for project 	documentation, 		approval and reporting." 
 	- DONE Moved commented out components of duplicate functions in OldHeader to the bottom.
 	- DONE Fix Current Annual Report Dropdown going behind Title on smaller screens
 		- Text changes based on size
@@ -294,6 +302,29 @@ Day 1 TODO:
 
 
 Day 2 TODO:
+
+
+
+DAY 4:
+	- DONE Reviewed ARAR Report structure, taking notes in preparation for implementing
+	LaTeX and interactive document editor (in Django Guide)
+	- DONE Plan out API Development via DJango (in Django Guide)
+	- DONE restructured some models and created documentation app
+	- DONE updated deps and added a poetry instal script (custom)
+
+	- DONE Changed NavMenu onclick to onhover for navigation items to reduce user friction
+
+
+
+
+TODO:
+	- Documents backend 
+		- Budget as an array in concept plan
+		[Source, Year 1, Year 2, Year 3]
+		https://github.com/dbca-wa/sdis/blob/7be8c29c55dde2de4d5cec819d73726094af08ef/pythia/documents/models.py
+
+	- Interactive document editor frontend
+
 
 
 

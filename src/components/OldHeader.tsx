@@ -71,6 +71,10 @@ const ReportMenuContents = () => {
 
     const arar_publications = [
         {
+            fileUrl: "https://scienceprojects.dbca.wa.gov.au/media/ararreports/11/AnnualReport20212022_138.pdf",
+            years: "2021-2022"
+        },
+        {
             fileUrl: "https://scienceprojects.dbca.wa.gov.au/static/files/arar-2017-2018.pdf",
             years: "2017-2018"
         },

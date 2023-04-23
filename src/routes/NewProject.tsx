@@ -1,3 +1,4 @@
+
 import { Box, Button, Center, Flex, Grid, Heading, List, ListItem, Text, UnorderedList } from "@chakra-ui/react"
 import { NavigationBar } from "../components/subcomponents/NavigationBar"
 
