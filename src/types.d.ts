@@ -85,6 +85,8 @@ interface IUserData {
     program: string | null;
     workCenter: string | null;
     imageLink: string | undefined;
+
+    checkBoxState?: boolean;
 }
 
 

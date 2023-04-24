@@ -1,15 +1,15 @@
-import { Grid, Flex, Checkbox, Center, Image, Box, Button, Text, Menu, MenuButton, MenuList, BoxProps, MenuItem, useBreakpointValue, useDisclosure, useToast } from "@chakra-ui/react";
+import { Grid, Flex, Checkbox, Center, Image, Box, Button, Text, Menu, MenuButton, MenuList, BoxProps, MenuItem, useBreakpointValue, useDisclosure, useToast, Avatar } from "@chakra-ui/react";
 import { MdMoreVert } from "react-icons/md";
 import { IUserData } from "../../types";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 interface BoxContainerProps extends BoxProps {
     children: React.ReactNode;
 }
 
-const BoxContainer: React.FC<BoxContainerProps> = ({ children, ...props }) => {
+export const BoxContainer: React.FC<BoxContainerProps> = ({ children, ...props }) => {
     return (
         <Box
             whiteSpace="normal"
@@ -22,27 +22,41 @@ const BoxContainer: React.FC<BoxContainerProps> = ({ children, ...props }) => {
 };
 
 
-export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, program, workCenter, imageLink }: IUserData) => {
+export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, program, workCenter, imageLink, checkBoxState = false }: IUserData) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const navigate = useNavigate();
-    const [isChecked, setisChecked] = useState<boolean>(false);
+
     const toast = useToast();
     const breakPointValue = useBreakpointValue({ base: "xs", md: "md", lg: "lg" });
 
-    const handleCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value);
-    }
-
     const isXLgorLarger = useBreakpointValue({ base: false, sm: false, md: false, lg: false, xlg: true });
     const isLgOrLarger = useBreakpointValue({ base: false, sm: false, md: false, lg: true, xlg: true })
+    const is780OrSmaller = useBreakpointValue({ base: true, sm: true, md: true, 'mdlg': true, lg: false, xlg: false })
+    const isOver690 = useBreakpointValue({ false: true, sm: false, md: false, 'over690': true, 'mdlg': true, lg: true, xlg: true })
+    const [isChecked, setIsChecked] = useState<boolean>(checkBoxState);
+
+    useEffect(() => {
+
+        setIsChecked(checkBoxState);
+    }, [checkBoxState]);
+
+    const handleCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsChecked(!isChecked);
+    }
+
+
+    // useEffect(() => {
+    //     console.log(is780OrSmaller)
+    // }, [is780OrSmaller])
+
 
     return (
         <>
             <Grid
                 templateColumns={{
-                    base: "1fr 3fr 6fr 1fr",
-                    lg: "1fr 2fr 3fr 3fr 1fr",
+                    base: "1fr 4fr 5fr 1fr",
+                    // lg: "1fr 2fr 3fr 3fr 1fr",
                 }}
                 alignItems="center"
                 p={4}
@@ -68,14 +82,11 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                             <Center
                                 minW={55}
                             >
-                                <Image
-                                    rounded={8}
+                                <Avatar
                                     src={imageLink}
-                                    // mx={4}
                                     h={55}
                                     w={55}
                                     objectFit="cover"
-                                // bg={"orange"}
                                 />
                             </Center> :
                             null
@@ -87,12 +98,11 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                 </Flex>
 
                 {/* Username */}
-                <BoxContainer
+                {/* <BoxContainer
                     ml={4}
                     w="100%"
                     overflow="hidden"
                     textOverflow={"ellipsis"}
-                // bg="blue"
                 >
                     <Button
                         fontWeight="bold"
@@ -102,11 +112,12 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                     >
                         {username}
                     </Button>
-                </BoxContainer>
+                </BoxContainer> */}
 
                 {/* Full Name */}
 
                 <BoxContainer
+                    // bg="red.900"
                     ml={4}
                     w="100%"
                     overflow="hidden"
@@ -131,7 +142,9 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
 
                 {/* Email Address */}
                 {
-                    isXLgorLarger ?
+                    isLgOrLarger ?
+
+
                         <Box
                             ml={4}
                             w="100%"
@@ -142,12 +155,43 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                                 {email ? email : "(None)"}
                             </Text>
                         </Box>
+                        :
 
-                        : null
+                        !isOver690 ?
+
+                            <Box
+                                ml={4}
+                                w="100%"
+                                overflow="hidden"
+                                textOverflow={"ellipsis"}
+                            >
+                                <Text>
+                                    {
+                                        email ?
+                                            email.length >= 15 ? `${email.substring(0, 13)}...` : email :
+                                            "(None)"
+                                    }
+                                </Text>
+                            </Box>
+                            :
+                            <Box
+                                ml={4}
+                                w="100%"
+                                overflow="hidden"
+                                textOverflow={"ellipsis"}
+                            >
+                                <Text>
+                                    {
+                                        email ?
+                                            email.length >= 25 ? `${email.substring(0, 20)}...` : email :
+                                            "(None)"
+                                    }
+                                </Text>
+                            </Box>
                 }
 
                 {/* Program */}
-                {
+                {/* {
                     isLgOrLarger ?
                         <BoxContainer
                             ml={4}
@@ -160,11 +204,11 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                             </Text>
                         </BoxContainer>
                         : null
-                }
+                } */}
 
 
                 {/* WorkCenter */}
-                {
+                {/* {
                     isXLgorLarger ?
                         <BoxContainer
                             ml={4}
@@ -178,7 +222,7 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                         </BoxContainer>
 
                         : null
-                }
+                } */}
 
                 {/* Actions */}
                 <Center

@@ -19,13 +19,13 @@ import { NavMenu } from "../components/subcomponents/NavMenu";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import theme from "../theme";
+import { testUserData } from "../api";
 
 export const Home = () => {
 
     const hasTasks = false;
     const hasProjects = false;
     const hasPartnerships = false;
-    const test_first_name = "Ben"
 
     // const [shouldConcat, setShouldConcat] = useState(false);
     // const [welcomeUser, setWelcomeUser] = useState("");
@@ -55,7 +55,7 @@ export const Home = () => {
             setAnnualReportText("Report");
         } else {
             setWelcomeUser(
-                `Hello, ${test_first_name}! Welcome to SPMS, DBCA's portal for project documentation, approval and reporting.`
+                `Hello, ${testUserData[5].firstName}! Welcome to SPMS, DBCA's portal for project documentation, approval and reporting.`
             );
             setShouldConcat(false);
             setAnnualReportText("Annual Report");
@@ -66,7 +66,7 @@ export const Home = () => {
                 setSpmsText("Science Project Management System");
             }
         }
-    }, [theme.breakpoints.lg, test_first_name]);
+    }, [theme.breakpoints.lg, testUserData[5].firstName]);
 
     useEffect(() => {
         handleResize(); // call the handleResize function once after mounting
@@ -117,7 +117,7 @@ export const Home = () => {
                         } />
                 </Flex>
                 <Heading>
-                    {/* This is okay as users cannot change spmsText value / it is hardcoded */}
+                    {/* This is okay as spmsText value is hardcoded, and not based on user input */}
                     <div dangerouslySetInnerHTML={{ __html: spmsText }} />
                 </Heading>
                 <br />

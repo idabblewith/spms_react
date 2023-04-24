@@ -308,7 +308,7 @@ const OldHeader = () => {
                                                             pr={1.5}
                                                         >
                                                             <Navitar
-                                                                userData={testUserData[4]}
+                                                                userData={testUserData[5]}
                                                                 windowSize={windowSizeValue}
                                                             />
                                                         </Box>
@@ -453,7 +453,7 @@ const OldHeader = () => {
                                             </MenuGroup>
                                         </>
                                     } /> */}
-                                    <Navitar shouldShowName userData={testUserData[4]} windowSize={windowSizeValue} />
+                                    <Navitar shouldShowName userData={testUserData[5]} windowSize={windowSizeValue} />
                                 </HStack>
                             </Box>
                     }
