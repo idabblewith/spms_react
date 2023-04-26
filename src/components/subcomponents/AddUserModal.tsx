@@ -32,7 +32,7 @@ export const AddUserModal = ({ isOpen, onClose }: IAddUserModalProps) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent bg={"white"}>
                 <ModalHeader>Add User</ModalHeader>
                 <ModalCloseButton />
                 <form onSubmit={handleSubmit}>

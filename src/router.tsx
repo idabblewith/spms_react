@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Root } from "./components/Root";
 import { Home } from "./routes/Home";
 import { Users } from "./routes/Users";
@@ -10,6 +10,7 @@ import { NewProject } from "./routes/NewProject";
 import { NewUser } from "./routes/NewUser";
 import { API } from "./routes/API";
 import { MyAccount } from "./routes/MyAccount";
+import { ChangePassword } from "./routes/ChangePassword";
 
 
 export const router = createBrowserRouter([{
@@ -23,10 +24,14 @@ export const router = createBrowserRouter([{
         },
         {
             path: "users",
+            element: <Navigate to="/users/browse" replace />,
+        },
+        {
+            path: "users/browse",
             element: <Users />,
         },
         {
-            path: "users/add",
+            path: "users/new",
             element: <NewUser />,
         },
         {
@@ -34,12 +39,24 @@ export const router = createBrowserRouter([{
             element: <MyAccount />,
         },
         {
+            path: "users/me/password",
+            element: <ChangePassword />,
+        },
+        {
             path: "projects",
+            element: <Navigate to="/projects/browse" replace />,
+        },
+        {
+            path: "projects/browse",
             element: <Projects />,
         },
         {
             path: "projects/new",
             element: <NewProject />,
+        },
+        {
+            path: "reports",
+            element: <Navigate to="/reports/dashboard" replace />,
         },
         {
             // Arar progress

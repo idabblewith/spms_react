@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import theme from "../theme";
 import { testUserData } from "../api";
+import { MyTasksAndAssociations } from "../components/MyTasksAndAssociations";
 
 export const Home = () => {
 
@@ -137,93 +138,7 @@ export const Home = () => {
             </Box>
 
 
-            <Box
-                mt={6}
-            >
-                <Accordion
-
-                    defaultIndex={[0]}
-                    allowToggle
-                >
-                    <AccordionItem
-                    >
-                        <h2>
-                            <AccordionButton
-                                _expanded={{ bg: 'gray.500', color: 'white' }}
-                            >
-                                <Box as="span" flex='1' textAlign='left'>
-                                    My Tasks
-                                </Box>
-                                {
-                                    hasTasks ?
-                                        <FcHighPriority /> :
-                                        <FcOk />
-                                }
-                                <AccordionIcon />
-                            </AccordionButton>
-                        </h2>
-                        <AccordionPanel pb={4}
-                        >
-                            {
-                                hasTasks ?
-                                    "TASKS HERE" :
-                                    <Flex>
-                                        <Center>
-                                            <FcOk />
-                                            &nbsp;
-                                            <Text>All done!</Text>
-                                        </Center>
-                                    </Flex>
-
-                            }
-                        </AccordionPanel>
-                    </AccordionItem>
-                </Accordion>
-
-                <Accordion allowToggle>
-                    <AccordionItem>
-                        <h2>
-                            <AccordionButton
-                                _expanded={{ bg: 'gray.500', color: 'white' }}
-                            >
-                                <Box as="span" flex='1' textAlign='left'>
-                                    My Projects
-                                </Box>
-                                <AccordionIcon />
-                            </AccordionButton>
-                        </h2>
-                        <AccordionPanel pb={4}>
-                            {
-                                hasProjects ?
-                                    "PROJECTS HERE" :
-                                    "You are currently not associated with any projects."
-                            }
-                        </AccordionPanel>
-                    </AccordionItem>
-                </Accordion>
-
-                <Accordion allowToggle>
-                    <AccordionItem>
-                        <h2>
-                            <AccordionButton
-                                _expanded={{ bg: 'gray.500', color: 'white' }}
-                            >
-                                <Box as="span" flex='1' textAlign='left'>
-                                    My Partnerships
-                                </Box>
-                                <AccordionIcon />
-                            </AccordionButton>
-                        </h2>
-                        <AccordionPanel pb={4}>
-                            {
-                                hasPartnerships ?
-                                    "PARTNERSHIPS HERE" :
-                                    "You are currently not associated with any partnerships."
-                            }
-                        </AccordionPanel>
-                    </AccordionItem>
-                </Accordion>
-            </Box>
+            <MyTasksAndAssociations />
 
 
             <Grid

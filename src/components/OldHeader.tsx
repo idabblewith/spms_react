@@ -29,6 +29,8 @@ import { BsCodeSlash } from "react-icons/bs";
 import { Navitar } from "./subcomponents/Navitar";
 import { SidebarNavMenu } from "./subcomponents/SidebarNavMenu";
 import { testUserData } from "../api";
+import { AddUserModal } from "./subcomponents/AddUserModal";
+
 
 const ProjectMenuContents = () => {
     const navigate = useNavigate();
@@ -40,7 +42,7 @@ const ProjectMenuContents = () => {
             >
                 <MenuItem
                     onClick={() => {
-                        navigate('/projects')
+                        navigate('/projects/browse')
                     }}
                 >
                     {<CgBrowse />}
@@ -146,12 +148,15 @@ const ReportMenuContents = () => {
         </>
     )
 }
+// const { isOpen: isAddUserModalOpenTop, onOpen: onAddUserOpenTop, onClose: onAddUserCloseTop } = useDisclosure();
 
 const StaffMenuContents = () => {
     const navigate = useNavigate();
 
     return (
         <>
+            {/* <AddUserModal isOpen={isAddUserModalOpenTop} onClose={onAddUserCloseTop} /> */}
+
             <MenuGroup
                 title="Users" fontSize={"12px"} color={"gray.500"} textAlign={"center"}
             >
@@ -167,16 +172,16 @@ const StaffMenuContents = () => {
                     </Text>
                 </MenuItem>
 
-                <MenuItem
+                {/* <MenuItem
                     onClick={() => {
-                        navigate('users/add')
+                        // onAddUserOpenTop();
                     }}
                 >
                     {<FaUserPlus />}
                     <Text ml={2}>
-                        Register External Colleague
+                        Add New User
                     </Text>
-                </MenuItem>
+                </MenuItem> */}
 
 
             </MenuGroup>

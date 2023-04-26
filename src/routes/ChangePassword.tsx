@@ -1,30 +1,30 @@
 import { Box, Text } from "@chakra-ui/react"
 import { NavigationBar } from "../components/subcomponents/NavigationBar"
 
-export const Reports = () => {
+export const ChangePassword = () => {
     return (
         <>
             <NavigationBar
                 subDirOne={{
-                    title: "Reports",
-                    link: "/reports"
+                    title: "Manage Users",
+                    link: "/users"
                 }}
                 subDirTwo={{
-                    title: "Dashboard",
-                    link: "/reports/dashboard"
+                    title: "Me",
+                    link: "/users/me"
+                }}
+                subDirThree={{
+                    title: "Change Password",
+                    link: "/users/me/password"
                 }}
             />
             <Box mt={10}>
                 <Box mb={6}>
                     <Text fontSize={"2xl"} fontWeight={"bold"}>
-                        Annual Report 2021-2022 Overview
+                        Change Password
                     </Text>
-                    <Text fontSize={"sm"} color={"gray.600"}>Click to expand</Text>
                 </Box>
-
             </Box>
         </>
     )
 }
-
-// arar_dashboard

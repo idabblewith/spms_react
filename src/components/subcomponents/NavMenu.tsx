@@ -46,7 +46,7 @@ export const NavMenu = (
 
     return (
         <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Menu isOpen={isOpen}>
+            <Menu isOpen={isOpen} >
                 <MenuButton
                     colorScheme={cScheme}
                     bg={bgStyle}
@@ -67,6 +67,7 @@ export const NavMenu = (
                     onMouseLeave={handleMouseLeave}
                     outline="none"
                     _focus={{ boxShadow: 'none' }}
+                    minW={"60px"}
                 >
                     <Flex>
                         {leftIcon ?

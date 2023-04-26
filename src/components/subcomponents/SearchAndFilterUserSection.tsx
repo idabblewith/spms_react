@@ -27,8 +27,8 @@ export const SearchAndFilterUserSection = () => {
 
     const [searchLoading, setSearchLoading] = useState<boolean>(false);
 
-    const { isOpen: addIsOpen, onOpen: onAddOpen, onClose: onAddClose } =
-        useDisclosure();
+    // const { isOpen: addIsOpen, onOpen: onAddOpen, onClose: onAddClose } =
+    //     useDisclosure();
 
     const [programFilter, setProgramFilter] = useState("");
 
@@ -144,35 +144,32 @@ export const SearchAndFilterUserSection = () => {
         setShowFilters(!showFilters);
     }
 
-    const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
+    const { isOpen: isAddUserModalOpen, onOpen: onAddUserOpen, onClose: onAddUserClose } = useDisclosure();
 
-    const handleAddOpen = () => {
-        setIsAddUserModalOpen(true);
-    };
-
-    const handleAddClose = () => {
-        setIsAddUserModalOpen(false);
-    };
 
     return (
         <Box maxW={"100%"} maxH={"100%"}>
-            <AddUserModal isOpen={isAddUserModalOpen} onClose={handleAddClose} />
-
+            <AddUserModal isOpen={isAddUserModalOpen} onClose={onAddUserClose} />
             <Button onClick={handleToggleFilters} mt={4}>
                 {showFilters ? 'Hide Filters' : 'Show Filters'}
             </Button>
-            <Collapse in={showFilters} animateOpacity>
+            <Collapse in={showFilters} animateOpacity >
                 <Flex mt={4} flexDirection={"column"}
                     // bg={"gray.100"}
                     rounded={"2xl"}
+                    // bg={"white.100"}
+                    border={"1px"}
+                    borderColor={"gray.300"}
+                    px={2}
+                    mb={1}
                 >
                     {/* 
                 
 
                 
                 */}
-                    <Center>
-                        <Text>Filter</Text>
+                    <Center py={2}>
+                        <Text fontSize={"lg"} fontWeight={"bold"}>Filters</Text>
                     </Center>
                     <Grid
                         p={3}
@@ -301,7 +298,7 @@ export const SearchAndFilterUserSection = () => {
                     />
                 </InputGroup>
                 <Flex justifyContent={"flex-end"} width="100%">
-                    <Button onClick={onAddOpen}>Add</Button>
+                    <Button onClick={onAddUserOpen}>Add</Button>
                 </Flex>
             </Flex>
             <Grid

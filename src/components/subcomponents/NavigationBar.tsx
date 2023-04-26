@@ -1,5 +1,5 @@
 import { Box, Flex, Button } from "@chakra-ui/react"
-
+import { useNavigate } from "react-router-dom";
 
 interface SubDirectory {
     title: string;
@@ -9,9 +9,12 @@ interface SubDirectory {
 interface INavigationBarProps {
     subDirOne: SubDirectory;
     subDirTwo?: SubDirectory;
+    subDirThree?: SubDirectory;
 }
 
-export const NavigationBar = ({ subDirOne, subDirTwo }: INavigationBarProps) => {
+export const NavigationBar = ({ subDirOne, subDirTwo, subDirThree }: INavigationBarProps) => {
+    const navigate = useNavigate();
+
     return (
         <>
             <Box
@@ -23,33 +26,53 @@ export const NavigationBar = ({ subDirOne, subDirTwo }: INavigationBarProps) => 
             >
                 <Flex>
                     <Button
-                        as={"a"}
-                        href={"/"}
+                        onClick={() => {
+                            navigate('/')
+                        }}
                         variant={"link"}
                         colorScheme="blue"
-                    >Home</Button>&nbsp;/
+                    >
+                        Home
+                    </Button>
+                    &nbsp;/&nbsp;
                     <Button
-                        as={"a"}
-                        href={subDirOne.link}
+                        onClick={() => {
+                            navigate(subDirOne.link)
+                        }}
                         variant={"link"}
                         colorScheme="blue"
-                    >&nbsp;{subDirOne.title}</Button>
-                    {
-                        subDirTwo ?
-                            <>
-                                &nbsp;/
-                                <Button
-                                    as={"a"}
-                                    href={subDirTwo.link}
-                                    variant={"link"}
-                                    colorScheme="blue"
-                                >&nbsp;{subDirTwo.title}</Button>
-                            </>
-                            : null
-                    }
-
+                    >
+                        {subDirOne.title}
+                    </Button>
+                    {subDirTwo ? (
+                        <>
+                            &nbsp;/
+                            <Button
+                                onClick={() => {
+                                    navigate(subDirTwo.link)
+                                }}
+                                variant={"link"}
+                                colorScheme="blue"
+                            >
+                                {subDirTwo.title}
+                            </Button>
+                            {subDirThree ? (
+                                <>
+                                    &nbsp;/&nbsp;
+                                    <Button
+                                        onClick={() => {
+                                            navigate(subDirThree.link)
+                                        }}
+                                        variant={"link"}
+                                        colorScheme="blue"
+                                    >
+                                        {subDirThree.title}
+                                    </Button>
+                                </>
+                            ) : null}
+                        </>
+                    ) : null}
                 </Flex>
-
             </Box>
         </>
     )

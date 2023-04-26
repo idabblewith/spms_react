@@ -5,6 +5,8 @@ interface IPageWrapperProps {
 }
 
 export const PageWrapper: React.FC<IPageWrapperProps> = ({ children }) => {
+
+
     return (
         <Box
             mx={
@@ -17,6 +19,7 @@ export const PageWrapper: React.FC<IPageWrapperProps> = ({ children }) => {
             }
             pb={20}
         >
+
             {children}
         </Box>
     )
