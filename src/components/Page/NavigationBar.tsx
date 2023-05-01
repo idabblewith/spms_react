@@ -46,7 +46,7 @@ export const NavigationBar = ({ subDirOne, subDirTwo, subDirThree }: INavigation
                     </Button>
                     {subDirTwo ? (
                         <>
-                            &nbsp;/
+                            &nbsp;/&nbsp;
                             <Button
                                 onClick={() => {
                                     navigate(subDirTwo.link)

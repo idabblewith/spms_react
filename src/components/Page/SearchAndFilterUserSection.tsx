@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { AdminSliceSingle, BoxContainer } from "./AdminSliceSingle";
 import { testUserData } from "../../api";
 import { BsSearch } from 'react-icons/bs';
-import { AddUserModal } from "./AddUserModal";
+import { AddUserModal } from "../Modals/AddUserModal";
 
 
 export const SearchAndFilterUserSection = () => {
@@ -34,7 +34,7 @@ export const SearchAndFilterUserSection = () => {
 
     const debouncedHandleSearchChange = useRef(
         _.debounce((searchTerm: string, items: any) => {
-            let filteredUsers = items.filter(
+            const filteredUsers = items.filter(
                 (user: IUserData) =>
                     user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -69,7 +69,7 @@ export const SearchAndFilterUserSection = () => {
 
     useEffect(() => {
         if (programFilter !== "" || searchTerm !== "") {
-            let filteredUsers = testUserData.filter(
+            const filteredUsers = testUserData.filter(
                 (user: IUserData) =>
                     (programFilter === "" ||
                         user.program?.toLowerCase() === programFilter.toLowerCase()) &&
@@ -253,9 +253,9 @@ export const SearchAndFilterUserSection = () => {
                     <Box
                         m={3}>
                         <Stat>
-                            <StatLabel>Field</StatLabel>
+                            <StatLabel>Business Area</StatLabel>
                             <Select
-                                placeholder="All Fields"
+                                placeholder="All Business Areas"
                                 value={programFilter}
                                 onChange={(e) => setProgramFilter(e.target.value)}
                             >

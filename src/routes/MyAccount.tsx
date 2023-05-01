@@ -1,6 +1,6 @@
 import { Accordion, Button, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Text, Input, Checkbox, Grid } from "@chakra-ui/react"
-import { NavigationBar } from "../components/subcomponents/NavigationBar"
-import { MyTasksAndAssociations } from "../components/MyTasksAndAssociations"
+import { NavigationBar } from "../components/Page/NavigationBar"
+import { MyTasksAndAssociations } from "../components/Page/MyTasksAndAssociations"
 import { useState, ChangeEvent } from "react"
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import { FcApproval, FcCancel } from 'react-icons/fc'

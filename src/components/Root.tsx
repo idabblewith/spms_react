@@ -1,10 +1,10 @@
 import { Box, Image } from "@chakra-ui/react"
 import { Outlet } from "react-router-dom"
-import OldHeader from "./OldHeader";
-import { Footer } from "./Footer";
+import OldHeader from "./Navigation/OldHeader";
+import { Footer } from "./Footer/Footer";
 
 import myImage from "../media/80mile.jpg";
-import { PageWrapper } from "./PageWrapper";
+import { PageWrapper } from "./Base/PageWrapper";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 
@@ -33,10 +33,12 @@ export const Root = () => {
                             rounded={6}
                             py={10}
 
-                        ><Box mx={10}>
+                        >
+                            <Box mx={10}>
                                 <Outlet />
 
-                            </Box></Box>
+                            </Box>
+                        </Box>
 
                         <Image
                             src={myImage}

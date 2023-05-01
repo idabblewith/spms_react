@@ -1,5 +1,5 @@
-import { NavigationBar } from "../components/subcomponents/NavigationBar"
-import { SearchAndFilterUserSection } from "../components/subcomponents/SearchAndFilterUserSection";
+import { NavigationBar } from "../components/Page/NavigationBar"
+import { SearchAndFilterUserSection } from "../components/Page/SearchAndFilterUserSection";
 
 
 

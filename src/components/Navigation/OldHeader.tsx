@@ -1,8 +1,8 @@
 // Components
 import { CgPlayListAdd, CgBrowse } from "react-icons/cg";
-import { ToggleDarkMode } from "./subcomponents/ToggleDarkMode";
-import { ProjectSearchBar } from "./subcomponents/ProjectSearchBar";
-import { NavMenu } from "./subcomponents/NavMenu";
+import { ToggleDarkMode } from "./ToggleDarkMode";
+import { ProjectSearchBar } from "../Page/ProjectSearchBar";
+import { NavMenu } from "../Navigation/NavMenu";
 
 // Chakra
 import { Avatar, Box, Button, Center, DarkMode, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Grid, HStack, IconButton, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Text, VStack, useColorMode, useColorModeValue, useDisclosure } from "@chakra-ui/react";
@@ -12,7 +12,7 @@ import { Avatar, Box, Button, Center, DarkMode, Divider, Drawer, DrawerBody, Dra
 import { useEffect, useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import theme from "../theme";
+import theme from "../../theme";
 
 // Icon imports
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -26,10 +26,13 @@ import { FaUserPlus, FaUserCircle } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { SiReadthedocs } from "react-icons/si";
 import { BsCodeSlash } from "react-icons/bs";
-import { Navitar } from "./subcomponents/Navitar";
-import { SidebarNavMenu } from "./subcomponents/SidebarNavMenu";
-import { testUserData } from "../api";
-import { AddUserModal } from "./subcomponents/AddUserModal";
+
+
+import { Navitar } from "./Navitar";
+import { SidebarNavMenu } from "../Navigation/SidebarNavMenu";
+import { AddUserModal } from "../Modals/AddUserModal";
+
+import { testUserData } from "../../api";
 
 
 const ProjectMenuContents = () => {
@@ -155,8 +158,6 @@ const StaffMenuContents = () => {
 
     return (
         <>
-            {/* <AddUserModal isOpen={isAddUserModalOpenTop} onClose={onAddUserCloseTop} /> */}
-
             <MenuGroup
                 title="Users" fontSize={"12px"} color={"gray.500"} textAlign={"center"}
             >
@@ -172,7 +173,7 @@ const StaffMenuContents = () => {
                     </Text>
                 </MenuItem>
 
-                {/* <MenuItem
+                <MenuItem
                     onClick={() => {
                         // onAddUserOpenTop();
                     }}
@@ -181,13 +182,9 @@ const StaffMenuContents = () => {
                     <Text ml={2}>
                         Add New User
                     </Text>
-                </MenuItem> */}
-
-
+                </MenuItem>
             </MenuGroup>
-
         </>
-
     )
 }
 
@@ -249,13 +246,6 @@ const OldHeader = () => {
                         </Button>
 
                     </Box>
-
-                    {/* <Box
-                        flexGrow={1}
-                        // bg={"red"}
-                        justifyContent={"space-between"}
-                        display={"flex"}
-                    > */}
                     {
                         shouldShowHamburger ?
                             <Box
@@ -351,12 +341,8 @@ const OldHeader = () => {
                                                                 <StaffMenuContents />
                                                             }
                                                         />
-
                                                     </Grid>
-
                                                 </VStack>
-
-
                                             </DrawerBody>
                                         </DrawerContent>
                                     </Drawer>
@@ -394,198 +380,14 @@ const OldHeader = () => {
                                 >
                                     {/* Project Search */}
                                     <ProjectSearchBar />
-                                    {/* <ToggleDarkMode /> */}
-                                    {/* Profile */}
-                                    {/* <NavMenu menuName={`Welcome, ${test_first_name}`} children={
-                                        <>
-                                            <MenuGroup
-                                                title="Documentation" fontSize={"12px"}
-                                                color={"gray.500"} textAlign={"center"}
-                                            >
-                                                <MenuItem
-                                                    onClick={() => {
-                                                        window.open("https://sdis.readthedocs.io", "_blank");
-                                                    }}
-                                                >
-                                                    {<SiReadthedocs />}
-                                                    <Text ml={2}>
-                                                        User Manual
-                                                    </Text>
-                                                </MenuItem>
-                                                <MenuItem
-                                                    onClick={() => {
-                                                        navigate('/api')
-                                                    }}
-                                                >
-                                                    {<BsCodeSlash />}
-                                                    <Text ml={2}>
-                                                        API
-                                                    </Text>
-                                                </MenuItem>
-
-                                            </MenuGroup>
-                                            <MenuGroup
-                                                title="DBCA Account" fontSize={"12px"}
-                                                color={"gray.500"} textAlign={"center"}
-                                            >
-                                                <MenuItem
-                                                    onClick={() => {
-                                                        navigate('/users/me')
-                                                    }}
-                                                >
-                                                    {<FaUserCircle />}
-                                                    <Text ml={2}>
-                                                        My SPMS Profile
-                                                    </Text>
-                                                </MenuItem>
-                                                <MenuItem
-                                                    onClick={() => {
-                                                        window.open('https://sww.dpaw.wa.gov.au/', "_blank")
-                                                    }}
-                                                >
-                                                    {<FaUserCircle />}
-                                                    <Text ml={2}>
-                                                        My Divisional Profile
-                                                    </Text>
-                                                </MenuItem>
-                                                <MenuItem>
-                                                    {<FiLogOut />}
-                                                    <Text ml={2}>
-                                                        Logout
-                                                    </Text>
-                                                </MenuItem>
-
-                                            </MenuGroup>
-                                        </>
-                                    } /> */}
                                     <Navitar shouldShowName userData={testUserData[5]} windowSize={windowSizeValue} />
                                 </HStack>
                             </Box>
                     }
-
-
                 </HStack>
-
             </HStack>
         </Box>
     )
 }
 
 export default OldHeader;
-
-{/* <MenuItem
-                            >
-                                {<FaUserCircle />}
-                                <Text ml={2}>
-                                    View SPMS Profile
-                                </Text>
-                            </MenuItem> */}
-
-{/* <Center>
-                                <Text
-                                    color={"gray.400"}
-                                    fontSize={"11px"}
-                                    pt={2}
-                                >
-                                    Science Division Intranet
-                                </Text>
-                            </Center>
-                            <MenuItem>
-                                {<FaUserCircle />}
-                                <Text ml={2}>
-                                    View Divisional Profile
-                                </Text>
-                            </MenuItem> */}
-
-
-{/* API */ }
-{/* <Button
-                        size={"sm"}
-                        variant={"ghost"}
-                        color={"whiteAlpha.700"}
-                    >
-                        API
-                    </Button> */}
-
-{/* User Manual */ }
-{/* <Button
-                        variant={"ghost"}
-                        size={"sm"}
-                        color={"red.500"}
-                        as="a" href="https://sdis.readthedocs.io"
-                        target="_blank" rel="noopener noreferrer"
-                    >
-                        User Manual
-                    </Button> */}
-
-
-{/* <Menu>
-                        <MenuButton
-                            as={Button}
-                            size={"sm"}
-                            px={2}
-                            py={5}
-                            _hover={{ bg: "whiteAlpha.900", color: "black" }}
-                            variant={"ghost"}
-                            color={"whiteAlpha.700"}
-                        >
-                            <Flex>
-                                <Text>
-                                    Welcome, {test_first_name}
-                                </Text>
-                                <Center ml={1.5} >
-                                    <GoTriangleDown size={"12px"}
-                                    />
-
-                                </Center>
-                            </Flex>
-                        </MenuButton>
-
-
-                        <MenuList
-                            _hover={{ bg: "whiteAlpha.900", color: "black" }}
-                        >
-                            <MenuGroup
-                                title="Documentation" fontSize={"12px"}
-                                color={"gray.500"} textAlign={"center"}
-                            >
-                                <MenuItem>
-                                    {<SiReadthedocs />}
-                                    <Text ml={2}>
-                                        User Manual
-                                    </Text>
-                                </MenuItem>
-                                <MenuItem>
-                                    {<BsCodeSlash />}
-                                    <Text ml={2}>
-                                        API
-                                    </Text>
-                                </MenuItem>
-
-                            </MenuGroup>
-                            <MenuGroup
-                                title="DBCA Account" fontSize={"12px"}
-                                color={"gray.500"} textAlign={"center"}
-                            >
-                                <MenuItem>
-                                    {<FaUserCircle />}
-                                    <Text ml={2}>
-                                        My SPMS Profile
-                                    </Text>
-                                </MenuItem>
-                                <MenuItem>
-                                    {<FaUserCircle />}
-                                    <Text ml={2}>
-                                        My Divisional Profile
-                                    </Text>
-                                </MenuItem>
-                                <MenuItem>
-                                    {<FiLogOut />}
-                                    <Text ml={2}>
-                                        Logout
-                                    </Text>
-                                </MenuItem>
-
-                            </MenuGroup>
-                        </MenuList>
-                    </Menu> */}

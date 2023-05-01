@@ -1,47 +1,18 @@
-import {
-    Box, Button, Center, Heading, Text, Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,
-    MenuButton,
-    Menu,
-    Flex,
-    MenuList,
-    MenuItem,
-    Grid,
-    DarkMode,
-    LightMode,
-} from "@chakra-ui/react"
-import { GoTriangleDown } from "react-icons/go";
-import { FcPrint, FcBullish, FcRatings, FcOk, FcHighPriority } from "react-icons/fc";
-import { NavMenu } from "../components/subcomponents/NavMenu";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
+
+import {
+    Box, Button, Center, Heading, Text, Flex, MenuItem, Grid,
+} from "@chakra-ui/react"
+import { FcPrint, FcBullish, FcRatings } from "react-icons/fc";
+
+import { NavMenu } from "../components/Navigation/NavMenu";
+import { MyTasksAndAssociations } from "../components/Page/MyTasksAndAssociations";
+
 import theme from "../theme";
 import { testUserData } from "../api";
-import { MyTasksAndAssociations } from "../components/MyTasksAndAssociations";
 
 export const Home = () => {
-
-    const hasTasks = false;
-    const hasProjects = false;
-    const hasPartnerships = false;
-
-    // const [shouldConcat, setShouldConcat] = useState(false);
-    // const [welcomeUser, setWelcomeUser] = useState("");
-
-    // useEffect(() => {
-    //     if (window.innerWidth < parseFloat(theme.breakpoints.lg) * 16) {
-    //         setWelcomeUser("")
-    //         setShouldConcat(true)
-    //     }
-    //     else {
-    //         setWelcomeUser(`Hello, ${test_first_name}! Welcome to SPMS, DBCA's portal for project documentation, approval and reporting.`)
-    //         setShouldConcat(false);
-    //     }
-    // }, [window.innerWidth])
-
     const [shouldConcat, setShouldConcat] = useState(false);
     const [welcomeUser, setWelcomeUser] = useState("");
     const [spmsText, setSpmsText] = useState("Science Project Management System");
@@ -118,7 +89,6 @@ export const Home = () => {
                         } />
                 </Flex>
                 <Heading>
-                    {/* This is okay as spmsText value is hardcoded, and not based on user input */}
                     <div dangerouslySetInnerHTML={{ __html: spmsText }} />
                 </Heading>
                 <br />
@@ -137,9 +107,7 @@ export const Home = () => {
                 </Text>
             </Box>
 
-
             <MyTasksAndAssociations />
-
 
             <Grid
                 mt={10}
@@ -189,9 +157,7 @@ export const Home = () => {
             </Grid>
 
             <Center mt={6}>
-
             </Center>
         </>
-
     )
 }

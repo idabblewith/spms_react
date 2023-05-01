@@ -73,9 +73,6 @@ interface IResearchFunction {
 
 }
 
-
-
-
 interface IUserData {
     pk: number;
     username: string;
@@ -100,6 +97,6 @@ interface ISearchTerm {
     searchTerm: string;
 }
 
-interface IUser {
+// interface IUser {
 
-}
+// }

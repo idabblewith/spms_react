@@ -2,6 +2,13 @@ import axios from "axios";
 import Cookie from 'js-cookie';
 import { QueryFunctionContext } from "@tanstack/react-query";
 import { ISearchTerm } from "./types";
+import SpiderWeb from "./assets/spiderweb.jpeg"
+import Kokerbin from "./assets/kokerbin.jpeg"
+import { MdScience } from "react-icons/md"
+import { GiMaterialsScience } from 'react-icons/gi'
+import { RiBook3Fill } from 'react-icons/ri'
+import { FaUserFriends } from 'react-icons/fa'
+
 
 // If using JWTs for login (unlikely as using Microsoft Authentication to login to gov)
 // const backendRequiresAuth = (doesIt: boolean) => {
@@ -18,6 +25,104 @@ import { ISearchTerm } from "./types";
 //         return {};
 //     }
 // }
+
+export const testProjectCreationData = [
+    {
+        title: "Core Function",
+        description: "An ongoing science function with an indefinite period of activity.",
+        bulletPoints: [
+            "No approval process",
+            "Immediate closure process",
+            "Requires Annual Reporting"
+        ],
+        colorScheme: "red",
+        buttonIcon: GiMaterialsScience,
+    },
+    {
+        title: "External Partnership",
+        description: "Participation in an externally managed project.",
+        bulletPoints: [
+            "No formal approval process",
+            "Immediate closure without formal process",
+            "Project details automatically included in annual reporting"
+        ],
+        colorScheme: "blackAlpha",
+        buttonIcon: FaUserFriends,
+    },
+    {
+        title: "Science Project",
+        description: "A project with a defined period of scientific activities.",
+        bulletPoints: [
+            "Approval process to determine how it fits within Departmental stragegy and priorities.",
+            "Formal Closure Process",
+            "Requires Annual Reporting"
+        ],
+        colorScheme: "green",
+        buttonIcon: MdScience,
+    },
+    {
+        title: "Student Project",
+        description: "Supervision of a tertiary student.",
+        bulletPoints: [
+            "No formal approval process",
+            "Immediate closure without formal process",
+            "Requires Annual Reporting"
+        ],
+        colorScheme: "blue",
+        buttonIcon: RiBook3Fill,
+    },
+]
+export const testMyTaskData =
+    [
+        { name: "todo1" },
+        { name: "todo2" },
+    ]
+
+export const testMyProjectData =
+    [
+        { name: "proj1" },
+        { name: "proj2" },
+    ]
+
+export const testMyPartnershipsData =
+    [
+        { name: "partnership1" },
+        { name: "parnership2" },
+    ]
+
+export const testProejctCardData = [
+    {
+        pk: 1,
+        projectTitle: "BIO data collation program",
+        authors: [
+            "A Barker", "H Ensikat", "K Grogan", "Z Huq", "D Murphy", "C Piper", "C Uehr", "N Panine", "R Cechner",
+        ],
+        years: "2020-2024",
+        tags: [
+            "Biodiversity Data", "Data Sharing", "Cross-Sector Collaboration",
+        ],
+        systemTags: [
+            "Core Function", "Update Requested",
+        ],
+        imageUrl: SpiderWeb,
+    },
+    {
+        pk: 2,
+        projectTitle: "BIO biodiversity data platform",
+        authors: [
+            "A Barker", "H Ensikat", "K Grogan", "Z Huq", "D Murphy", "C Piper", "C Uehr", "N Panine", "R Cechner",
+        ],
+        years: "2020-2023",
+        tags: [
+            "Data Sharing", "Digital Infrastructure", "Cross-Sector Collaboration", "Data Discoverability", "Regulatory Reform", "Evidence-Based Decision-Making",
+        ],
+        systemTags: [
+            "Core Function", "Update Requested",
+        ],
+        imageUrl: Kokerbin,
+    },
+]
+
 
 export const testProjectData = [
     {
@@ -138,7 +243,7 @@ export const testUserData = [
     },
 ]
 
-let instance = axios.create({
+const instance = axios.create({
     baseURL: process.env.NODE_ENV === "development" ?
         "https://127.0.0.1:8000/api/v1/" :
         "PRODUCTION URL GOES HERE",

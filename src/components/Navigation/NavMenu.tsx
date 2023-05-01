@@ -1,14 +1,9 @@
-import { Flex, Menu, MenuButton, Text, TextProps, Button, Center, MenuList, MenuGroup, MenuItem, useMenu, Box, PopoverContent, PopoverTrigger, PopoverArrow, PopoverBody, PopoverCloseButton, Popover } from "@chakra-ui/react"
+import { Flex, Menu, MenuButton, Text, TextProps, Button, Center, MenuList, Box } from "@chakra-ui/react"
 import { useState } from "react"
-import { BsCodeSlash } from "react-icons/bs"
-import { FaUserCircle } from "react-icons/fa"
-import { FiLogOut } from "react-icons/fi"
 import { GoTriangleDown } from "react-icons/go"
-import { SiReadthedocs } from "react-icons/si"
 
 interface INavMenuProps extends TextProps {
     menuName?: string;
-    // leftIcon?: React.ReactNode;
     cScheme?: string;
     hoverColor?: string;
     fColor?: string;
@@ -81,9 +76,7 @@ export const NavMenu = (
                                         {menuName}
                                     </Text>
                                 </Center>
-
                             </Box>
-
                             :
                             textAlign ?
                                 <Text>
@@ -101,7 +94,6 @@ export const NavMenu = (
                                 <Center ml={1.5}>
                                     <GoTriangleDown size={"12px"} />
                                 </Center>
-
                         }
                     </Flex>
 
