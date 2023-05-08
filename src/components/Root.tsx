@@ -6,10 +6,12 @@ import { Footer } from "./Footer/Footer";
 import myImage from "../media/80mile.jpg";
 import { PageWrapper } from "./Base/PageWrapper";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { useScrollToTop } from "../hooks/useScrollToTop";
 
 
 export const Root = () => {
     useDocumentTitle();
+    useScrollToTop();
 
     return (
         <>

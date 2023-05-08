@@ -1,4 +1,5 @@
 import { Box, Flex, Button } from "@chakra-ui/react"
+import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface SubDirectory {
@@ -10,19 +11,21 @@ interface INavigationBarProps {
     subDirOne: SubDirectory;
     subDirTwo?: SubDirectory;
     subDirThree?: SubDirectory;
+    rightSideElement?: ReactNode;
 }
 
-export const NavigationBar = ({ subDirOne, subDirTwo, subDirThree }: INavigationBarProps) => {
+export const NavigationBar = ({ subDirOne, subDirTwo, subDirThree, rightSideElement }: INavigationBarProps) => {
     const navigate = useNavigate();
 
     return (
         <>
-            <Box
+            <Flex
                 bgColor={"gray.100"}
                 rounded={6}
                 px={4}
                 py={2}
                 pos={"relative"}
+                justifyContent={"space-between"}
             >
                 <Flex>
                     <Button
@@ -73,7 +76,14 @@ export const NavigationBar = ({ subDirOne, subDirTwo, subDirThree }: INavigation
                         </>
                     ) : null}
                 </Flex>
-            </Box>
+                {
+                    rightSideElement ?
+                        <Flex>
+                            {rightSideElement}
+                        </Flex>
+                        : null
+                }
+            </Flex>
         </>
     )
 }

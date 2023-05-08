@@ -1,10 +1,12 @@
-import { Box, Button, Grid, Image, Tag, Text } from "@chakra-ui/react"
+import { Box, Button, Center, Flex, Grid, Image, Tag, Text, useDisclosure } from "@chakra-ui/react"
 import { AiFillCalendar, AiFillEdit, AiFillTag } from "react-icons/ai"
 import { TbAlertOctagonFilled } from "react-icons/tb"
 import { MdUnfoldMore } from "react-icons/md"
+import { Link } from "react-router-dom";
+import { HiOutlineExternalLink } from 'react-icons/hi'
+import { ProjectDetailEditModal } from "../../Modals/ProjectDetailEditModal";
 
-
-interface IProjectCardProps {
+interface IProjectOverviewCardProps {
     pk: number;
     projectTitle: string;
     authors: string[];
@@ -12,12 +14,19 @@ interface IProjectCardProps {
     tags: string[];
     systemTags: string[];
     imageUrl: string;
+    division: string;
+    projectLabel: string;
 }
 
-export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, systemTags }: IProjectCardProps) => {
+
+export const ProjectOverviewCard = (
+    { pk, projectTitle, imageUrl, years, authors, tags, systemTags, division, projectLabel }: IProjectOverviewCardProps
+) => {
+
+    const { isOpen: isEditProjectDetailModalOpen, onOpen: onEditProjectDetailModalOpen, onClose: onEditProjectDetailModalClose } = useDisclosure()
+
     return (
         <>
-
             <Grid
                 minH={"100px"}
                 bg="blackAlpha.300"
@@ -46,15 +55,6 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                     >
                         <AiFillEdit />
                     </Button>
-                    {/* <Grid
-                        pt={4}
-                        rowGap={2}
-                    >
-                        <Button>More</Button>
-                        <Button>Go To</Button>
-                    </Grid> */}
-
-
                 </Box>
 
                 <Box
@@ -73,7 +73,9 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                             variant={"link"}
                             colorScheme="facebook"
                         >
-                            {projectTitle}
+                            <Link to={`/projects/${pk}`}>
+                                {projectTitle}
+                            </Link>
                         </Button>
                         <Text color={"gray.600"} fontSize={"sm"}>
                             {authors.map((author, index) => `${author}${index !== authors.length - 1 ? ', ' : ''}`)}
@@ -87,54 +89,13 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                             pb={4}
                             display="inline-flex" alignItems="center"
                         >
-                            <TbAlertOctagonFilled />
-                            <Grid
-                                gridTemplateColumns={{
-                                    base: "repeat(3, 1fr)"
-                                }}
-                                gridGap={3}
-                                ml={3}
-                                // templateColumns={
-                                //     {
-                                //         base: "repeat(1, 1fr)",
-                                //         lg: "repeat(2, 1fr)",
-                                //         xl: "repeat(auto, 1fr)",
-
-                                //     }
-                                // }
-                                // gridTemplateColumns={
-                                //     {
-                                //         base: "repeat(1, 1fr)",
-                                //         md: "repeat(2, 1fr)",
-                                //         xl: "repeat(3, 1fr)"
-                                //     }
-                                // } // set a fixed width for the grid columns
-                                // gridTemplateRows={"28px"}
-                                gap={4}
-
+                            <Tag
+                                size={"sm"}
+                                bgColor={"gray.600"}
+                                color={"white"}
                             >
-                                {
-                                    systemTags.map((tag, index) => {
-                                        return (
-                                            <Tag
-                                                p={1.5}
-                                                bgColor={
-                                                    tag === "Update Requested" ?
-                                                        "red.500" :
-                                                        tag === "Core Function" ?
-                                                            "blue.500" : "gray.200"
-                                                }
-                                                textColor={"whiteAlpha.900"}
-                                                fontSize={"xs"}
-                                                key={index}
-                                                textAlign={"center"} justifyContent={"center"}>
-                                                {tag}
-                                            </Tag>
-                                        )
-                                    })
-
-                                }
-                            </Grid>
+                                {division}
+                            </Tag>
                         </Box>
                         <Box
                             pb={4}
@@ -164,7 +125,9 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                                 gap={4}
 
                             >
-                                <Text ml={1}>{years}</Text>
+                                <Tag
+                                    size={"sm"}
+                                    ml={1}>{years}</Tag>
 
                             </Grid>
                         </Box>
@@ -219,20 +182,36 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                             </Grid>
                         </Box>
                     </Grid>
-                    <Button
-                        variant={"solid"}
-                        colorScheme="blue"
-                        position={"absolute"}
-                        bottom={0}
-                        right={"8px"}
-                        size={"sm"}
-                        rightIcon={<MdUnfoldMore />}
-                    // color={"white"}
+                    <Box>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod lacinia nibh. Nullam ultricies cursus lorem faucibus porta. Mauris id turpis eget ex auctor tempus. Praesent sagittis aliquam arcu non faucibus. Nunc eget tempor odio, sit amet venenatis urna. Aenean tortor ex, fermentum ut condimentum sed, lacinia ut enim. Donec aliquam mauris velit, sed placerat lorem imperdiet porttitor. Suspendisse aliquam mattis neque, vitae feugiat orci sagittis non. Donec vitae ex orci. Vestibulum vestibulum finibus leo ut varius. Mauris nulla nulla, posuere aliquet justo quis, cursus blandit ligula. Phasellus auctor sapien at libero convallis, vel aliquet nunc fringilla. Morbi scelerisque, ipsum sit amet tempus pulvinar, arcu enim suscipit massa, sit amet placerat sapien dolor ac nunc.
+                    </Box>
+                    <Box
+                        pt={6}
                     >
-                        More
-                    </Button>
+                        <Button variant={"link"} colorScheme="blue"
+                            leftIcon={<HiOutlineExternalLink />}
+                        >
+                            Review Datasets tagged with {projectLabel}
+                        </Button>
+                    </Box>
+                    <Flex pt={6}
+                        justifyContent={"right"}
+                    >
+                        <ProjectDetailEditModal
+                            onClose={onEditProjectDetailModalClose}
+                            isOpen={isEditProjectDetailModalOpen}
+                        />
+                        <Button colorScheme="blue"
+                            leftIcon={<AiFillEdit />}
+                            onClick={onEditProjectDetailModalOpen}
+                        >
+                            Edit Project Details
+                        </Button>
+                    </Flex>
                 </Box>
             </Grid >
         </>
     )
 }
+
+

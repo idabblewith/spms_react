@@ -7,7 +7,7 @@ import {
 import { FcPrint, FcBullish, FcRatings } from "react-icons/fc";
 
 import { NavMenu } from "../components/Navigation/NavMenu";
-import { MyTasksAndAssociations } from "../components/Page/MyTasksAndAssociations";
+import { MyTasksAndAssociations } from "../components/Page/Dash/MyTasksAndAssociations";
 
 import theme from "../theme";
 import { testUserData } from "../api";

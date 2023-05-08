@@ -4,10 +4,17 @@ import { QueryFunctionContext } from "@tanstack/react-query";
 import { ISearchTerm } from "./types";
 import SpiderWeb from "./assets/spiderweb.jpeg"
 import Kokerbin from "./assets/kokerbin.jpeg"
+import Biogeography from "./assets/biogeography.jpg"
+import BioGeo1 from "./assets/bioegeo1.jpg"
+import BioGeo2 from "./assets/biogeo2.jpg"
 import { MdScience } from "react-icons/md"
 import { GiMaterialsScience } from 'react-icons/gi'
 import { RiBook3Fill } from 'react-icons/ri'
 import { FaUserFriends } from 'react-icons/fa'
+import Charmander from "./assets/charmander.png"
+import Squirtle from "./assets/squirtle.png"
+import Bulbasaur from "./assets/bulbasaur.png"
+import Eevee from "./assets/eevee.png"
 
 
 // If using JWTs for login (unlikely as using Microsoft Authentication to login to gov)
@@ -26,71 +33,109 @@ import { FaUserFriends } from 'react-icons/fa'
 //     }
 // }
 
-export const testProjectCreationData = [
+export const testBusinessAreaData = [
     {
-        title: "Core Function",
-        description: "An ongoing science function with an indefinite period of activity.",
-        bulletPoints: [
-            "No approval process",
-            "Immediate closure process",
-            "Requires Annual Reporting"
+        businessArea: "Biodiversity Information Office",
+        businessAreaImage: Kokerbin,
+        businessAreaLeader: "Helen Ensikat",
+        lastUpdateUserName: "Bryton McShane",
+        lastUpdateDate: new Date("2023-04-02T04:16:15.192Z"),
+        tags: [
+            "Biodiversity data", "data sharing", "data discovery", "cross-sector collaboration",
+            "evidence-based decision-making",
         ],
-        colorScheme: "red",
-        buttonIcon: GiMaterialsScience,
+        description: "The Biodiversity Information Office (BIO) has been established as custodian and manager of the Biodiversity Data Repository for the biodiversity data collected and used by the Western Australian community. BIO will mobilise biodiversity data from all environment-related sectors, including government, industry, and community organisations, promoting a culture of collaboration and seamless data sharing across government, industry, research and the community. Greater access to biodiversity data will increase knowledge of our biodiversity and support informed decision making. BIO enhances the capability of the WA public sector to deliver services to a diverse range of stakeholders, leading to the delivery of sound policy outcomes and evidence-based decision-making. BIO is a core component of the WA digital transformation initiative, delivering data services for digital transformation of environmental assessment and approvals system (Environment Online) that is led by the Department of Water and Environmental Regulation (DWER). BIO will provide seamless integration with Environment Online to ensure access to the best available information to inform decision making. BIO is part of the partnership between WA and the Commonwealth Department of Agriculture, Water and the Environment (DAWE) to deliver the Digital Environmental Assessment Program as an integrated digital environmental assessment system and biodiversity data repository.",
+        projects: [
+            {
+                pk: 1,
+                projectTitle: "BIO data collation program",
+                authors: [
+                    "A Barker", "H Ensikat", "K Grogan", "Z Huq", "D Murphy", "C Piper", "C Uehr", "N Panine", "R Cechner",
+                ],
+                years: "2020-2024",
+                tags: [
+                    "Biodiversity Data", "Data Sharing", "Cross-Sector Collaboration",
+                ],
+                projectTypeTag: "Core Function",
+                statusTag: "Update Requested",
+                imageUrl: SpiderWeb,
+            },
+            {
+                pk: 2,
+                projectTitle: "BIO biodiversity data platform",
+                authors: [
+                    "A Barker", "H Ensikat", "K Grogan", "Z Huq", "D Murphy", "C Piper", "C Uehr", "N Panine", "R Cechner",
+                ],
+                years: "2020-2023",
+                tags: [
+                    "Data Sharing", "Digital Infrastructure", "Cross-Sector Collaboration", "Data Discoverability", "Regulatory Reform", "Evidence-Based Decision-Making",
+                ],
+                projectTypeTag: "Core Function",
+                statusTag: "Update Requested",
+                imageUrl: Kokerbin,
+            },
+        ]
     },
     {
-        title: "External Partnership",
-        description: "Participation in an externally managed project.",
-        bulletPoints: [
-            "No formal approval process",
-            "Immediate closure without formal process",
-            "Project details automatically included in annual reporting"
+        businessArea: "Biogeography",
+        businessAreaImage: Biogeography,
+        businessAreaLeader: "Neil Gibson",
+        lastUpdateUserName: "Florian Mayer",
+        lastUpdateDate: new Date("2022-06-18T04:16:15.192Z"),
+        tags: [
+            "Patterning and inventory of biodiversity", "CAR reserve system", "biological surveys, surveillance monitoring",
         ],
-        colorScheme: "blackAlpha",
-        buttonIcon: FaUserFriends,
+        description: "The Biogeography Program undertakes biological surveys to provide information on the biodiversity and nature conservation priorities within Western Australia. Surveys provide data on the distribution of plants and animals, and enable an understanding of regional patterns in their composition and distribution. Targeted surveys of specific regions, broad habitat types or selected plant and animal groups are also undertaken. Knowledge obtained from surveys complements the site-specific studies commissioned by other land managers, such as resource companies, and is used to provide the foundation for biodiversity planning and natural resource management across Western Australia. Collaborative associations are strong with the Western Australian Museum, Australian Museum, and other herbaria and museums throughout Australia, and with universities, cooperative research centres, CSIRO and other research institutions. Partnerships also exist with traditional owners, resource companies and the environmental consulting industry.",
+        projects: [
+            {
+                pk: 3,
+                projectTitle: "Plant species richness and endemism within the south-western Australian Floristic Region",
+                authors: [
+                    "P Gioia",
+                ],
+                years: "2020-2024",
+                tags: [
+                    "Biodiversity Data", "Data Sharing", "Cross-Sector Collaboration",
+                ],
+                projectTypeTag: "Science",
+                statusTag: "Completed",
+                imageUrl: BioGeo1,
+            },
+            {
+                pk: 4,
+                projectTitle: "Susceptibility of frogs to declining rainfall in a biodiversity hotspot",
+                authors: [
+                    "M Cowan",
+                ],
+                years: "",
+                tags: [],
+                projectTypeTag: "External",
+                statusTag: "Active",
+                imageUrl: BioGeo2,
+            },
+            {
+                pk: 5,
+                projectTitle: "Breeding systems and phylogeography of selected saline lake invertebrates",
+                authors: [
+                    "A Pinder",
+                ],
+                years: "2013",
+                tags: [],
+                projectTypeTag: "Student",
+                statusTag: "Completed",
+                imageUrl: "",
+            },
+        ]
     },
-    {
-        title: "Science Project",
-        description: "A project with a defined period of scientific activities.",
-        bulletPoints: [
-            "Approval process to determine how it fits within Departmental stragegy and priorities.",
-            "Formal Closure Process",
-            "Requires Annual Reporting"
-        ],
-        colorScheme: "green",
-        buttonIcon: MdScience,
-    },
-    {
-        title: "Student Project",
-        description: "Supervision of a tertiary student.",
-        bulletPoints: [
-            "No formal approval process",
-            "Immediate closure without formal process",
-            "Requires Annual Reporting"
-        ],
-        colorScheme: "blue",
-        buttonIcon: RiBook3Fill,
-    },
+    // {
+    //     businessArea: "Biogeography",
+    //     businessAreaImage: Biogeography,
+    //     lastUpdateDate: new Date("2023-02-18T04:16:15.192Z"),
+    //     lastUpdateUserName: "Neil Gibson",
+    // },
 ]
-export const testMyTaskData =
-    [
-        { name: "todo1" },
-        { name: "todo2" },
-    ]
 
-export const testMyProjectData =
-    [
-        { name: "proj1" },
-        { name: "proj2" },
-    ]
-
-export const testMyPartnershipsData =
-    [
-        { name: "partnership1" },
-        { name: "parnership2" },
-    ]
-
-export const testProejctCardData = [
+export const testProjectCardData = [
     {
         pk: 1,
         projectTitle: "BIO data collation program",
@@ -122,6 +167,78 @@ export const testProejctCardData = [
         imageUrl: Kokerbin,
     },
 ]
+
+
+
+
+export const testProjectCreationData = [
+    {
+        title: "Core Function",
+        description: "An ongoing science function with an indefinite period of activity.",
+        bulletPoints: [
+            "No approval process",
+            "Immediate closure process",
+            "Requires Annual Reporting"
+        ],
+        colorScheme: "red",
+        buttonIcon: GiMaterialsScience,
+        cardImage: Charmander,
+    },
+
+    {
+        title: "Science Project",
+        description: "A project with a defined period of scientific activities.",
+        bulletPoints: [
+            "Approval process to determine how it fits within Departmental stragegy and priorities.",
+            "Formal Closure Process",
+            "Requires Annual Reporting"
+        ],
+        colorScheme: "green",
+        buttonIcon: MdScience,
+        cardImage: Bulbasaur,
+    },
+    {
+        title: "External Partnership",
+        description: "Participation in an externally managed project.",
+        bulletPoints: [
+            "No formal approval process",
+            "Immediate closure without formal process",
+            "Project details automatically included in annual reporting"
+        ],
+        colorScheme: "gray",
+        buttonIcon: FaUserFriends,
+        cardImage: Eevee,
+    },
+    {
+        title: "Student Project",
+        description: "Supervision of a tertiary student.",
+        bulletPoints: [
+            "No formal approval process",
+            "Immediate closure without formal process",
+            "Requires Annual Reporting"
+        ],
+        colorScheme: "blue",
+        buttonIcon: RiBook3Fill,
+        cardImage: Squirtle,
+    },
+]
+export const testMyTaskData =
+    [
+        { name: "todo1" },
+        { name: "todo2" },
+    ]
+
+export const testMyProjectData =
+    [
+        { name: "proj1" },
+        { name: "proj2" },
+    ]
+
+export const testMyPartnershipsData =
+    [
+        { name: "partnership1" },
+        { name: "parnership2" },
+    ]
 
 
 export const testProjectData = [

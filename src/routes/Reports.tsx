@@ -1,5 +1,5 @@
 import { Box, Text } from "@chakra-ui/react"
-import { NavigationBar } from "../components/Page/NavigationBar"
+import { NavigationBar } from "../components/Page/All/NavigationBar"
 
 export const Reports = () => {
     return (

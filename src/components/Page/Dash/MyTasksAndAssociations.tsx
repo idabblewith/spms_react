@@ -1,8 +1,8 @@
 import { AccordionPanel, Box, AccordionButton, Accordion, AccordionIcon, AccordionItem, Flex, Text, Center } from "@chakra-ui/react"
 import { FcHighPriority, FcOk } from "react-icons/fc"
-import { testMyPartnershipsData } from "../../api"
-import { testMyProjectData } from "../../api"
-import { testMyTaskData } from "../../api"
+import { testMyPartnershipsData } from "../../../api"
+import { testMyProjectData } from "../../../api"
+import { testMyTaskData } from "../../../api"
 
 interface ITask {
     name: string

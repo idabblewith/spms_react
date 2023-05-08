@@ -26,7 +26,7 @@ export const ProjectSearchBar = () => {
         // debounce(
         (value: string) => {
             if (value.length >= 3) {
-
+                console.log("Something")
             }
         }
     // , 1500);

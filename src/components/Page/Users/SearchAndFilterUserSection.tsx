@@ -1,12 +1,12 @@
 import { Box, Flex, Button, Input, Text, Grid, Center, useDisclosure, Spinner, Checkbox, Select, Stat, StatLabel, Collapse, InputGroup, InputRightAddon, Modal, ModalContent, FormControl, FormHelperText, InputLeftElement, ModalCloseButton, ModalHeader, ModalOverlay, Icon, } from "@chakra-ui/react"
 import { useEffect, useRef, useState } from "react";
-import { IUserData } from "../../types";
+import { IUserData } from "../../../types";
 import { useQuery } from "@tanstack/react-query";
 import _ from 'lodash';
 import { AdminSliceSingle, BoxContainer } from "./AdminSliceSingle";
-import { testUserData } from "../../api";
+import { testUserData } from "../../../api";
 import { BsSearch } from 'react-icons/bs';
-import { AddUserModal } from "../Modals/AddUserModal";
+import { AddUserModal } from "../../Modals/AddUserModal";
 
 
 export const SearchAndFilterUserSection = () => {
@@ -150,9 +150,69 @@ export const SearchAndFilterUserSection = () => {
     return (
         <Box maxW={"100%"} maxH={"100%"}>
             <AddUserModal isOpen={isAddUserModalOpen} onClose={onAddUserClose} />
-            <Button onClick={handleToggleFilters} mt={4}>
-                {showFilters ? 'Hide Filters' : 'Show Filters'}
-            </Button>
+
+
+            <Grid width={"100%"} mt={4}
+
+            >
+                <InputGroup>
+                    <Input
+                        type="text"
+                        placeholder="Search by username, name, or email"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        borderRadius="md"
+                        paddingRight="2rem" // Add some padding to prevent text overlapping the icon
+                        borderColor="gray.300" // Set border color to match the InputRightAddon border color
+
+                    />
+                    <InputRightAddon
+                        children={<BsSearch />}
+                        background="transparent"
+                        borderColor="gray.300" // Set border color to match the Input border color
+                        borderWidth="1px" // Add borderWidth to show the border around the addon
+                        pointerEvents="none"
+                        height="100%"
+                        zIndex="1" // Add zIndex to place the addon above the input
+                        _hover={{
+                            borderColor: "gray.300", // Prevents the border color change on hover
+                        }}
+
+                    />
+                </InputGroup>
+                <Grid
+                    justifyContent={"flex-end"}
+                    alignContent={"flex-end"}
+                    alignItems={"flex-end"}
+                    justifySelf={"flex-end"}
+                    width={{
+                        base: "100%",
+                        lg: "40%",
+                        xl: "25%"
+                    }}
+                    gridTemplateColumns={
+                        {
+                            base: "repeat(2, 1fr)",
+                            lg: "repeat(2, 1fr)",
+                        }
+                    }
+                    gridColumnGap={4}
+                    pt={3}
+                // justifyItems="end"
+                >
+                    <Button onClick={handleToggleFilters}
+                    // mt={4}
+                    // colorScheme=""
+                    >
+                        {showFilters ? 'Hide Filters' : 'Show Filters'}
+                    </Button>
+                    <Button onClick={onAddUserOpen}
+                        colorScheme={"blue"}
+                    >
+                        Add
+                    </Button>
+                </Grid>
+            </Grid>
             <Collapse in={showFilters} animateOpacity >
                 <Flex mt={4} flexDirection={"column"}
                     // bg={"gray.100"}
@@ -271,36 +331,6 @@ export const SearchAndFilterUserSection = () => {
                 </Flex>
 
             </Collapse>
-            <Flex width={"100%"} mt={4}>
-                <InputGroup>
-                    <Input
-                        type="text"
-                        placeholder="Search by username, name, or email"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        borderRadius="md"
-                        paddingRight="2rem" // Add some padding to prevent text overlapping the icon
-                        borderColor="gray.300" // Set border color to match the InputRightAddon border color
-
-                    />
-                    <InputRightAddon
-                        children={<BsSearch />}
-                        background="transparent"
-                        borderColor="gray.300" // Set border color to match the Input border color
-                        borderWidth="1px" // Add borderWidth to show the border around the addon
-                        pointerEvents="none"
-                        height="100%"
-                        zIndex="1" // Add zIndex to place the addon above the input
-                        _hover={{
-                            borderColor: "gray.300", // Prevents the border color change on hover
-                        }}
-
-                    />
-                </InputGroup>
-                <Flex justifyContent={"flex-end"} width="100%">
-                    <Button onClick={onAddUserOpen}>Add</Button>
-                </Flex>
-            </Flex>
             <Grid
                 templateColumns={{
                     base: "1fr 4fr 5fr 1fr",

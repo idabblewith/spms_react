@@ -1,10 +1,20 @@
 
 import { Box, Button, Center, Flex, Grid, Heading, List, ListItem, Text, UnorderedList } from "@chakra-ui/react"
-import { NavigationBar } from "../components/Page/NavigationBar"
+import { NavigationBar } from "../components/Page/All/NavigationBar"
 
 import { AnimatePresence, motion } from "framer-motion"
 import { testProjectCreationData } from "../api"
+import { NewProjectCard } from "../components/Page/ProjectCreate/NewProjectCard"
+import { InteractiveNewProjectCardv1 } from "../components/Page/ProjectCreate/InteractiveNewProjectCardv1"
+import { InteractiveNewProjectCardv2 } from "../components/Page/ProjectCreate/InteractiveNewProjectCardv2"
+import { useState } from "react"
+
+
+
+
 export const NewProject = () => {
+    const [activeCard, setActiveCard] = useState<number | null>(null);
+
     return (
         <>
             <NavigationBar
@@ -51,82 +61,25 @@ export const NewProject = () => {
                 >
                     {testProjectCreationData.map((item, index) => {
                         return (
-                            <motion.div
-                                key={index}
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <Box
-                                    bgColor={"gray.100"}
-                                    rounded={6}
-                                    flexDir={"column"}
-                                    p={6}
-                                    position={"relative"}
-                                    minH={
-                                        {
-                                            base: "350px",
-                                            md: "300px",
-                                            lg: "400px",
-                                            '1xl': "450px",
-                                        }
-                                    }
-                                >
-                                    {/* TITLE */}
-                                    <Center>
-                                        <Heading
-                                            size={"md"}
-                                        >
-                                            {item.title}
-                                        </Heading>
-                                    </Center>
-
-                                    {/* DESCRIPTION */}
-                                    <Center
-                                        my={4}
-                                        py={4}
-                                    >
-                                        <Text
-                                            fontSize={"md"}
-                                        >
-                                            {item.description}
-                                        </Text>
-                                    </Center>
-
-                                    {/* INFO */}
-                                    <Center>
-                                        <UnorderedList>
-                                            {
-                                                item.bulletPoints.map((point, index2) => (
-                                                    <ListItem key={index2}
-                                                        fontSize={"sm"}
-                                                    >
-                                                        {point}
-                                                    </ListItem>
-                                                )
-                                                )}
-                                        </UnorderedList>
-                                    </Center>
-
-                                    {/* BUTTON */}
-                                    <Center
-                                        bottom={0}
-                                        left={0}
-                                        right={0}
-                                        position="absolute"
-                                        width="100%"
-                                        py={6}
-                                        px={3}
-                                    // bg="red"
-                                    >
-                                        <Button
-                                            colorScheme={item.colorScheme}
-                                            leftIcon={<item.buttonIcon />}
-                                        >
-                                            Create {item.title}
-                                        </Button>
-                                    </Center>
-
-                                </Box>
-                            </motion.div>
+                            <NewProjectCard key={index}
+                                title={item.title}
+                                description={item.description}
+                                buttonIcon={item.buttonIcon}
+                                bulletPoints={item.bulletPoints}
+                                colorScheme={item.colorScheme}
+                            />
+                            // <InteractiveNewProjectCardv1
+                            //     index={index}
+                            //     activeCard={activeCard}
+                            //     setActiveCard={setActiveCard}
+                            //     key={index}
+                            //     title={item.title}
+                            //     description={item.description}
+                            //     buttonIcon={item.buttonIcon}
+                            //     cardImage={item.cardImage}
+                            //     bulletPoints={item.bulletPoints}
+                            //     colorScheme={item.colorScheme}
+                            // />
                         )
                     })}
                 </Grid>

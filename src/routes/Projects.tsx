@@ -2,10 +2,10 @@ import { Image, Text, Accordion, AccordionButton, AccordionIcon, AccordionItem, 
 import { BsChatSquareFill } from "react-icons/bs";
 import { GiQueenCrown } from 'react-icons/gi';
 import { AiFillTag, AiFillEdit, AiFillCalendar } from 'react-icons/ai';
-import { NavigationBar } from "../components/Page/NavigationBar";
+import { NavigationBar } from "../components/Page/All/NavigationBar";
 import SpiderWeb from "../assets/spiderweb.jpeg"
 import Kokerbin from "../assets/kokerbin.jpeg"
-import { SearchAndFilterProjectSection } from "../components/Page/SearchAndFilterProjectSection";
+import { SearchAndFilterProjectSection } from "../components/Page/Projects/SearchAndFilterProjectSection";
 
 export const Projects = () => (
     <>

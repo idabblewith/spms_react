@@ -1,6 +1,6 @@
 import { Grid, Flex, Checkbox, Center, Image, Box, Button, Text, Menu, MenuButton, MenuList, BoxProps, MenuItem, useBreakpointValue, useDisclosure, useToast, Avatar } from "@chakra-ui/react";
 import { MdMoreVert } from "react-icons/md";
-import { IUserData } from "../../types";
+import { IUserData } from "../../../types";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 

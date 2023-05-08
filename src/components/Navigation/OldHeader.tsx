@@ -1,7 +1,7 @@
 // Components
 import { CgPlayListAdd, CgBrowse } from "react-icons/cg";
 import { ToggleDarkMode } from "./ToggleDarkMode";
-import { ProjectSearchBar } from "../Page/ProjectSearchBar";
+import { ProjectSearchBar } from "../Page/All/ProjectSearchBar";
 import { NavMenu } from "../Navigation/NavMenu";
 
 // Chakra
