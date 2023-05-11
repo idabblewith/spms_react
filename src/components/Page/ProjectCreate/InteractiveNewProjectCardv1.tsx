@@ -1,9 +1,10 @@
-import { Box, Button, Center, Heading, ListItem, UnorderedList, Text, Image } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, ListItem, UnorderedList, Text, Image, useDisclosure } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import React from "react";
 
 import Tilt from 'react-parallax-tilt'
-import '../../styles/parallax.css'
+import '../../../styles/parallax.css'
+import { NewProjectModal } from "../../Modals/NewProjectModal";
 
 
 interface INewProjectCard {
@@ -24,19 +25,33 @@ export const InteractiveNewProjectCardv1 = (
         : INewProjectCard
 ) => {
 
+    const { isOpen: isModalOpen, onOpen: onOpenModal, onClose: onCloseModal } = useDisclosure()
+
+    const openNewProjectModal = () => {
+        console.log(`Clicked ${title} card.`)
+        onOpenModal();
+    }
+
+
     return (
         <Tilt
-            className="parallax-effect-glare-scale"
-            perspective={750}
+            perspective={800}
+            scale={1.08}
+            transitionSpeed={1500}
+            tiltMaxAngleY={20}
+            tiltMaxAngleX={20}
+            // gyroscope={true}
+
             glareEnable={true}
             glareMaxOpacity={0.45}
-            scale={1.08}
             onEnter={() => setActiveCard(index)}
             onLeave={() => setActiveCard(null)}
+            style={{ zIndex: activeCard === index ? 1000 : 4 }}
         >
-            <Box
-                zIndex={activeCard === index ? 1000 : 0}
+            <NewProjectModal projectType={title} isOpen={isModalOpen} onClose={onCloseModal} />
 
+            <Box
+                onClick={openNewProjectModal}
                 bgColor={"gray.300"}
                 rounded={6}
                 flexDir={"column"}
@@ -52,6 +67,13 @@ export const InteractiveNewProjectCardv1 = (
                 boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
                 transform={"perspective(1000px)"}
                 cursor={"pointer"}
+
+                className="parallax-effect-glare-scale"
+                style={{
+                    willChange: "transform",
+                    transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
+                    transform: "perspective(500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)"
+                }}
             >
                 {/* Banner */}
                 <Box
@@ -79,15 +101,15 @@ export const InteractiveNewProjectCardv1 = (
                 <Image
                     className="inner-element"
                     src={cardImage}
-                    w={"150px"}
-                    h={"150px"}
+                    w={"125px"}
+                    h={"125px"}
                     objectFit={"contain"}
 
 
-                    width={"16em"}
+                    // width={"16em"}
                     position={"absolute"}
-                    top="6em"
-                    right={"-4em"}
+                    top="3em"
+                    right={"5"}
                     filter={"drop-shadow(0px 10px 25px rgba(0,0,0,0.5)"}
                 />
 

@@ -1,7 +1,7 @@
 // Components
 import { CgPlayListAdd, CgBrowse } from "react-icons/cg";
 import { ToggleDarkMode } from "./ToggleDarkMode";
-import { ProjectSearchBar } from "../Page/All/ProjectSearchBar";
+import { ProjectSearchBar } from "./ProjectSearchBar";
 import { NavMenu } from "../Navigation/NavMenu";
 
 // Chakra
@@ -153,11 +153,15 @@ const ReportMenuContents = () => {
 }
 // const { isOpen: isAddUserModalOpenTop, onOpen: onAddUserOpenTop, onClose: onAddUserCloseTop } = useDisclosure();
 
-const StaffMenuContents = () => {
+const UserMenuContents = () => {
     const navigate = useNavigate();
+    const { isOpen: isAddUserModalOpen, onOpen: onAddUserOpen, onClose: onAddUserClose } = useDisclosure();
+
 
     return (
         <>
+            <AddUserModal isOpen={isAddUserModalOpen} onClose={onAddUserClose} />
+
             <MenuGroup
                 title="Users" fontSize={"12px"} color={"gray.500"} textAlign={"center"}
             >
@@ -174,9 +178,7 @@ const StaffMenuContents = () => {
                 </MenuItem>
 
                 <MenuItem
-                    onClick={() => {
-                        // onAddUserOpenTop();
-                    }}
+                    onClick={onAddUserOpen}
                 >
                     {<FaUserPlus />}
                     <Text ml={2}>
@@ -223,7 +225,7 @@ const OldHeader = () => {
         <Box>
             {/* Nav background */}
             <HStack bgColor={"blackAlpha.800"}
-                py={2}
+                // py={2}
                 roundedBottom={6}
                 alignItems="center" justifyContent="space-between"
             >
@@ -335,10 +337,10 @@ const OldHeader = () => {
 
                                                         {/* Staff */}
                                                         <SidebarNavMenu
-                                                            menuName="Staff"
+                                                            menuName="Users"
                                                             leftIcon={<BsFillPeopleFill />}
                                                             children={
-                                                                <StaffMenuContents />
+                                                                <UserMenuContents />
                                                             }
                                                         />
                                                     </Grid>
@@ -369,8 +371,8 @@ const OldHeader = () => {
                                     } />
 
                                     {/* Staff */}
-                                    <NavMenu menuName="Staff" children={
-                                        <StaffMenuContents />
+                                    <NavMenu menuName="Users" children={
+                                        <UserMenuContents />
                                     } />
                                 </HStack>
 
@@ -378,8 +380,8 @@ const OldHeader = () => {
                                 <HStack
                                     px={3}
                                 >
-                                    {/* Project Search */}
-                                    <ProjectSearchBar />
+                                    {/* Project Search or DMS and Notifications */}
+                                    {/* <ProjectSearchBar /> */}
                                     <Navitar shouldShowName userData={testUserData[5]} windowSize={windowSizeValue} />
                                 </HStack>
                             </Box>

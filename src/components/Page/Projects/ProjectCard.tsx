@@ -185,19 +185,22 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                                     />
                                     <Grid
                                         ml={3}
-                                        templateColumns={
-                                            {
-                                                base: "repeat(1, 1fr)",
-                                                lg: "repeat(2, 1fr)",
-                                                xl: "repeat(auto, 1fr)",
+                                        // templateColumns={
+                                        //     {
+                                        //         base: "repeat(1, 1fr)",
+                                        //         lg: "repeat(2, 1fr)",
+                                        //         xl: "repeat(auto, 1fr)",
 
-                                            }
-                                        }
+                                        //     }
+                                        // }
                                         gridTemplateColumns={
                                             {
                                                 base: "repeat(1, 1fr)",
+                                                sm: "repeat(2, 1fr)",
                                                 md: "repeat(2, 1fr)",
-                                                xl: "repeat(3, 1fr)"
+                                                lg: "repeat(3, 1fr)",
+                                                xl: "repeat(3, 1fr)",
+                                                "2xl": "repeat(4, 1fr)",
                                             }
                                         }
                                         gridTemplateRows={"28px"}

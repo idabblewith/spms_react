@@ -1,5 +1,5 @@
 
-import { Box, Button, Center, Flex, Grid, Heading, List, ListItem, Text, UnorderedList } from "@chakra-ui/react"
+import { Box, Button, Center, Flex, Grid, Heading, List, ListItem, Text, UnorderedList, useDisclosure } from "@chakra-ui/react"
 import { NavigationBar } from "../components/Page/All/NavigationBar"
 
 import { AnimatePresence, motion } from "framer-motion"
@@ -8,12 +8,15 @@ import { NewProjectCard } from "../components/Page/ProjectCreate/NewProjectCard"
 import { InteractiveNewProjectCardv1 } from "../components/Page/ProjectCreate/InteractiveNewProjectCardv1"
 import { InteractiveNewProjectCardv2 } from "../components/Page/ProjectCreate/InteractiveNewProjectCardv2"
 import { useState } from "react"
+import { NewProjectModal } from "../components/Modals/NewProjectModal"
 
 
 
 
 export const NewProject = () => {
     const [activeCard, setActiveCard] = useState<number | null>(null);
+
+
 
     return (
         <>

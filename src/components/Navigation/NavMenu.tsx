@@ -40,7 +40,9 @@ export const NavMenu = (
         : fColor ? fColor : "whiteAlpha.700";
 
     return (
-        <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+            py={2}
+        >
             <Menu isOpen={isOpen} >
                 <MenuButton
                     colorScheme={cScheme}

@@ -1,8 +1,9 @@
-import { Center, Text, Box, Heading, UnorderedList, ListItem, Button } from "@chakra-ui/react"
+import { Center, Text, Box, Heading, UnorderedList, ListItem, Button, useDisclosure } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import React from "react";
 import { ReactNode } from "react";
 import { IconType } from 'react-icons';
+import { NewProjectModal } from "../../Modals/NewProjectModal";
 
 interface INewProjectCard {
     title: string;
@@ -16,8 +17,11 @@ export const NewProjectCard = ({ title, description, bulletPoints, colorScheme, 
 
     const ButtonIcon = buttonIcon;
 
+    const { isOpen: isModalOpen, onOpen: onOpenModal, onClose: onCloseModal } = useDisclosure()
+
     const openNewProjectModal = () => {
         console.log(`Clicked ${title} card.`)
+        onOpenModal();
     }
 
     return (
@@ -40,8 +44,10 @@ export const NewProjectCard = ({ title, description, bulletPoints, colorScheme, 
                 openNewProjectModal();
             }}
         >
+            <NewProjectModal projectType={title} isOpen={isModalOpen} onClose={onCloseModal} />
+
             {/* TITLE */}
-            <Center
+            <Button
                 w={"100%"}
                 h={"80px"}
                 bg={`${colorScheme}.500`}
@@ -65,7 +71,7 @@ export const NewProjectCard = ({ title, description, bulletPoints, colorScheme, 
 
                 </Heading>
 
-            </Center>
+            </Button>
 
             {/* DESCRIPTION */}
             <Box

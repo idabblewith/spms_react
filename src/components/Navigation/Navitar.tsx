@@ -6,6 +6,7 @@ import { SiReadthedocs } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import { GoTriangleDown } from "react-icons/go"
 import { INavitar } from "../../types";
+import { useState } from "react";
 
 
 export const Navitar = ({ shouldShowName = false, userData, windowSize }: INavitar) => {
@@ -16,10 +17,36 @@ export const Navitar = ({ shouldShowName = false, userData, windowSize }: INavit
         console.log("Logged out!");
     }
 
+    const [isHovered, setIsHovered] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+        setIsOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        setIsOpen(false);
+    };
+
+
+
     return (
-        <Box>
-            <Menu>
-                <MenuButton>
+        <Box
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
+        // bg={"red"}
+        // py={2}
+        >
+            <Menu isOpen={isOpen}
+            >
+                <MenuButton
+                    p={2}
+                    py={4}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
                     <Center>
                         {shouldShowName ?
                             <Text
@@ -58,7 +85,11 @@ export const Navitar = ({ shouldShowName = false, userData, windowSize }: INavit
 
                 </MenuButton>
 
-                <MenuList>
+                <MenuList
+                    onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+                    mt={"-7.5px"}
+
+                >
 
                     <MenuGroup
                         title="Documentation" fontSize={"12px"}

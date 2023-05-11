@@ -1,20 +1,17 @@
-.parallax-effect-glare-scale {
-    /* @include background; */
-    /* display: flex; */
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: center; */
 
-  
+
+.parallax-effect-glare-scale {
     transform-style: preserve-3d;
+    /* transform: translateZ(-100px); */
 }
-    /* .inner-element {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 35px;
-      font-style: italic;
-      color: white;
-      transform: translateZ(60px);
-    } */
+
+.parallax-effect-glare-scale .inner-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-style: italic;
+    color: #fff;
+    transform: translateZ(100px);
+}
