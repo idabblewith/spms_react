@@ -2,7 +2,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Root } from "./components/Root";
 import { Dash } from "./routes/Dash";
 import { Users } from "./routes/Users";
-import { Projects } from "./routes/Projects";
+import { BrowseProjects } from "./routes/BrowseProjects";
 import { NotFound } from "./routes/NotFound";
 import { Reports } from "./routes/Reports";
 import { CurrentReport } from "./routes/CurrentReport";
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([{
         },
         {
             path: "projects/browse",
-            element: <Projects />,
+            element: <BrowseProjects />,
         },
         {
             path: "projects/new",

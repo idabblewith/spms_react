@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Grid, Text, Image } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Grid, Text, Image, Flex } from "@chakra-ui/react"
 import { IProjectCardProps, ProjectCard } from "./ProjectCard"
 import { AiFillEdit, AiFillTag } from "react-icons/ai"
 import { GiQueenCrown } from "react-icons/gi";
@@ -40,12 +40,18 @@ export const BusinessAreaAccordion = (
             >
                 <AccordionItem rounded={"2xl"}>
                     <h2>
-                        <AccordionButton rounded={"2xl"}>
-                            <Button variant={"link"} flex={1} justifyContent={"start"}>
-                                {/* Biodiversity Information Office */}
-                                {businessArea}
-                            </Button>
-                            <AccordionIcon />
+                        <AccordionButton
+                            as={Button}
+                            rounded={"2xl"}
+                            variant={"link"} flex={1}
+                            justifyContent={"start"}
+                            w={"100%"}
+                        >
+                            {businessArea}
+                            <Flex justifyContent={"right"} ml={"auto"}>
+                                <AccordionIcon />
+                            </Flex>
+
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4} bg={"white"}>

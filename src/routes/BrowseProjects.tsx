@@ -7,7 +7,7 @@ import SpiderWeb from "../assets/spiderweb.jpeg"
 import Kokerbin from "../assets/kokerbin.jpeg"
 import { SearchAndFilterProjectSection } from "../components/Page/Projects/SearchAndFilterProjectSection";
 
-export const Projects = () => (
+export const BrowseProjects = () => (
     <>
         <NavigationBar
             subDirOne={{
