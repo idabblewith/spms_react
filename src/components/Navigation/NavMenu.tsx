@@ -41,7 +41,8 @@ export const NavMenu = (
 
     return (
         <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-            py={2}
+        // py={2}
+
         >
             <Menu isOpen={isOpen} >
                 <MenuButton

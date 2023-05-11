@@ -225,7 +225,11 @@ const OldHeader = () => {
         <Box>
             {/* Nav background */}
             <HStack bgColor={"blackAlpha.800"}
-                // py={2}
+                py={{
+                    base: 4,
+                    md: 4,
+                    lg: 1
+                }}
                 roundedBottom={6}
                 alignItems="center" justifyContent="space-between"
             >
