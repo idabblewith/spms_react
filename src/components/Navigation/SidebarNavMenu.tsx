@@ -1,5 +1,5 @@
 import { Flex, Menu, MenuButton, Text, TextProps, Button, Center, MenuList, MenuGroup, MenuItem, useMenu, Box } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BsCodeSlash } from "react-icons/bs"
 import { FaUserCircle } from "react-icons/fa"
 import { FiLogOut } from "react-icons/fi"
@@ -24,19 +24,27 @@ export const SidebarNavMenu = (
 
     const handleMouseEnter = () => {
         setIsHovered(true);
+        setIsOpen(true);
     };
 
     const handleMouseLeave = () => {
         setIsHovered(false);
-    };
-
-    const handleMenuOpen = () => {
-        setIsOpen(true);
-    };
-
-    const handleMenuClose = () => {
         setIsOpen(false);
     };
+
+    // useEffect(() => {
+    //     if (isOpen) {
+    //         console.log("isOpen")
+    //     }
+    //     else {
+    //         console.log("isClosed")
+    //     }
+
+    //     if (isHovered) {
+    //         console.log("isHovered")
+    //     }
+    //     else { console.log("isNotHovered") }
+    // }, [isOpen, isHovered])
 
     const bgStyle = isHovered || isOpen
         ? cScheme
@@ -52,10 +60,13 @@ export const SidebarNavMenu = (
 
     return (
         // Box required to prevent popper console.log on click
-        <Box >
+        <Box
+        // onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+        >
             <Menu
-                onOpen={handleMenuOpen}
-                onClose={handleMenuClose}
+                // onOpen={handleMenuOpen}
+                // onClose={handleMenuClose}
+                isOpen={isOpen}
             >
                 <MenuButton
                     colorScheme={cScheme}
@@ -86,8 +97,6 @@ export const SidebarNavMenu = (
 
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
-
-
                 >
                     <Flex
                         justifyContent={"space-between"}
@@ -152,6 +161,8 @@ export const SidebarNavMenu = (
                 </MenuButton>
 
                 <MenuList
+                    onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+                    mt={"-7.5px"}
                     w={"100%"}
                 >
                     {children}

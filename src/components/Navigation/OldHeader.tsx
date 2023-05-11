@@ -293,26 +293,45 @@ const OldHeader = () => {
                                             <DrawerHeader
                                                 borderBottomWidth="1px" color="white"
                                             >
-                                                Menu
+                                                SPMS
                                             </DrawerHeader>
                                             <DrawerBody>
                                                 <VStack
                                                     py={3}
                                                 >
-                                                    <HStack>
+                                                    <HStack
+                                                        w={"100%"}
+                                                    >
                                                         {/* Project Search */}
-                                                        <Box>
+                                                        {/* <Box>
                                                             <ProjectSearchBar />
-                                                        </Box>
-                                                        <Box
-                                                            pl={4}
-                                                            pr={1.5}
+                                                        </Box> */}
+                                                        <Flex
+                                                            mr={"auto"}
+                                                            justifyContent={"left"}
+                                                            w={"100%"}
                                                         >
+                                                            <Center
+                                                            >
+                                                                <Text
+                                                                    // bg={}
+                                                                    fontSize={"lg"}
+                                                                    color={"whiteAlpha.800"}
+                                                                >
+                                                                    MENU
+                                                                </Text>
+                                                            </Center>
+                                                        </Flex>
+                                                        <Flex
+                                                            ml={"auto"}
+                                                            justifyContent={"right"}
+                                                        >
+
                                                             <Navitar
                                                                 userData={testUserData[5]}
                                                                 windowSize={windowSizeValue}
                                                             />
-                                                        </Box>
+                                                        </Flex>
                                                     </HStack>
 
 
