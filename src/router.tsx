@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Root } from "./components/Root";
-import { Home } from "./routes/Home";
+import { Dash } from "./routes/Dash";
 import { Users } from "./routes/Users";
 import { Projects } from "./routes/Projects";
 import { NotFound } from "./routes/NotFound";
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([{
     children: [
         {
             path: "",
-            element: <Home />,
+            element: <Dash />,
         },
         {
             path: "users",

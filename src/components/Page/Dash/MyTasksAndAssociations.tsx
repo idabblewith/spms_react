@@ -39,12 +39,16 @@ export const MyTasksAndAssociations = () => {
 
                     defaultIndex={[0]}
                     allowToggle
+
                 >
                     <AccordionItem
                     >
                         <h2>
                             <AccordionButton
-                                _expanded={{ bg: 'gray.500', color: 'white' }}
+                                bg={"gray.500"}
+                                color={"white"}
+                                // _expanded={{ bg: 'gray.500', color: 'white' }}
+                                _hover={{ bg: 'gray.500', color: 'white' }}
                             >
                                 <Box as="span" flex='1' textAlign='left'>
                                     My Tasks
@@ -58,6 +62,7 @@ export const MyTasksAndAssociations = () => {
                             </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}
+
                         >
                             {
                                 tasks.length >= 1 ?
@@ -83,7 +88,11 @@ export const MyTasksAndAssociations = () => {
                     <AccordionItem>
                         <h2>
                             <AccordionButton
-                                _expanded={{ bg: 'gray.500', color: 'white' }}
+                                bg={"gray.500"}
+                                color={"white"}
+                                // _expanded={{ bg: 'gray.500', color: 'white' }}
+                                _hover={{ bg: 'gray.500', color: 'white' }}
+
                             >
                                 <Box as="span" flex='1' textAlign='left'>
                                     My Projects
@@ -109,7 +118,11 @@ export const MyTasksAndAssociations = () => {
                     <AccordionItem>
                         <h2>
                             <AccordionButton
-                                _expanded={{ bg: 'gray.500', color: 'white' }}
+                                bg={"gray.500"}
+                                color={"white"}
+                                // _expanded={{ bg: 'gray.500', color: 'white' }}
+                                _hover={{ bg: 'gray.500', color: 'white' }}
+
                             >
                                 <Box as="span" flex='1' textAlign='left'>
                                     My Partnerships

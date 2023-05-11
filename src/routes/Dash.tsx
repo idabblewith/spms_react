@@ -12,7 +12,7 @@ import { MyTasksAndAssociations } from "../components/Page/Dash/MyTasksAndAssoci
 import theme from "../theme";
 import { testUserData } from "../api";
 
-export const Home = () => {
+export const Dash = () => {
     const [shouldConcat, setShouldConcat] = useState(false);
     const [welcomeUser, setWelcomeUser] = useState("");
     const [spmsText, setSpmsText] = useState("Science Project Management System");
@@ -73,14 +73,14 @@ export const Home = () => {
                             <>
                                 <MenuItem
                                     onClick={() => {
-                                        navigate('/arar/dashboard')
+                                        navigate('/reports/dashboard')
                                     }}
                                 >
                                     {<FcBullish />}&nbsp;Progress
                                 </MenuItem>
                                 <MenuItem
                                     onClick={() => {
-                                        navigate('/arar/current')
+                                        navigate('reports/current')
                                     }}
                                 >
                                     {<FcPrint />}&nbsp;Print Preview
