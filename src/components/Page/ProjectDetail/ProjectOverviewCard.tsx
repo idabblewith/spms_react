@@ -33,7 +33,12 @@ export const ProjectOverviewCard = (
                 rounded={"lg"}
                 mb={4}
                 p={4}
-                templateColumns="4fr 5fr"
+                templateColumns={
+                    {
+                        base: "repeat(1, 1fr)",
+                        lg: "4fr 5fr"
+                    }
+                }
                 gap={3}
             >
                 <Box

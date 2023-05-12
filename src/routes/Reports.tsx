@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react"
+import { Box, Center, Text } from "@chakra-ui/react"
 import { NavigationBar } from "../components/Page/All/NavigationBar"
 
 export const Reports = () => {
@@ -21,6 +21,10 @@ export const Reports = () => {
                     </Text>
                     <Text fontSize={"sm"} color={"gray.600"}>Click to expand</Text>
                 </Box>
+
+                <Center mt={20}>
+                    <Text fontWeight={"bold"} fontSize={"2xl"}>Section on hold until data hooked in</Text>
+                </Center>
 
             </Box>
         </>

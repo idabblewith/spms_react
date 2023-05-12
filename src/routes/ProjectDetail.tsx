@@ -15,7 +15,7 @@ import { ProgressReportContents } from "../components/Page/ProjectDetail/Progres
 export const ProjectDetail = () => {
 
     const { projectPk } = useParams();
-    console.log(projectPk);
+    // console.log(projectPk);
 
 
 

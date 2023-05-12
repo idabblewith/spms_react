@@ -1,6 +1,6 @@
-import { Button, Divider, Grid, HStack, Tag } from "@chakra-ui/react"
+import { Button, Center, Divider, Grid, HStack, Menu, MenuButton, MenuItem, MenuList, Tag, useDisclosure } from "@chakra-ui/react"
 import { ImCross } from "react-icons/im"
-import { MdEdit } from "react-icons/md"
+import { MdEdit, MdMoreVert } from "react-icons/md"
 
 interface ITeamMember {
     name: string;
@@ -10,6 +10,11 @@ interface ITeamMember {
 }
 
 export const TeamMember = ({ name, role, timeAllocation, order }: ITeamMember) => {
+
+    // const { isOpen, onOpen, onClose } = useDisclosure();
+    // Are you sure you want to remove this user from the project? (MODAL)
+    // Edit User                                                   (MODAL)
+
     return (
         <>
             <HStack
@@ -60,6 +65,33 @@ export const TeamMember = ({ name, role, timeAllocation, order }: ITeamMember) =
                     </Button>
                 </Grid>
 
+                {/* Actions */}
+                {/* <Center
+                    // maxWidth={"50px"}
+                    minW={"50px"}
+                // bg="red"
+                >
+                    <Menu>
+                        <MenuButton
+                            px={2}
+                            py={2}
+                            transition="all 0.2s"
+                            rounded={4}
+                            borderRadius="md"
+                            borderWidth="1px"
+                            _hover={{ bg: "gray.400" }}
+                            _expanded={{ bg: "blue.400" }}
+                            _focus={{ boxShadow: "outline" }}
+                        >
+                            <MdMoreVert />
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem>Edit</MenuItem>
+                            <MenuItem onClick={onOpen}>Delete</MenuItem>
+                        </MenuList>
+                    </Menu>
+                </Center>
+                 */}
             </HStack>
             <Divider />
         </>
