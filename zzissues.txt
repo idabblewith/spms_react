@@ -1,0 +1,26 @@
+Position 
+    - Users must manually type a position (unintuitive and error prone)
+    - For project creation page/report: Should be automatic and alphabetical
+    - For manage team: Should be drag and drop
+
+Select / Dropdowns
+    - Randomly ordered
+    - Should be alphabetical
+
+Questions
+    - What should be done with db entries with (deprecated) research functions?
+        Animal and plant data management and distribution (deprecated)
+        Kangaroo survey for trade (deprecated)
+        Land for Wildlife Program (deprecated)
+        Revegetation (deprecated)
+        Roadside Conservation Committee (deprecated)
+        Statutory development approvals and advice (deprecated)
+        Voluntary Conservation Covenants Program (deprecated)
+        Wetland standards and practice (deprecated)
+        Wildlife assets and inventory (deprecated)
+        Wildlife compliance (deprecated)
+        Wildlife licensing (deprecated) 
+
+    - Can we remove Positions/hide them?
+
+    - 

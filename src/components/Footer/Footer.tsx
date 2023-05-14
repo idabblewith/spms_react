@@ -1,8 +1,9 @@
 import { Box, Center, Flex, Link, Spacer, Text } from "@chakra-ui/react"
+import { useCurrentYear } from "../../hooks/useCurrentYear";
 
 export const Footer = () => {
 
-    const currentYear = new Date().getFullYear();
+    const currentYear = useCurrentYear();
 
     return (
         <Box

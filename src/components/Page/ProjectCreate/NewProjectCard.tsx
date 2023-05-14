@@ -44,7 +44,7 @@ export const NewProjectCard = ({ title, description, bulletPoints, colorScheme, 
                 openNewProjectModal();
             }}
         >
-            <NewProjectModal projectType={title} isOpen={isModalOpen} onClose={onCloseModal} />
+            <NewProjectModal projectType={title} isOpen={isModalOpen} onClose={onCloseModal} icon={buttonIcon} />
 
             {/* TITLE */}
             <Box
