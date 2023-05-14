@@ -47,7 +47,10 @@ export const NewProjectCard = ({ title, description, bulletPoints, colorScheme, 
             <NewProjectModal projectType={title} isOpen={isModalOpen} onClose={onCloseModal} />
 
             {/* TITLE */}
-            <Button
+            <Box
+                display={"inline-flex"}
+                alignItems={"center"}
+                justifyContent={"center"}
                 w={"100%"}
                 h={"80px"}
                 bg={`${colorScheme}.500`}
@@ -71,7 +74,7 @@ export const NewProjectCard = ({ title, description, bulletPoints, colorScheme, 
 
                 </Heading>
 
-            </Button>
+            </Box>
 
             {/* DESCRIPTION */}
             <Box
