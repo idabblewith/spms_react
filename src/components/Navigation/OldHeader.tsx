@@ -30,7 +30,7 @@ import { BsCodeSlash } from "react-icons/bs";
 
 import { Navitar } from "./Navitar";
 import { SidebarNavMenu } from "../Navigation/SidebarNavMenu";
-import { AddUserModal } from "../Modals/AddUserModal";
+import { CreateUserModal } from "../Modals/CreateUserModal";
 
 import { testUserData } from "../../api";
 
@@ -151,16 +151,16 @@ const ReportMenuContents = () => {
         </>
     )
 }
-// const { isOpen: isAddUserModalOpenTop, onOpen: onAddUserOpenTop, onClose: onAddUserCloseTop } = useDisclosure();
+// const { isOpen: isCreateUserModalOpenTop, onOpen: onAddUserOpenTop, onClose: onAddUserCloseTop } = useDisclosure();
 
 const UserMenuContents = () => {
     const navigate = useNavigate();
-    const { isOpen: isAddUserModalOpen, onOpen: onAddUserOpen, onClose: onAddUserClose } = useDisclosure();
+    const { isOpen: isCreateUserModalOpen, onOpen: onCreateUserOpen, onClose: onCreateUserClose } = useDisclosure();
 
 
     return (
         <>
-            <AddUserModal isOpen={isAddUserModalOpen} onClose={onAddUserClose} />
+            <CreateUserModal isOpen={isCreateUserModalOpen} onClose={onCreateUserClose} />
 
             <MenuGroup
                 title="Users" fontSize={"12px"} color={"gray.500"} textAlign={"center"}
@@ -178,7 +178,7 @@ const UserMenuContents = () => {
                 </MenuItem>
 
                 <MenuItem
-                    onClick={onAddUserOpen}
+                    onClick={onCreateUserOpen}
                 >
                     {<FaUserPlus />}
                     <Text ml={2}>

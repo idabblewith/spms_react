@@ -8,7 +8,7 @@ interface IAddUserModalProps {
     onClose: () => void;
 }
 
-export const AddUserModal = ({ isOpen, onClose }: IAddUserModalProps) => {
+export const CreateUserModal = ({ isOpen, onClose }: IAddUserModalProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');

@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { AdminSliceSingle, BoxContainer } from "../Users/AdminSliceSingle";
 import { testBusinessAreaData, testUserData } from "../../../api";
 import { BsSearch } from 'react-icons/bs';
-import { AddUserModal } from "../../Modals/AddUserModal";
+import { CreateUserModal } from "../../Modals/CreateUserModal";
 import { AiFillCalendar, AiFillEdit, AiFillTag } from "react-icons/ai";
 import { FaDownload } from "react-icons/fa";
 import { BsChatSquareFill } from "react-icons/bs";
@@ -154,12 +154,12 @@ export const SearchAndFilterProjectSection = () => {
         setShowFilters(!showFilters);
     }
 
-    const { isOpen: isAddUserModalOpen, onOpen: onAddUserOpen, onClose: onAddUserClose } = useDisclosure();
+    // const { isOpen: isCreateUserModalOpen, onOpen: onOpenCreateUserModal, onClose: onCloseCreateUserModal } = useDisclosure();
 
 
     return (
         <Box maxW={"100%"} maxH={"100%"}>
-            <AddUserModal isOpen={isAddUserModalOpen} onClose={onAddUserClose} />
+            {/* <CreateUserModal isOpen={isCreateUserModalOpen} onClose={onCloseCreateUserModal} /> */}
             <Button onClick={handleToggleFilters} mt={4}>
                 {showFilters ? 'Hide Filters' : 'Show Filters'}
             </Button>
@@ -349,6 +349,16 @@ export const SearchAndFilterProjectSection = () => {
                     </Text>
                     <Text fontSize={"sm"} color={"gray.600"}>Click to expand</Text>
                 </Box>
+
+                {/*    
+                TODO: Sort out how search projects will work (DROPDOWN UNDER SEARCH BAR)
+                {searchLoading ? (
+                <Center w={"100%"} minH="100px" pt={10}>
+                    <Spinner size={"xl"} />
+                </Center>
+            ) : (
+                <Pagination data={filteredItems} type={'user'} />
+            )} */}
                 {
                     testBusinessAreaData.map((ba, index) => {
                         return (

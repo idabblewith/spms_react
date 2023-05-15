@@ -25,6 +25,9 @@ interface IProjectDetailSectionProps {
 }
 
 export const ProjectDetailsSection = ({ projectType, currentYear, onClose }: IProjectDetailSectionProps) => {
+
+    const [informationFilled, setInformationFilled] = useState(false);
+
     const navigate = useNavigate();
     const thisUser = {
         username: "Jarid Prince",
@@ -342,6 +345,7 @@ export const ProjectDetailsSection = ({ projectType, currentYear, onClose }: IPr
                     ml={3}
                     type="submit"
                     colorScheme="blue"
+                    isDisabled={!informationFilled}
                 >
                     Next &rarr;
                 </Button>

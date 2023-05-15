@@ -37,6 +37,9 @@ export const ManageTeam = () => {
                     </Button>
                     <AddUserToProjectModal isOpen={isAddUserModalOpen} onClose={onCloseAddUserModal} />
                 </Flex>
+                <Box>
+                    <Text fontSize={"sm"} color={"gray.500"}>Click and drag a user to re-arrange order</Text>
+                </Box>
             </Grid>
             {/* <Text
                 fontSize={"sm"} color={"gray.500"}
@@ -51,14 +54,57 @@ export const ManageTeam = () => {
                 overflow="hidden"
             >
                 <TeamMember
+                    name="Bryan Shearer"
+                    role="Research Scientist"
+                    order={10}
+                    timeAllocation={0.05}
+                />
+                <TeamMember
                     name="Colin Crane"
                     role="Supervising Scientist"
                     order={5}
                     timeAllocation={0.9}
                 />
                 <TeamMember
-                    name="Bryan Shearer"
-                    role="Research Scientist"
+                    name="Jimmy Neutron"
+                    role="Consulted Peer"
+                    order={10}
+                    timeAllocation={0.05}
+                />
+                <TeamMember
+                    name="Ben Ten"
+                    role="Academic Supervisor"
+                    order={10}
+                    timeAllocation={0.05}
+                />
+                <TeamMember
+                    name="Bob the Builder"
+                    role="Supervised Student"
+                    order={10}
+                    timeAllocation={0.05}
+                />
+                <TeamMember
+                    name="Thomas the Tank Engine"
+                    role="Technical Officer"
+                    order={10}
+                    timeAllocation={0.05}
+                />
+
+                <TeamMember
+                    name="Spongebob Squarepants"
+                    role="External Collaborator"
+                    order={10}
+                    timeAllocation={0.05}
+                />
+                <TeamMember
+                    name="Patrick Star"
+                    role="External Peer"
+                    order={10}
+                    timeAllocation={0.05}
+                />
+                <TeamMember
+                    name="James Bond"
+                    role="Involved Group"
                     order={10}
                     timeAllocation={0.05}
                 />

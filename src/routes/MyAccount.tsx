@@ -1,4 +1,4 @@
-import { Accordion, Button, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Text, Input, Checkbox, Grid } from "@chakra-ui/react"
+import { Accordion, Button, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Text, Input, Checkbox, Grid, Flex } from "@chakra-ui/react"
 import { NavigationBar } from "../components/Page/All/NavigationBar"
 import { MyTasksAndAssociations } from "../components/Page/Dash/MyTasksAndAssociations"
 import { useState, ChangeEvent } from "react"
@@ -35,17 +35,28 @@ export const MyAccount = () => {
                         My Account
                     </Text>
                 </Box>
-                <Accordion allowMultiple bg={"gray.100"} rounded={"2xl"}
-                    mb={4}>
+                <Accordion
+                    allowMultiple
+                    defaultIndex={[0]}
+                // rounded={"2xl"}
+                // mb={4}
+                >
                     <AccordionItem rounded={"2xl"}>
-                        <h2>
-                            <AccordionButton rounded={"2xl"}>
-                                <Button variant={"link"} flex={1} justifyContent={"start"}>
-                                    Basic Information
-                                </Button>
+                        <AccordionButton
+                            bg={"gray.100"}
+                            mb={4}
+                            as={Button}
+                            rounded={"2xl"}
+                            variant={"link"} flex={1}
+                            justifyContent={"start"}
+                            w={"100%"}
+                        >
+                            Basic Information
+                            <Flex justifyContent={"right"} ml={"auto"}>
                                 <AccordionIcon />
-                            </AccordionButton>
-                        </h2>
+                            </Flex>
+
+                        </AccordionButton>
                         <AccordionPanel pb={4} bg={"white"}>
                             <Box
                                 rounded={"5px"}
@@ -174,20 +185,23 @@ export const MyAccount = () => {
                             </Box>
                         </AccordionPanel>
                     </AccordionItem>
-                </Accordion>
 
-                <Accordion allowMultiple bg={"gray.100"} rounded={"2xl"}
-                    mb={4}
-                >
                     <AccordionItem rounded={"2xl"}>
-                        <h2>
-                            <AccordionButton rounded={"2xl"}>
-                                <Button variant={"link"} flex={1} justifyContent={"start"}>
-                                    Contact Details
-                                </Button>
+                        <AccordionButton
+                            bg={"gray.100"}
+                            mb={4}
+                            as={Button}
+                            rounded={"2xl"}
+                            variant={"link"} flex={1}
+                            justifyContent={"start"}
+                            w={"100%"}
+                        >
+                            Contact Details
+                            <Flex justifyContent={"right"} ml={"auto"}>
                                 <AccordionIcon />
-                            </AccordionButton>
-                        </h2>
+                            </Flex>
+
+                        </AccordionButton>
                         <AccordionPanel pb={4} bg={"white"}>
                             <Box
                                 rounded={"5px"}
@@ -290,20 +304,23 @@ export const MyAccount = () => {
                             </Box>
                         </AccordionPanel>
                     </AccordionItem>
-                </Accordion>
 
-                <Accordion allowMultiple bg={"gray.100"} rounded={"2xl"}
-                    mb={4}
-                >
                     <AccordionItem rounded={"2xl"}>
-                        <h2>
-                            <AccordionButton rounded={"2xl"}>
-                                <Button variant={"link"} flex={1} justifyContent={"start"}>
-                                    Administrative Details
-                                </Button>
+                        <AccordionButton
+                            bg={"gray.100"}
+                            mb={4}
+                            as={Button}
+                            rounded={"2xl"}
+                            variant={"link"} flex={1}
+                            justifyContent={"start"}
+                            w={"100%"}
+                        >
+                            Administrative Details
+                            <Flex justifyContent={"right"} ml={"auto"}>
                                 <AccordionIcon />
-                            </AccordionButton>
-                        </h2>
+                            </Flex>
+
+                        </AccordionButton>
                         <AccordionPanel pb={4} bg={"white"}>
                             <Box
                                 rounded={"5px"}

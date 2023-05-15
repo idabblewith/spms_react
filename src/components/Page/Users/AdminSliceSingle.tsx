@@ -3,6 +3,7 @@ import { MdMoreVert } from "react-icons/md";
 import { IUserData } from "../../../types";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { AddUserToProjectModal } from "../../Modals/AddUserToProjectModal";
 
 
 interface BoxContainerProps extends BoxProps {
@@ -24,7 +25,6 @@ export const BoxContainer: React.FC<BoxContainerProps> = ({ children, ...props }
 
 export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, program, workCenter, imageLink, checkBoxState = false }: IUserData) => {
 
-    const { isOpen, onOpen, onClose } = useDisclosure();
     const navigate = useNavigate();
 
     const toast = useToast();
@@ -50,13 +50,15 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
     //     console.log(is780OrSmaller)
     // }, [is780OrSmaller])
 
+    const { isOpen: isAddUserToProjectModalOpen, onOpen: onOpenAddUserToProjectModal, onClose: onCloseAddUserToProjectModal } = useDisclosure()
 
     return (
         <>
+            <AddUserToProjectModal isOpen={isAddUserToProjectModalOpen} onClose={onCloseAddUserToProjectModal} />
             <Grid
                 templateColumns={{
-                    base: "1fr 4fr 5fr 1fr",
-                    // lg: "1fr 2fr 3fr 3fr 1fr",
+                    base: "5fr 5fr 1fr",
+                    lg: "1fr 4fr 5fr 1fr",
                 }}
                 alignItems="center"
                 p={4}
@@ -64,38 +66,43 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                 width="100%"
                 key={pk}
             >
-                <Flex
-                    alignItems={"center"}
-                    justifyContent={"space-around"}
-                // bg="red"
-                >
-                    {/* Checkbox */}
-                    <Checkbox
+                {
+                    isLgOrLarger ?
+                        (
+                            <Flex
+                                ml={2}
+                            // alignItems={"center"}
+                            // justifyContent={"space-around"}
+                            // bg="red"
+                            >
+                                {/* Checkbox */}
+                                {/* <Checkbox
                         // bg={"red"}
                         isChecked={isChecked}
                         onChange={handleCheckChange}
                         mr={3}
-                    />
+                    /> */}
+                                <Box
+                                    minW={55}
+                                >
+                                    <Avatar
+                                        src={imageLink}
+                                        h={55}
+                                        w={55}
+                                        objectFit="cover"
+                                        cursor={"pointer"}
+                                        onClick={
+                                            () => {
+                                                navigate(`/users/${pk}`)
+                                            }
+                                        }
 
-                    {
-                        isLgOrLarger ?
-                            <Center
-                                minW={55}
-                            >
-                                <Avatar
-                                    src={imageLink}
-                                    h={55}
-                                    w={55}
-                                    objectFit="cover"
-                                />
-                            </Center> :
-                            null
-                    }
-                    {/* Avatar */}
-
-
-
-                </Flex>
+                                    />
+                                </Box>
+                            </Flex>
+                        ) :
+                        null
+                }
 
                 {/* Username */}
                 {/* <BoxContainer
@@ -118,7 +125,7 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
 
                 <BoxContainer
                     // bg="red.900"
-                    ml={4}
+                    ml={isLgOrLarger ? 4 : 2}
                     w="100%"
                     overflow="hidden"
                     textOverflow={"ellipsis"}
@@ -128,7 +135,12 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                         fontWeight="bold"
                         variant={"link"}
                         as={"a"}
-                        href={imageLink}
+                        cursor={"pointer"}
+                        onClick={
+                            () => {
+                                navigate(`/users/${pk}`)
+                            }
+                        }
                     >
                         {
                             isLgOrLarger ? fullName :
@@ -245,8 +257,21 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                             <MdMoreVert />
                         </MenuButton>
                         <MenuList>
-                            <MenuItem>Edit</MenuItem>
-                            <MenuItem onClick={onOpen}>Delete</MenuItem>
+                            <MenuItem
+                                onClick={
+                                    () => {
+                                        navigate(`/users/${pk}`)
+                                    }
+                                }
+                            >
+                                View Profile
+                            </MenuItem>
+                            {/* <MenuItem>Send Message</MenuItem> */}
+                            <MenuItem
+                                onClick={onOpenAddUserToProjectModal}
+                            >
+                                Add to Project
+                            </MenuItem>
                         </MenuList>
                     </Menu>
 

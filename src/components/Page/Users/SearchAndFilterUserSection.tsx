@@ -6,7 +6,8 @@ import _ from 'lodash';
 import { AdminSliceSingle, BoxContainer } from "./AdminSliceSingle";
 import { testUserData } from "../../../api";
 import { BsSearch } from 'react-icons/bs';
-import { AddUserModal } from "../../Modals/AddUserModal";
+import { CreateUserModal } from "../../Modals/CreateUserModal";
+import { Pagination } from "../All/Pagination";
 
 
 export const SearchAndFilterUserSection = () => {
@@ -144,12 +145,12 @@ export const SearchAndFilterUserSection = () => {
         setShowFilters(!showFilters);
     }
 
-    const { isOpen: isAddUserModalOpen, onOpen: onAddUserOpen, onClose: onAddUserClose } = useDisclosure();
+    const { isOpen: isCreateUserModalOpen, onOpen: onCreateUserOpen, onClose: onCreateUserClose } = useDisclosure();
 
 
     return (
         <Box maxW={"100%"} maxH={"100%"}>
-            <AddUserModal isOpen={isAddUserModalOpen} onClose={onAddUserClose} />
+            <CreateUserModal isOpen={isCreateUserModalOpen} onClose={onCreateUserClose} />
 
 
             <Grid width={"100%"} mt={4}
@@ -206,7 +207,7 @@ export const SearchAndFilterUserSection = () => {
                     >
                         {showFilters ? 'Hide Filters' : 'Show Filters'}
                     </Button>
-                    <Button onClick={onAddUserOpen}
+                    <Button onClick={onCreateUserOpen}
                         colorScheme={"blue"}
                     >
                         Add
@@ -333,7 +334,7 @@ export const SearchAndFilterUserSection = () => {
             </Collapse>
             <Grid
                 templateColumns={{
-                    base: "1fr 4fr 5fr 1fr",
+                    base: "5fr 5fr 1fr",
                     // lg: "1fr 2fr 3fr 3fr 1fr",
                 }}
                 alignItems="center"
@@ -342,16 +343,16 @@ export const SearchAndFilterUserSection = () => {
                 width="100%"
                 mt={5}
             >
-                <Flex alignItems={"center"} justifyContent={"space-around"}>
-                    <Checkbox
+                {/* <Flex alignItems={"center"} justifyContent={"space-around"}> */}
+                {/* <Checkbox
                         // bg={"red"}
                         isChecked={selectAllCheckboxValue}
                         onChange={handleCheckChange}
                         mr={20}
-                    />
-                </Flex>
-                <BoxContainer ml={0} w="100%" overflow="hidden" textOverflow={"ellipsis"}>
-                    <Text as={"b"}>Name</Text>
+                    /> */}
+                {/* </Flex> */}
+                <BoxContainer ml={2} w="100%" overflow="hidden" textOverflow={"ellipsis"}>
+                    <Text as={"b"}>User</Text>
                 </BoxContainer>
                 <Box ml={6} w="100%" overflow="hidden" textOverflow={"ellipsis"}>
                     <Text as={"b"}>Email</Text>
@@ -366,24 +367,8 @@ export const SearchAndFilterUserSection = () => {
                     <Spinner size={"xl"} />
                 </Center>
             ) : (
-                <Grid gridTemplateColumns={"repeat(1,1fr)"}>
-                    {filteredItems?.map((u, i) => (
-                        <AdminSliceSingle
-                            key={i}
-                            pk={u.pk}
-                            username={u.username}
-                            email={u.email}
-                            firstName={u.firstName}
-                            fullName={u.fullName}
-                            program={u.program}
-                            workCenter={u.workCenter}
-                            imageLink={u.imageLink}
-                            checkBoxState={selectAllCheckboxValue}
-                        />
-                    ))}
-                </Grid>
+                <Pagination data={filteredItems} type={'user'} />
             )}
-            {/* <Pagination /> */}
         </Box>
     );
 }

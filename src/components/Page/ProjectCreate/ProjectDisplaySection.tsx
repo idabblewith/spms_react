@@ -1,4 +1,5 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input, InputGroup, ModalBody, ModalFooter } from "@chakra-ui/react"
+import { useState } from "react";
 import { IoIosCreate } from "react-icons/io";
 
 
@@ -10,8 +11,10 @@ export const ProjectDisplaySection = ({ onClose }: IProjectDisplayProps) => {
 
     const handleSubmit = () => {
         console.log("submitted")
-
     }
+
+    const [informationFilled, setInformationFilled] = useState(false);
+
     return (
 
         <form onSubmit={handleSubmit}>
@@ -53,6 +56,8 @@ export const ProjectDisplaySection = ({ onClose }: IProjectDisplayProps) => {
                     colorScheme="blue"
                     ml={3}
                     rightIcon={<IoIosCreate />}
+                    isDisabled={!informationFilled}
+
                 >
                     Create
                 </Button>

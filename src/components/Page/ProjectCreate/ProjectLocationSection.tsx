@@ -26,6 +26,8 @@ export const ProjectLocationSection = ({ projectType, currentYear, onClose }: IP
         console.log('handling');
     }
 
+    const [informationFilled, setInformationFilled] = useState(false);
+
     return (
 
 
@@ -202,11 +204,11 @@ export const ProjectLocationSection = ({ projectType, currentYear, onClose }: IP
             </ModalBody>
             <ModalFooter>
                 <Button onClick={onClose}>Cancel</Button>
-                <Button onClick={onClose}>Cancel</Button>
                 <Button
                     ml={3}
                     type="submit"
                     colorScheme="blue"
+                    isDisabled={!informationFilled}
                 >
                     Next &rarr;
                 </Button>

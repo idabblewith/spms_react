@@ -45,7 +45,6 @@ export const MyTasksAndAssociations = () => {
             >
                 <Accordion
                     defaultIndex={defaultIndex}
-                    allowToggle
                     allowMultiple
                 >
                     <AccordionItem>

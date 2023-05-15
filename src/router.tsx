@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Root } from "./components/Root";
 import { Dash } from "./routes/Dash";
-import { Users } from "./routes/Users";
+import { BrowseUsers } from "./routes/BrowseUsers";
 import { BrowseProjects } from "./routes/BrowseProjects";
 import { NotFound } from "./routes/NotFound";
 import { Reports } from "./routes/Reports";
@@ -29,7 +29,7 @@ export const router = createBrowserRouter([{
         },
         {
             path: "users/browse",
-            element: <Users />,
+            element: <BrowseUsers />,
         },
         {
             path: "users/new",

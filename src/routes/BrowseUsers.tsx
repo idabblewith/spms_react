@@ -4,7 +4,7 @@ import { SearchAndFilterUserSection } from "../components/Page/Users/SearchAndFi
 
 
 
-export const Users = () => {
+export const BrowseUsers = () => {
 
     return (
         <>
