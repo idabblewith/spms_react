@@ -63,7 +63,7 @@ export const Dash = () => {
                     right={6}
                 >
                     {/* Annual Report Menu */}
-                    <NavMenu
+                    {/* <NavMenu
                         menuName={annualReportText}
                         leftIcon={<FcRatings />}
                         fColor={"white"}
@@ -86,7 +86,7 @@ export const Dash = () => {
                                     {<FcPrint />}&nbsp;Print Preview
                                 </MenuItem>
                             </>
-                        } />
+                        } /> */}
                 </Flex>
                 <Heading>
                     <div dangerouslySetInnerHTML={{ __html: spmsText }} />
