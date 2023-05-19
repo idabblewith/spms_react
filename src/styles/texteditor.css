@@ -1,0 +1,63 @@
+
+/* Layout */
+.contentEditable {
+    width: 100%;
+    height: 300px;
+    padding: 8px;
+    padding-top: 16px;
+    /* border-radius: 201px solid #000; */
+    border-radius: 0 0 25px 25px;
+    /* boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} */
+    /* box-shadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"; */
+
+    /* border-color: aqua; */
+    position: relative;
+    /* background: #000; */
+
+    /* padding-top: 0px; */
+    /* margin: 0 auto; */
+    /* text-align: center; */
+    /* padding: 2rem; */
+    /* height: 540px; */
+    /* background: #000; */
+}
+
+.contentEditable:focus {
+    outline: none !important;
+    /* border:1px solid gray; */
+    /* box-shadow: 0 0 10px #719ECE; */
+
+}
+
+.placeholder {
+    position: absolute;
+    left: 8px;
+    top: 89px;
+    user-select: none;
+    pointer-events: none; /* Fixes issues with clicking the placeholder/input being blocked*/
+    /* The placeholder text blocks functionality of selecting the box */
+}
+
+.editorWrapper {
+    position: relative;
+    /* margin-top: 10px; */
+    width: 100%;
+    
+}
+
+
+
+/* Text */
+
+.editor-italics {
+    color: aquamarine;
+}
+
+.editor-bold {
+    color: yellow;
+}
+
+.editor-h1 {
+    background-color: black;
+    color: aliceblue;
+}

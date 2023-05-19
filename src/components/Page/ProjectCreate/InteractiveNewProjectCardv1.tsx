@@ -48,7 +48,7 @@ export const InteractiveNewProjectCardv1 = (
             onLeave={() => setActiveCard(null)}
             style={{ zIndex: activeCard === index ? 1000 : 4 }}
         >
-            <NewProjectModal projectType={title} isOpen={isModalOpen} onClose={onCloseModal} />
+            <NewProjectModal icon={buttonIcon} projectType={title} isOpen={isModalOpen} onClose={onCloseModal} />
 
             <Box
                 onClick={openNewProjectModal}

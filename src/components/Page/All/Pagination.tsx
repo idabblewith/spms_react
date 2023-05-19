@@ -102,3 +102,11 @@ export const Pagination = ({ data, type }: any) => {
         </Box>
     );
 };
+
+
+// Todo:
+// Drag and Drop - team management
+// Tags input and end on semicolon (suggestive)
+// Suggetive Project Search bar
+// Make buttons open modals
+// 

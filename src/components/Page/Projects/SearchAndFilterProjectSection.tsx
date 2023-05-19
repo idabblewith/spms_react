@@ -15,6 +15,7 @@ import { ProjectCard } from "./ProjectCard";
 import { testProjectCardData } from "../../../api";
 import Kokerbin from "../../assets/kokerbin.jpeg"
 import { BusinessAreaAccordion } from "./BusinessAreaAccordion";
+import { SuggestiveSearchbar } from "./SuggestiveSearchbar";
 
 
 export const SearchAndFilterProjectSection = () => {
@@ -23,136 +24,61 @@ export const SearchAndFilterProjectSection = () => {
         console.log("Downloading...")
     }
 
-    const [searchTerm, setSearchTerm] = useState("");
-
-    const [filteredItems, setFilteredItems] = useState<IUserData[]>([]);
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(3);
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const [currentFilteredItems, setCurrentFilteredItems] = useState(
-        filteredItems.slice(indexOfFirstItem, indexOfLastItem)
-    );
-
-    const [searchLoading, setSearchLoading] = useState<boolean>(false);
-
-    // const { isOpen: addIsOpen, onOpen: onAddOpen, onClose: onAddClose } =
-    //     useDisclosure();
-
-    const [programFilter, setProgramFilter] = useState("");
-
-    const debouncedHandleSearchChange = useRef(
-        _.debounce((searchTerm: string, items: any) => {
-            const filteredUsers = items.filter(
-                (user: IUserData) =>
-                    user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    user.email.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            console.log("called api");
-            console.log(filteredUsers);
-
-            setFilteredItems(filteredUsers);
-            setSearchLoading(false);
-        }, 500)
-    ).current;
-
-    const handleSearchChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const searchTerm = e.currentTarget.value;
-        setSearchTerm(searchTerm);
-        setSearchLoading(true);
-        if (searchTerm === "") {
-            setFilteredItems(testUserData);
-            setSearchLoading(false);
-            return;
-        }
-        debouncedHandleSearchChange(searchTerm, testUserData);
-    };
-
-    const [selectAllCheckboxValue, setSelectAllCheckboxValue] =
-        useState<boolean>(false);
-
-    const handleCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectAllCheckboxValue(!selectAllCheckboxValue);
-    };
-
-    useEffect(() => {
-        if (programFilter !== "" || searchTerm !== "") {
-            const filteredUsers = testUserData.filter(
-                (user: IUserData) =>
-                    (programFilter === "" ||
-                        user.program?.toLowerCase() === programFilter.toLowerCase()) &&
-                    (searchTerm === "" ||
-                        user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        user.email.toLowerCase().includes(searchTerm.toLowerCase()))
-            );
-            setFilteredItems(filteredUsers);
-        } else {
-            setFilteredItems(testUserData);
-        }
-    }, [programFilter, searchTerm]);
-
-    useEffect(() => {
-        setCurrentFilteredItems(
-            filteredItems.slice(indexOfFirstItem, indexOfLastItem)
-        );
-    }, [filteredItems, indexOfFirstItem, indexOfLastItem]);
+    // const [programFilter, setProgramFilter] = useState("");
 
 
-    const fieldNames = [
-        "BCS Biodiversity Information Office",
-        "BCS Biogeography",
-        "BCS Animal Science",
-        "BCS Plant Science and Herbarium",
-        "BCS Ecosystem Science",
-        "BCS Marine Science",
-        "BCS Fire Science",
-        "BCS Kings Park Science",
-        "BCS Perth Zoo Science",
-        "BCS Rivers and Estuaries Science",
-        "BCS Remote Sensing and Spatial Analysis",
-        "BCS Species and Communities",
-        "BCS Ecoinformatics",
-        "BGPA Business and Finance",
-        "BGPA Business and Community Engagement",
-        "BGPA Horticulture and Living Collections",
-        "BGPA Environment and Infrastructure",
-        "CEM Ecosystem Health Branch",
-        "CEM Forest Management Branch",
-        "CEM Wildlife Protection Branch",
-        "CEM Rivers and Estuaries Branch",
-        "CEM Environmental Management Branch",
-        "PVS Visitor Services Branch",
-        "PVS Aboriginal Engagement, Planning and Lands Branch",
-        "PVS Tourism and Concessions Branch",
-        "PVS Visitor Communications and Marketing Branch",
-        "RFMS Fire Management Services Branch",
-        "RFMS Region Goldfields",
-        "RFMS Region Kimberley",
-        "RFMS Region Midwest",
-        "RFMS Region Pilbara",
-        "RFMS Region South West",
-        "RFMS Region Swan",
-        "RFMS Region Warren",
-        "RFMS Region Wheatbelt",
-        "RIA Business Services",
-        "RIA Environment, Heritage and Parks Services",
-        "RIA Infrastructure",
-        "RIA Contracts",
-        "RIA Marketing and Events",
-        "RIA Visitor Services",
-        "ZPA Executive and Corporate Services",
-        "ZPA Life Sciences",
-        "ZPA Community Engagement",
-    ]
+    // const fieldNames = [
+    //     "BCS Biodiversity Information Office",
+    //     "BCS Biogeography",
+    //     "BCS Animal Science",
+    //     "BCS Plant Science and Herbarium",
+    //     "BCS Ecosystem Science",
+    //     "BCS Marine Science",
+    //     "BCS Fire Science",
+    //     "BCS Kings Park Science",
+    //     "BCS Perth Zoo Science",
+    //     "BCS Rivers and Estuaries Science",
+    //     "BCS Remote Sensing and Spatial Analysis",
+    //     "BCS Species and Communities",
+    //     "BCS Ecoinformatics",
+    //     "BGPA Business and Finance",
+    //     "BGPA Business and Community Engagement",
+    //     "BGPA Horticulture and Living Collections",
+    //     "BGPA Environment and Infrastructure",
+    //     "CEM Ecosystem Health Branch",
+    //     "CEM Forest Management Branch",
+    //     "CEM Wildlife Protection Branch",
+    //     "CEM Rivers and Estuaries Branch",
+    //     "CEM Environmental Management Branch",
+    //     "PVS Visitor Services Branch",
+    //     "PVS Aboriginal Engagement, Planning and Lands Branch",
+    //     "PVS Tourism and Concessions Branch",
+    //     "PVS Visitor Communications and Marketing Branch",
+    //     "RFMS Fire Management Services Branch",
+    //     "RFMS Region Goldfields",
+    //     "RFMS Region Kimberley",
+    //     "RFMS Region Midwest",
+    //     "RFMS Region Pilbara",
+    //     "RFMS Region South West",
+    //     "RFMS Region Swan",
+    //     "RFMS Region Warren",
+    //     "RFMS Region Wheatbelt",
+    //     "RIA Business Services",
+    //     "RIA Environment, Heritage and Parks Services",
+    //     "RIA Infrastructure",
+    //     "RIA Contracts",
+    //     "RIA Marketing and Events",
+    //     "RIA Visitor Services",
+    //     "ZPA Executive and Corporate Services",
+    //     "ZPA Life Sciences",
+    //     "ZPA Community Engagement",
+    // ]
 
-    const [showFilters, setShowFilters] = useState(false);
+    // const [showFilters, setShowFilters] = useState(false);
 
-    const handleToggleFilters = () => {
-        setShowFilters(!showFilters);
-    }
+    // const handleToggleFilters = () => {
+    //     setShowFilters(!showFilters);
+    // }
 
     // const { isOpen: isCreateUserModalOpen, onOpen: onOpenCreateUserModal, onClose: onCloseCreateUserModal } = useDisclosure();
 
@@ -160,7 +86,7 @@ export const SearchAndFilterProjectSection = () => {
     return (
         <Box maxW={"100%"} maxH={"100%"}>
             {/* <CreateUserModal isOpen={isCreateUserModalOpen} onClose={onCloseCreateUserModal} /> */}
-            <Button onClick={handleToggleFilters} mt={4}>
+            {/* <Button onClick={handleToggleFilters} mt={4}>
                 {showFilters ? 'Hide Filters' : 'Show Filters'}
             </Button>
             <Collapse in={showFilters} animateOpacity >
@@ -173,11 +99,6 @@ export const SearchAndFilterProjectSection = () => {
                     px={2}
                     mb={1}
                 >
-                    {/* 
-                
-
-                
-                */}
                     <Center py={2}>
                         <Text fontSize={"lg"} fontWeight={"bold"}>Filters</Text>
                     </Center>
@@ -307,34 +228,9 @@ export const SearchAndFilterProjectSection = () => {
 
                 </Flex>
 
-            </Collapse>
-            <Flex width={"100%"} mt={4}>
-                <InputGroup>
-                    <Input
-                        type="text"
-                        placeholder="Search by title or number"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        borderRadius="md"
-                        paddingRight="2rem" // Add some padding to prevent text overlapping the icon
-                        borderColor="gray.300" // Set border color to match the InputRightAddon border color
-
-                    />
-                    <InputRightAddon
-                        children={<BsSearch />}
-                        background="transparent"
-                        borderColor="gray.300" // Set border color to match the Input border color
-                        borderWidth="1px" // Add borderWidth to show the border around the addon
-                        pointerEvents="none"
-                        height="100%"
-                        zIndex="1" // Add zIndex to place the addon above the input
-                        _hover={{
-                            borderColor: "gray.300", // Prevents the border color change on hover
-                        }}
-
-                    />
-                </InputGroup>
-                <Flex justifyContent={"flex-end"} width="100%">
+            </Collapse> */}
+            <Flex width={"100%"} mt={8}>
+                <Flex justifyContent={"flex-start"} width="100%">
                     <Button
                         leftIcon={<FaDownload />}
                         variant={"solid"}
@@ -342,6 +238,8 @@ export const SearchAndFilterProjectSection = () => {
                         onClick={downloadAllProjectsCSV}
                     >Download All Projects</Button>
                 </Flex>
+
+                <SuggestiveSearchbar />
             </Flex>
             <Box mt={10}>
                 <Box mb={6}>
@@ -352,6 +250,7 @@ export const SearchAndFilterProjectSection = () => {
 
                 {/*    
                 TODO: Sort out how search projects will work (DROPDOWN UNDER SEARCH BAR)
+                Should have an avatar image and title name link so you can visit page
                 {searchLoading ? (
                 <Center w={"100%"} minH="100px" pt={10}>
                     <Spinner size={"xl"} />

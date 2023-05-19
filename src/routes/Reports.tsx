@@ -1,5 +1,6 @@
 import { Box, Center, Text } from "@chakra-ui/react"
 import { NavigationBar } from "../components/Page/All/NavigationBar"
+import { FullFeaturedRichTextEditor } from "../components/DocumentEditor/Editors/FullFeaturedRichTextEditor"
 
 export const Reports = () => {
     return (
@@ -15,7 +16,7 @@ export const Reports = () => {
                 }}
             />
             <Box mt={10}>
-                <Box mb={6}>
+                {/* <Box mb={6}>
                     <Text fontSize={"2xl"} fontWeight={"bold"}>
                         Annual Report 2021-2022 Overview
                     </Text>
@@ -24,7 +25,10 @@ export const Reports = () => {
 
                 <Center mt={20}>
                     <Text fontWeight={"bold"} fontSize={"2xl"}>Section on hold until data hooked in</Text>
-                </Center>
+                </Center> */}
+
+                <FullFeaturedRichTextEditor />
+
 
             </Box>
         </>
