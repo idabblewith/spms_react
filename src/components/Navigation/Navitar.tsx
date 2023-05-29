@@ -34,10 +34,11 @@ export const Navitar = ({ shouldShowName = false, userData, windowSize }: INavit
 
     return (
         <Box
-        // onMouseEnter={handleMouseEnter}
-        // onMouseLeave={handleMouseLeave}
-        // bg={"red"}
-        // py={2}
+            // onMouseEnter={handleMouseEnter}
+            // onMouseLeave={handleMouseLeave}
+            // bg={"red"}
+            // py={2}
+            userSelect={"none"}
         >
             <Menu isOpen={isOpen}
             >

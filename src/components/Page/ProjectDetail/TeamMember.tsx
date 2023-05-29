@@ -77,23 +77,54 @@ export const TeamMember = ({ name, role, timeAllocation, order }: ITeamMember) =
                     </Box>
                 </Grid>
                 <Grid
-                    gridTemplateColumns={"repeat(2, 1fr)"}
+                    gridTemplateColumns={"repeat(1, 1fr)"}
                     gridGap={2}
                 >
-                    <Button
+                    <Menu>
+                        <MenuButton
+                            px={2}
+                            py={2}
+                            transition="all 0.2s"
+                            rounded={4}
+                            borderRadius="md"
+                            borderWidth="1px"
+                            _hover={{ bg: "gray.400" }}
+                            _expanded={{ bg: "blue.400" }}
+                            _focus={{ boxShadow: "outline" }}
+                        >
+                            <MdMoreVert />
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem
+                            // onClick={
+                            // onClick={onOpenEditUserProjectModal}
+                            // }
+                            >
+                                Edit
+                            </MenuItem>
+                            {/* <MenuItem>Send Message</MenuItem> */}
+                            <MenuItem
+                            // onClick={onOpenDeleteModal}
+                            >
+                                Delete
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
+
+                    {/* <Button
                         size={"xs"}
                         colorScheme="blue"
                         leftIcon={<MdEdit />}
                     >
                         Edit
-                    </Button>
-                    <Button
+                    </Button> */}
+                    {/* <Button
                         size={"xs"}
                         colorScheme="red"
                         leftIcon={<ImCross />}
                     >
                         Remove
-                    </Button>
+                    </Button> */}
                 </Grid>
 
                 {/* Actions */}

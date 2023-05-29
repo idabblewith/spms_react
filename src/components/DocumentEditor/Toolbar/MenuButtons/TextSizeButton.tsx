@@ -119,6 +119,18 @@ export const TextSizeButton = () => {
                         text: '20px',
                         onClick: Text20
                     },
+                    {
+                        text: '17px',
+                        onClick: Text17
+                    },
+                    {
+                        text: '18px',
+                        onClick: Text18
+                    },
+                    {
+                        text: '19px',
+                        onClick: Text19
+                    },
                 ]
             }
         />

@@ -5,6 +5,7 @@ import { IconType } from "react-icons"
 import { ProjectDetailsSection } from "../Page/ProjectCreate/ProjectDetailsSection"
 import { ProjectLocationSection } from "../Page/ProjectCreate/ProjectLocationSection"
 import { ProjectDisplaySection } from "../Page/ProjectCreate/ProjectDisplaySection"
+import "../../styles/modalscrollbar.css";
 
 interface INewProjectModalProps {
     projectType: string;

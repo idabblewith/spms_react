@@ -12,6 +12,7 @@ import { API } from "./routes/API";
 import { MyAccount } from "./routes/MyAccount";
 import { ChangePassword } from "./routes/ChangePassword";
 import { ProjectDetail } from "./routes/ProjectDetail";
+import { Login } from "./routes/Login";
 
 
 export const router = createBrowserRouter([{
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([{
             path: "api",
             element: <API />,
         },
-
-    ]
-}]);
+    ],
+},
+{
+    path: '/login',
+    element: <Login />,
+}
+]);

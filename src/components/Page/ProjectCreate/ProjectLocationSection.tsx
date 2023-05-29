@@ -3,6 +3,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import { MdTitle } from "react-icons/md";
 import { TiBusinessCard } from "react-icons/ti";
+import "../../../styles/modalscrollbar.css";
 
 interface IProjectLocationProps {
     onClose: () => void;
@@ -51,6 +52,8 @@ export const ProjectLocationSection = ({ projectType, currentYear, onClose }: IP
                             
                             */}
             <ModalBody
+                overflowY={"auto"}
+                maxHeight={"58vh"}
             >
 
                 <FormControl isRequired mb={4} >

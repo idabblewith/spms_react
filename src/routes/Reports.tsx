@@ -1,6 +1,7 @@
-import { Box, Center, Text } from "@chakra-ui/react"
+import { Box, Center, Flex, Text } from "@chakra-ui/react"
 import { NavigationBar } from "../components/Page/All/NavigationBar"
 import { FullFeaturedRichTextEditor } from "../components/DocumentEditor/Editors/FullFeaturedRichTextEditor"
+import { DownloadReportPDFButton } from "../components/Downloads/DownloadReportPDFButton"
 
 export const Reports = () => {
     return (
@@ -26,6 +27,9 @@ export const Reports = () => {
                 <Center mt={20}>
                     <Text fontWeight={"bold"} fontSize={"2xl"}>Section on hold until data hooked in</Text>
                 </Center> */}
+                <Flex justifyContent={"flex-start"} width="100%" pb={6}>
+                    <DownloadReportPDFButton />
+                </Flex>
 
                 <FullFeaturedRichTextEditor />
 

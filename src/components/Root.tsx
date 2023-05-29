@@ -17,7 +17,7 @@ export const Root = () => {
         <>
             <Box
                 minH={"100vh"}
-                minW={"620px"}
+                minW={"720px"}
             >
                 <Box
                     minH={"100vh"}
@@ -51,6 +51,7 @@ export const Root = () => {
                             zIndex={-1}
                             top={0}
                             left={0}
+                            userSelect={"none"}
                         />
                     </PageWrapper>
                     <Footer />

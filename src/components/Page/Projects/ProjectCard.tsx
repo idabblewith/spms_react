@@ -33,6 +33,7 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                     }
                 }
                 gap={3}
+
             >
                 <Box
                     position={"relative"}
@@ -51,6 +52,8 @@ export const ProjectCard = ({ pk, projectTitle, imageUrl, years, authors, tags, 
                         left="0"
                         objectFit={"cover"} // prevent image stretch
                         rounded={"2xl"}
+                        userSelect={"none"}
+                        draggable={false}
                     />
                 </Box>
 

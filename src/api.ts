@@ -17,21 +17,130 @@ import Bulbasaur from "./assets/bulbasaur.png"
 import Eevee from "./assets/eevee.png"
 
 
-// If using JWTs for login (unlikely as using Microsoft Authentication to login to gov)
-// const backendRequiresAuth = (doesIt: boolean) => {
-//     if (localStorage.getItem('JWT') === null || localStorage.getItem('JWT') === undefined || localStorage.getItem('JWT') === "") {
-//         return null
-//     }
-//     if (doesIt) {
-//         return {
-//             Authorization: `Bearer ${localStorage.getItem('JWT')}`,
-//             // ["Access-Control-Allow-Origin"]: "https://idabblewith.xyz",
-//         };
-//     }
-//     else {
-//         return {};
-//     }
-// }
+const instance = axios.create({
+    baseURL: process.env.NODE_ENV === "development" ?
+        "http://127.0.0.1:8000/api/v1/" :
+        "PRODUCTION URL GOES HERE",
+    withCredentials: true,
+})
+
+const backendRequiresAuthorization = (doesIt: boolean) => {
+    // if (localStorage.getItem('JWT') === null || localStorage.getItem('JWT') === undefined || localStorage.getItem('JWT') === "") {
+    //     return null
+    // }
+    if (doesIt) {
+        return {
+            // Authorization: `Bearer ${localStorage.getItem('JWT')}`,
+            ["Access-Control-Allow-Origin"]: "http://127.0.0.1:3000",
+            ["Access-Control-Allow-Methods"]: "POST",
+            ["Access-Control-Allow-Headers"]: "Authorization",
+
+        };
+    }
+    else {
+        return {};
+    }
+}
+
+
+export interface IUsernameLoginVariables {
+    username: string;
+    password: string;
+}
+
+export interface IUsernameLoginSuccess {
+    ok: string;
+}
+
+export interface IUsernameLoginError {
+    error: string;
+}
+
+export const usernameLogin = ({
+    username,
+    password,
+}: IUsernameLoginVariables) =>
+    instance.post(
+        `users/log-in`,
+        { username, password },
+        {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+            },
+        }
+    );
+
+
+export const getMe = () =>
+    instance.get(`users/me`).then((response) => response.data);
+
+export const logOut = () =>
+    instance
+        .post(`users/log-out`, null, {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+            },
+        })
+        .then((response) => response.data);
+
+export interface IUserAuthCheckVariables {
+    userID: number;
+}
+
+export interface IUsernameLoginSuccess {
+    ok: string;
+}
+
+export interface IUsernameLoginError {
+    error: string;
+}
+
+export const downloadProjectsCSV = () => {
+    console.log("Starting download...")
+    return instance.get(
+        `projects/download`,
+        {
+            responseType: 'blob',
+        }
+    ).then((res) => {
+        console.log(res);
+        const downloadUrl = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.setAttribute('download', 'projects.csv');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.URL.revokeObjectURL(downloadUrl);
+    })
+    // COMMENTED OUT TO PREVENT SUCCESSFUL MUTATION ON ERROR
+    // .catch((error) => {
+    //     console.error('Error downloading CSV file:', error);
+    // });
+}
+
+
+export const downloadReportPDF = ({
+    userID
+}: IUserAuthCheckVariables) => {
+    return instance.post(
+        `reports/download`,
+        { userID },
+        {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+            },
+        }
+    ).then((res) => {
+        console.log(res.data);
+        return res.data
+    })
+    // COMMENTED OUT TO PREVENT SUCCESSFUL MUTATION ON ERROR
+    // .catch((error) => {
+    //     console.error('Error downloading PDF file:', error);
+    // });
+}
+
 
 export const testBusinessAreaData = [
     {
@@ -503,12 +612,6 @@ export const testUserData = [
 
 ]
 
-const instance = axios.create({
-    baseURL: process.env.NODE_ENV === "development" ?
-        "https://127.0.0.1:8000/api/v1/" :
-        "PRODUCTION URL GOES HERE",
-    withCredentials: true,
-})
 
 // Fetching User Information
 

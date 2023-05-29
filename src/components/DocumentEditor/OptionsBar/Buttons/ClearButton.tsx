@@ -8,7 +8,7 @@ export const ClearButton = () => {
     return (
         <BaseOptionsButton
             icon={FaTrashAlt}
-            // colorScheme={"red"}
+            colorScheme={"red"}
             onClick={() => { console.log('hello') }}
         />
     )

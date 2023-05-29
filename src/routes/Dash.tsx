@@ -57,6 +57,7 @@ export const Dash = () => {
                 flexDir={"column"}
                 p={10}
                 pos={"relative"}
+                userSelect={"none"}
             >
                 <Flex
                     pos={"absolute"}

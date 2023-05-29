@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react"
+import { Button, Flex } from "@chakra-ui/react"
 import { FaAlignCenter, FaAlignJustify, FaAlignLeft, FaAlignRight, FaCaretDown, FaIndent, FaOutdent } from "react-icons/fa"
 import { BaseToolbarMenuButton } from "../Buttons/BaseToolbarMenuButton"
 import { useState } from "react";
@@ -6,38 +6,67 @@ import { useState } from "react";
 // A button for aligning text left, center, right, justified
 // Also has options for Outdent and Indent
 
-export const AlignButton = () => {
 
-    // const [currentTitle, setCurrentTitle] = useState<string>('Ali');
+interface Props {
+    isSmall?: boolean;
+    onClick: (eventType: string) => void;
+}
+
+export const AlignButton = ({ isSmall, onClick }: Props) => {
+
+    const [currentTitle, setCurrentTitle] = useState<string>('Left');
 
     const LeftAlignFunc = () => {
-        console.log("Left Aligning")
+        setCurrentTitle(isSmall ? "Left" : "Left")
+        const eventType = "formatAlignLeft"
+        onClick(eventType);
     }
 
     const CenterAlignFunc = () => {
-        console.log("Center Aligning")
+        setCurrentTitle(isSmall ? "Ctr" : "Center")
+        const eventType = "formatAlignCenter"
+        onClick(eventType);
     }
 
     const RightAlignFunc = () => {
-        console.log("Right Aligning")
+        setCurrentTitle(isSmall ? "Right" : "Right")
+        const eventType = "formatAlignRight"
+        onClick(eventType);
     }
 
     const JustifyAlignFunc = () => {
-        console.log("Justify Aligning")
+        setCurrentTitle(isSmall ? "Just" : "Jusitfy")
+        const eventType = "formatAlignJustify"
+        onClick(eventType);
     }
 
-    const OutdentFunc = () => {
-        console.log("Outdent Aligning")
-    }
+    // const OutdentFunc = () => {
+    //     setCurrentTitle(isSmall ? "Out" : "Outdent")
+    // }
 
-    const IndentFunc = () => {
-        console.log("Indent Aligning")
-    }
+    // const IndentFunc = () => {
+    //     setCurrentTitle(isSmall ? "In" : "Indent")
+    // }
 
     return (
         <BaseToolbarMenuButton
-            title="Align"
-            menuIcon={FaAlignLeft}
+            title={currentTitle}
+            menuIcon={
+                currentTitle === "Left" || currentTitle === "Left Align" ?
+                    FaAlignLeft :
+                    currentTitle === "Ctr" || currentTitle === "Center Align" ?
+                        FaAlignCenter :
+                        currentTitle === "Right" || currentTitle === "Right Align" ?
+                            FaAlignRight :
+                            currentTitle === "Just" || currentTitle === "Jusitfy Align" ?
+                                FaAlignJustify :
+                                // currentTitle === "Out" || currentTitle === "Outdent" ?
+                                //     FaOutdent :
+                                // currentTitle === "In" || currentTitle === "Indent" ?
+                                // FaIndent
+                                FaAlignLeft
+
+            }
             menuItems={[
                 {
                     leftIcon: FaAlignLeft,
@@ -59,16 +88,16 @@ export const AlignButton = () => {
                     text: 'Justify Align',
                     onClick: JustifyAlignFunc,
                 },
-                {
-                    leftIcon: FaOutdent,
-                    text: 'Outdent',
-                    onClick: OutdentFunc,
-                },
-                {
-                    leftIcon: FaIndent,
-                    text: 'Indent',
-                    onClick: IndentFunc,
-                },
+                // {
+                //     leftIcon: FaOutdent,
+                //     text: 'Outdent',
+                //     onClick: OutdentFunc,
+                // },
+                // {
+                //     leftIcon: FaIndent,
+                //     text: 'Indent',
+                //     onClick: IndentFunc,
+                // },
             ]}
 
         />

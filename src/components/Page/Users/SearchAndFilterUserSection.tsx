@@ -342,6 +342,7 @@ export const SearchAndFilterUserSection = () => {
                 borderWidth={1}
                 width="100%"
                 mt={5}
+                userSelect={"none"}
             >
                 {/* <Flex alignItems={"center"} justifyContent={"space-around"}> */}
                 {/* <Checkbox

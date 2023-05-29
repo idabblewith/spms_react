@@ -1,7 +1,7 @@
-import { Box, Image, Flex, Button, Input, Text, Grid, Center, useDisclosure, Spinner, Checkbox, Select, Stat, StatLabel, Collapse, InputGroup, InputRightAddon, Modal, ModalContent, FormControl, FormHelperText, InputLeftElement, ModalCloseButton, ModalHeader, ModalOverlay, Icon, Accordion, AccordionItem, AccordionPanel, Tag, AccordionButton, AccordionIcon, } from "@chakra-ui/react"
+import { Box, Image, Flex, Button, Input, Text, Grid, Center, useDisclosure, Spinner, Checkbox, Select, Stat, StatLabel, Collapse, InputGroup, InputRightAddon, Modal, ModalContent, FormControl, FormHelperText, InputLeftElement, ModalCloseButton, ModalHeader, ModalOverlay, Icon, Accordion, AccordionItem, AccordionPanel, Tag, AccordionButton, AccordionIcon, useToast, } from "@chakra-ui/react"
 import { useEffect, useRef, useState } from "react";
 import { IUserData } from "../../../types";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import _ from 'lodash';
 import { AdminSliceSingle, BoxContainer } from "../Users/AdminSliceSingle";
 import { testBusinessAreaData, testUserData } from "../../../api";
@@ -17,12 +17,11 @@ import Kokerbin from "../../assets/kokerbin.jpeg"
 import { BusinessAreaAccordion } from "./BusinessAreaAccordion";
 import { SuggestiveSearchbar } from "./SuggestiveSearchbar";
 
+import { downloadProjectsCSV } from "../../../api";
+import { DownloadProjectsCSVButton } from "../../Downloads/DownloadProjectsCSVButton";
 
 export const SearchAndFilterProjectSection = () => {
 
-    const downloadAllProjectsCSV = () => {
-        console.log("Downloading...")
-    }
 
     // const [programFilter, setProgramFilter] = useState("");
 
@@ -84,7 +83,9 @@ export const SearchAndFilterProjectSection = () => {
 
 
     return (
-        <Box maxW={"100%"} maxH={"100%"}>
+        <Box maxW={"100%"} maxH={"100%"}
+            userSelect={"none"}
+        >
             {/* <CreateUserModal isOpen={isCreateUserModalOpen} onClose={onCloseCreateUserModal} /> */}
             {/* <Button onClick={handleToggleFilters} mt={4}>
                 {showFilters ? 'Hide Filters' : 'Show Filters'}
@@ -229,14 +230,9 @@ export const SearchAndFilterProjectSection = () => {
                 </Flex>
 
             </Collapse> */}
-            <Flex width={"100%"} mt={8}>
+            <Flex width={"100%"} mt={8} >
                 <Flex justifyContent={"flex-start"} width="100%">
-                    <Button
-                        leftIcon={<FaDownload />}
-                        variant={"solid"}
-                        colorScheme="blue"
-                        onClick={downloadAllProjectsCSV}
-                    >Download All Projects</Button>
+                    <DownloadProjectsCSVButton />
                 </Flex>
 
                 <SuggestiveSearchbar />

@@ -16,6 +16,7 @@ import { CalendarIcon } from "@chakra-ui/icons";
 import 'react-calendar/dist/Calendar.css'
 import Calendar from "react-calendar";
 import { IconContext } from "react-icons";
+import "../../../styles/modalscrollbar.css";
 
 
 interface IProjectDetailSectionProps {
@@ -59,6 +60,8 @@ export const ProjectDetailsSection = ({ projectType, currentYear, onClose }: IPr
     return (
         <form onSubmit={handleSubmit}>
             <ModalBody
+                overflowY={"auto"}
+                maxHeight={"59vh"}
             >
                 {/* HIDING PROJECT YEAR */}
                 <InputGroup>
@@ -339,7 +342,10 @@ export const ProjectDetailsSection = ({ projectType, currentYear, onClose }: IPr
                     </FormControl>
                 </Grid>
             </ModalBody>
-            <ModalFooter>
+            <ModalFooter
+            // mt={29.5}
+            // bottom={0}
+            >
                 <Button onClick={onClose}>Cancel</Button>
                 <Button
                     ml={3}

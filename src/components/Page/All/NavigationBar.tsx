@@ -26,6 +26,7 @@ export const NavigationBar = ({ subDirOne, subDirTwo, subDirThree, rightSideElem
                 py={2}
                 pos={"relative"}
                 justifyContent={"space-between"}
+                userSelect={"none"}
             >
                 <Flex>
                     <Button

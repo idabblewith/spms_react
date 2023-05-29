@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Grid, Text, Image, Flex } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Grid, Text, Image, Flex, useDisclosure } from "@chakra-ui/react"
 import { IProjectCardProps, ProjectCard } from "./ProjectCard"
 import { AiFillEdit, AiFillTag } from "react-icons/ai"
 import { GiQueenCrown } from "react-icons/gi";
@@ -7,6 +7,7 @@ import { testProjectCardData } from "../../../api";
 import { IProjectData } from "../../../types";
 import { useTimeSince } from "../../../hooks/useTimeSince";
 
+import { UpdateBusinessAreaModal } from "../../Modals/UpdateBusinessAreaModal";
 
 export interface IProjectAccordion {
     businessArea: string;
@@ -32,12 +33,19 @@ export const BusinessAreaAccordion = (
     }: IProjectAccordion
 ) => {
     const renderUpdateTag = useTimeSince(lastUpdateDate)
+
+    const { isOpen: isUpdateBusinessAreaModalOpen, onOpen: onOpenUpdateBusinessAreaModal, onClose: onCloseUpdateBusinessAreaModal } = useDisclosure()
+
+
+
     return (
         <>
             <Accordion
                 allowMultiple bg={"gray.100"} rounded={"2xl"}
                 my={3}
+                userSelect={"none"}
             >
+                <UpdateBusinessAreaModal isOpen={isUpdateBusinessAreaModalOpen} onClose={onCloseUpdateBusinessAreaModal} businessAreaTitle={businessArea} />
                 <AccordionItem rounded={"2xl"}>
                     <h2>
                         <AccordionButton
@@ -73,6 +81,8 @@ export const BusinessAreaAccordion = (
                                 height="100%"
                                 rounded="5px"
                                 opacity={"20%"}
+                                userSelect={"none"}
+                                draggable={false}
                             />
                             <Box
                                 p={4}
@@ -109,6 +119,7 @@ export const BusinessAreaAccordion = (
                                         <Button
                                             colorScheme="blue"
                                             leftIcon={<AiFillEdit />}
+                                            onClick={onOpenUpdateBusinessAreaModal}
                                         >
                                             Update
                                         </Button>

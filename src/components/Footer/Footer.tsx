@@ -13,6 +13,7 @@ export const Footer = () => {
             color="whiteAlpha.600"
             bgColor="blackAlpha.800"
             py={4}
+            userSelect={"none"}
         >
             <Center fontSize="12px" textAlign="center">
                 <Link color="whiteAlpha.800" href="https://github.com/dbca-wa/sdis">

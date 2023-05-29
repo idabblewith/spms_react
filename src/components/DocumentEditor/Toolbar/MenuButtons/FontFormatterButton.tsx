@@ -5,29 +5,37 @@ import { BaseToolbarMenuButton } from "../Buttons/BaseToolbarMenuButton"
 import { AiOutlineStrikethrough } from "react-icons/ai"
 import { MdSubscript, MdSuperscript } from "react-icons/md"
 import { BsTrash3 } from "react-icons/bs"
+import { useState } from "react"
 
 // A dropdown menu containing Strikethrough, Subscript, Superscript, and Clear Formatting Options
 
 export const FontFormatterButton = () => {
 
+    const [currentTitle, setCurrentTitle] = useState<string>('Format')
+
     const StrikeThroughFunc = () => {
-        console.log("StrikeThrough")
+        setCurrentTitle("Strike")
     }
     const SubscriptFunc = () => {
-        console.log("SubscriptFunc")
+        setCurrentTitle("Sub")
     }
     const SuperscriptFunc = () => {
-        console.log("SuperscriptFunc")
+        setCurrentTitle("Super")
     }
     const ClearFormattingFunc = () => {
-        console.log("ClearFormattingFunc")
+        setCurrentTitle("Clear")
     }
 
 
     return (
         <BaseToolbarMenuButton
-            // title=""
-            menuIcon={RxLetterCaseCapitalize}
+            title={currentTitle}
+            menuIcon={
+                currentTitle === "Strike" || currentTitle === "Strikethrough" ? AiOutlineStrikethrough :
+                    currentTitle === "Sub" || currentTitle === "Subscript" ? MdSubscript :
+                        currentTitle === "Super" || currentTitle === "Superscript" ? MdSuperscript :
+                            currentTitle === "Clear" || currentTitle === "Clear Formatting" ? BsTrash3 :
+                                RxLetterCaseCapitalize}
             menuItems={[
                 {
                     leftIcon: AiOutlineStrikethrough,

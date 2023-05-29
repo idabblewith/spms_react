@@ -1,5 +1,6 @@
 import { Button } from "@chakra-ui/react"
 import { FaCaretDown, FaFont } from "react-icons/fa"
+import { BaseToolbarMenuButton } from "../Buttons/BaseToolbarMenuButton"
 // A dropdown button that pops open a hex color selector to adjust the color of the font.
 
 // Has hex text area to select the color via the code value
@@ -8,9 +9,13 @@ import { FaCaretDown, FaFont } from "react-icons/fa"
 
 export const FontColorPickerButton = () => {
     return (
-        <Button
-            leftIcon={<FaFont />}
-            rightIcon={<FaCaretDown />}
-        ></Button>
+        <BaseToolbarMenuButton
+            menuIcon={FaFont}
+            menuItems={
+                []
+            }
+        // leftIcon={<FaFont />}
+        // rightIcon={<FaCaretDown />}
+        />
     )
 }

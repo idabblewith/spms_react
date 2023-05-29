@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react"
+import { Center, Divider, Flex } from "@chakra-ui/react"
 import { BoldButton } from "../Buttons/BoldButton"
 import { ItalicsButton } from "../Buttons/ItalicsButton"
 import { UnderlineButton } from "../Buttons/UnderlineButton"
@@ -10,15 +10,14 @@ import { FontFormatterButton } from "../MenuButtons/FontFormatterButton"
 
 export const FontFormattingButtons = () => {
     return (
-        <Flex>
+        <Flex
+        // flexGrow={1}
+        >
             <BoldButton />
             <ItalicsButton />
             <UnderlineButton />
-            <CodeBlockButton />
-            <LinkButton />
             <FontColorPickerButton />
             <FontHighlighterButton />
-            {/* <FontFormatterButton /> */}
         </Flex>
     )
 }

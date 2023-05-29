@@ -1,7 +1,0 @@
-npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
-npm i react-router-dom
-npm i axios js-cookie @tanstack/react-query
-npm i --save-dev @types/js-cookie
-npm i --save-dev @types/node
-npm i react-icons
-npm i lodash

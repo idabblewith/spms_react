@@ -12,6 +12,7 @@ export const WordCount = ({ count }: IWordCountProps) => {
             fontWeight={"semibold"}
             fontSize={"lg"}
             color={"blackAlpha.500"}
+            userSelect={"none"}
         >
             {count} words
         </Text>

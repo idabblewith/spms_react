@@ -5,6 +5,7 @@ import { BsCashCoin } from 'react-icons/bs';
 import { GoListOrdered } from 'react-icons/go';
 import { AiFillQuestionCircle } from 'react-icons/ai';
 import { MdAccessTimeFilled } from 'react-icons/md';
+import "../../styles/modalscrollbar.css";
 
 
 interface IAddUserModalProps {
@@ -14,6 +15,13 @@ interface IAddUserModalProps {
 
 
 export const ProjectDetailEditModal = ({ isOpen, onClose }: IAddUserModalProps) => {
+
+    // const scrollableModalStyles = css`
+    //     max-height: 400px;
+    //     overflow-y: auto;
+    //     scrollbar-width: thin;
+    // `;
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -54,7 +62,12 @@ export const ProjectDetailEditModal = ({ isOpen, onClose }: IAddUserModalProps) 
                     <TabPanels>
                         <TabPanel>
                             <form onSubmit={handleSubmit}>
-                                <ModalBody>
+                                <ModalBody
+                                    overflowY={"auto"}
+                                    maxHeight={"60vh"}
+
+                                // className={scrollableModalStyles}
+                                >
                                     <FormControl isRequired mb={4}>
                                         <FormLabel>Username</FormLabel>
                                         <InputGroup>

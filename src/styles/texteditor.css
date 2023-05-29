@@ -1,63 +1,142 @@
 
-/* Layout */
-.contentEditable {
-    width: 100%;
-    height: 300px;
-    padding: 8px;
-    padding-top: 16px;
-    /* border-radius: 201px solid #000; */
-    border-radius: 0 0 25px 25px;
-    /* boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} */
-    /* box-shadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"; */
-
-    /* border-color: aqua; */
-    position: relative;
-    /* background: #000; */
-
-    /* padding-top: 0px; */
-    /* margin: 0 auto; */
-    /* text-align: center; */
-    /* padding: 2rem; */
-    /* height: 540px; */
-    /* background: #000; */
-}
-
-.contentEditable:focus {
-    outline: none !important;
-    /* border:1px solid gray; */
-    /* box-shadow: 0 0 10px #719ECE; */
-
-}
-
-.placeholder {
-    position: absolute;
-    left: 8px;
-    top: 89px;
-    user-select: none;
-    pointer-events: none; /* Fixes issues with clicking the placeholder/input being blocked*/
-    /* The placeholder text blocks functionality of selecting the box */
-}
-
-.editorWrapper {
-    position: relative;
-    /* margin-top: 10px; */
-    width: 100%;
-    
-}
-
-
-
 /* Text */
 
 .editor-italics {
+    font-style: italic;
     color: aquamarine;
 }
 
 .editor-bold {
-    color: yellow;
+    font-weight: bold;
+    color: black;
 }
+
+.editor-underline {
+    text-decoration: underline;
+}
+
+.editor-strikethrough {
+    text-decoration: line-through;
+}
+
+.editor-underline-strikethrough {
+    text-decoration: underline line-through;
+}
+
 
 .editor-h1 {
     background-color: black;
     color: aliceblue;
 }
+
+.editor-h2 {
+    background-color: black;
+    color: aliceblue;
+}
+
+.editor-h3 {
+    background-color: black;
+    color: aliceblue;
+}
+
+.editor-quote {
+    margin: 0;
+    margin-left: 20px;
+    font-size: 15px;
+    color: rgb(101, 103, 107);
+    border-left-color: rgb(206, 208, 212);
+    border-left-width: 4px;
+    border-left-style: solid;
+    padding-left: 16px;
+}
+
+.editor-listitem {
+    margin: 8px 32px 8px 32px;
+  }
+
+  .editor-nested-listitem {
+    list-style-type: none;
+  }
+  
+
+.editor-ol {
+    padding: 0;
+    margin: 0;
+    margin-left: 16px;
+}
+
+.editor-ul {
+    padding: 0;
+    margin: 0;
+    margin-left: 16px;
+}
+
+.rtl {
+
+}
+
+.ltr {
+
+}
+
+
+
+.link-editor .link-input {
+    display: block;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    margin: 8px 12px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    background-color: #eee;
+    font-size: 15px;
+    color: rgb(5, 5, 5);
+    border: 0;
+    outline: 0;
+    position: relative;
+    font-family: inherit;
+  }
+  
+  .link-editor div.link-edit {
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 35px;
+    vertical-align: -0.25em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+  }
+  
+  .link-editor .link-input a {
+    color: rgb(33, 111, 219);
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 30px;
+    text-overflow: ellipsis;
+  }
+  
+  .link-editor .link-input a:hover {
+    text-decoration: underline;
+  }
+  
+  .link-editor .button {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 2px;
+  }
+  
+  .link-editor .button.hovered {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #eee;
+  }

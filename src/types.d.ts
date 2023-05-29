@@ -1,6 +1,9 @@
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ReactNode } from "react";
 
+export interface IToolbarButton {
+    onClick: (event: string) => void;
+}
 
 interface IBusinessArea {
     pk: number;

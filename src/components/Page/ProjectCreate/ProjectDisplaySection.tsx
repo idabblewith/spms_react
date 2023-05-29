@@ -1,6 +1,7 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input, InputGroup, ModalBody, ModalFooter } from "@chakra-ui/react"
 import { useState } from "react";
 import { IoIosCreate } from "react-icons/io";
+import "../../../styles/modalscrollbar.css";
 
 
 interface IProjectDisplayProps {
@@ -18,7 +19,10 @@ export const ProjectDisplaySection = ({ onClose }: IProjectDisplayProps) => {
     return (
 
         <form onSubmit={handleSubmit}>
-            <ModalBody>
+            <ModalBody
+                overflowY={"auto"}
+                maxHeight={"58vh"}
+            >
                 <FormControl my={4}
                 >
                     <FormLabel>Image</FormLabel>

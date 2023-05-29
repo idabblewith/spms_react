@@ -14,13 +14,14 @@ export const OptionsBar = ({ wordCount }: IOptionsBarProps) => {
     return (
         <Flex
             // background={"orange"}
-            // justifyContent={"flex-end"}
             height={20}
-            position={"absolute"}
             width={"100%"}
             bottom={0}
         >
-            <Flex justifyContent="flex-start" alignItems="center" flex={1}
+            <Flex
+                justifyContent="flex-start"
+                alignItems="center"
+                flex={1}
                 px={10}
 
             >

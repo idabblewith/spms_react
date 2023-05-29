@@ -87,6 +87,8 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                                 >
                                     <Avatar
                                         src={imageLink}
+                                        draggable={false}
+                                        userSelect={"none"}
                                         h={55}
                                         w={55}
                                         objectFit="cover"
@@ -162,6 +164,8 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                             w="100%"
                             overflow="hidden"
                             textOverflow={"ellipsis"}
+                            draggable={false}
+
                         >
                             <Text>
                                 {email ? email : "(None)"}
@@ -176,6 +180,8 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                                 w="100%"
                                 overflow="hidden"
                                 textOverflow={"ellipsis"}
+                                draggable={false}
+
                             >
                                 <Text>
                                     {
@@ -191,6 +197,8 @@ export const AdminSliceSingle = ({ pk, username, email, firstName, fullName, pro
                                 w="100%"
                                 overflow="hidden"
                                 textOverflow={"ellipsis"}
+                                draggable={false}
+
                             >
                                 <Text>
                                     {

@@ -13,8 +13,8 @@ export const ReadOnlyModeButton = () => {
         <BaseToggleOptionsButton
             iconOne={BsUnlockFill}
             iconTwo={BsLockFill}
-            colorSchemeOne={"gray"}
-            colorSchemeTwo={"gray"}
+            colorSchemeOne={"blue"}
+            colorSchemeTwo={"green"}
             currentState={isLocked}
             setCurrentState={setIsLocked}
         />

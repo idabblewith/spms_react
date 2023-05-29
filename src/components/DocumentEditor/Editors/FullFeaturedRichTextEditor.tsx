@@ -15,7 +15,7 @@ export const FullFeaturedRichTextEditor = () => {
     return (
         <Box>
             <Text fontWeight={"bold"} pb={4}>
-                Rich Text Editor
+                Rich Text Editor - Use Helmet
             </Text>
             <Flex>
                 <SimpleRichTextEditor />

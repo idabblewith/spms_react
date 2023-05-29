@@ -12,66 +12,63 @@ import { BaseToolbarMenuButton } from "../Buttons/BaseToolbarMenuButton";
 
 import { useState } from "react";
 import { IconType } from "react-icons";
-import { Icon } from "@chakra-ui/react";
+import { Center, Divider, Flex, Icon } from "@chakra-ui/react";
 
-export const ElementTypeButton = () => {
-    // const [currentIcon, setCurrentIcon] = useState<IconType>(
-    //     BsTextParagraph
-    // );
-    const [currentTitle, setCurrentTitle] = useState<string>("Normal");
+interface Props {
+    isSmall?: boolean;
+}
+
+export const ElementTypeButton = ({ isSmall }: Props) => {
+    const [currentTitle, setCurrentTitle] = useState<string>(isSmall ? "Norm" : "Normal");
 
     const NormalFunc = () => {
-        console.log("Normal");
-        setCurrentTitle("Normal");
-        // setCurrentIcon(<Icon as={BsTextParagraph} />);
+        setCurrentTitle("Norm");
     };
 
     const HeadingOneFunc = () => {
-        console.log("Heading 1");
-        setCurrentTitle("Heading 1");
-        // setCurrentIcon(BsTypeH1);
+        setCurrentTitle(
+            isSmall ? "H1" : "Heading 1"
+        );
     };
 
     const HeadingTwoFunc = () => {
-        console.log("Heading 2");
-        setCurrentTitle("Heading 2");
-        // setCurrentIcon(BsTypeH2);
+        setCurrentTitle(
+            isSmall ? "H2" : "Heading 2"
+        );
     };
 
     const HeadingThreeFunc = () => {
-        console.log("Heading 3");
-        setCurrentTitle("Heading 3");
-        // setCurrentIcon(BsTypeH3);
+        setCurrentTitle(
+            isSmall ? "H3" : "Heading 3"
+        );
     };
 
     const BulletListFunc = () => {
-        console.log("Bullet List");
-        setCurrentTitle("Bullet List");
-        // setCurrentIcon(MdFormatListBulleted);
+        setCurrentTitle(
+            isSmall ? "Bullets" : "Bullet List"
+        );
     };
 
     const NumberedListFunc = () => {
-        console.log("Numbered List");
-        setCurrentTitle("Numbered List");
-        // setCurrentIcon(MdFormatListNumbered);
+        setCurrentTitle(
+            isSmall ? "Nums" : "Numbered List"
+        );
     };
 
     const CheckListFunc = () => {
-        console.log("Check List");
-        setCurrentTitle("Check List");
-        // setCurrentIcon(AiOutlineCheckSquare);
+        setCurrentTitle(
+            isSmall ? "Chk Lst" : "Check List"
+        );
     };
 
     const QuoteFunc = () => {
-        console.log("Quote");
         setCurrentTitle("Quote");
-        // setCurrentIcon(BsChatSquareQuote);
     };
 
     const CodeBlockFunc = () => {
-        console.log("Code Block");
-        setCurrentTitle("Code Block");
-        // setCurrentIcon(BsCodeSlash);
+        setCurrentTitle(
+            isSmall ? "Code" : "Code Block"
+        );
     };
 
     return (
@@ -79,21 +76,21 @@ export const ElementTypeButton = () => {
             menuIcon={
                 currentTitle === "Normal" ?
                     BsTextParagraph :
-                    currentTitle === "Heading 1" ?
+                    currentTitle === "Heading 1" || currentTitle === "H1" ?
                         BsTypeH1 :
-                        currentTitle === "Heading 2" ?
+                        currentTitle === "Heading 2" || currentTitle === "H2" ?
                             BsTypeH2 :
-                            currentTitle === "Heading 3" ?
+                            currentTitle === "Heading 3" || currentTitle === "H3" ?
                                 BsTypeH3 :
-                                currentTitle === "Bullet List" ?
+                                currentTitle === "Bullet List" || currentTitle === "Bullets" ?
                                     MdFormatListBulleted :
-                                    currentTitle === "Numbered List" ?
+                                    currentTitle === "Numbered List" || currentTitle === "Nums" ?
                                         MdFormatListNumbered :
-                                        currentTitle === "Check List" ?
+                                        currentTitle === "Check List" || currentTitle === "Chk Lst" ?
                                             AiOutlineCheckSquare :
                                             currentTitle === "Quote" ?
                                                 BsChatSquareQuote :
-                                                currentTitle === "Code Block" ?
+                                                currentTitle === "Code Block" || currentTitle === "Code" ?
                                                     BsCodeSlash :
                                                     BsTextParagraph
             }
@@ -129,21 +126,21 @@ export const ElementTypeButton = () => {
                     text: 'Numbered List',
                     onClick: NumberedListFunc,
                 },
-                {
-                    leftIcon: AiOutlineCheckSquare,
-                    text: 'Check List',
-                    onClick: CheckListFunc,
-                },
+                // {
+                //     leftIcon: AiOutlineCheckSquare,
+                //     text: 'Check List',
+                //     onClick: CheckListFunc,
+                // },
                 {
                     leftIcon: BsChatSquareQuote,
                     text: 'Quote',
                     onClick: QuoteFunc,
                 },
-                {
-                    leftIcon: BsCodeSlash,
-                    text: 'Code Block',
-                    onClick: CodeBlockFunc,
-                },
+                // {
+                //     leftIcon: BsCodeSlash,
+                //     text: 'Code Block',
+                //     onClick: CodeBlockFunc,
+                // },
             ]
             }
         />
