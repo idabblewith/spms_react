@@ -27,9 +27,9 @@ export const Reports = () => {
                 <Center mt={20}>
                     <Text fontWeight={"bold"} fontSize={"2xl"}>Section on hold until data hooked in</Text>
                 </Center> */}
-                <Flex justifyContent={"flex-start"} width="100%" pb={6}>
+                {/* <Flex justifyContent={"flex-start"} width="100%" pb={6}>
                     <DownloadReportPDFButton />
-                </Flex>
+                </Flex> */}
 
                 <FullFeaturedRichTextEditor />
 

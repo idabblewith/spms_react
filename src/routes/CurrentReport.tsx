@@ -1,5 +1,6 @@
-import { Box, Center, Grid, Text } from "@chakra-ui/react"
+import { Box, Center, Flex, Grid, Text } from "@chakra-ui/react"
 import { NavigationBar } from "../components/Page/All/NavigationBar"
+import { DownloadReportPDFButton } from "../components/Downloads/DownloadReportPDFButton"
 
 export const CurrentReport = () => {
     return (
@@ -15,6 +16,9 @@ export const CurrentReport = () => {
                 }}
             />
             <Box mt={10}>
+                <Flex justifyContent={"flex-start"} width="100%" pb={6}>
+                    <DownloadReportPDFButton />
+                </Flex>
                 <Box mb={6}>
                     <Text fontSize={"2xl"} fontWeight={"bold"}>Current Report Print Preview
                     </Text>
